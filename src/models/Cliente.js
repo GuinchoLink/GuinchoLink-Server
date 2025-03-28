@@ -1,7 +1,6 @@
 import { Model, DataTypes } from 'sequelize';
 
 class Cliente extends Model {
-
   static init(sequelize) {
     super.init({
       nome: { 
@@ -15,19 +14,38 @@ class Cliente extends Model {
         type: DataTypes.STRING, 
         validate: {
           notEmpty: { msg: "CPF do Cliente deve ser preenchido!" },
-          is: {args: ["[0-9]{3}\.[0-9]{3}\.[0-9]{3}\-[0-9]{2}"], msg: "CPF do Cliente deve seguir o padrão NNN.NNN.NNN-NN!" },
+          is: { args: ["[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}\\-[0-9]{2}"], msg: "CPF do Cliente deve seguir o padrão NNN.NNN.NNN-NN!" },
         }
       },
       nascimento: { 
         type: DataTypes.DATEONLY, 
         validate: {
           isDate: { msg: "Nascimento do Cliente deve ser preenchido!" },
-          is: {args: ["[0-9]{4}\-[0-9]{2}\-[0-9]{2}"], msg: "Nascimento do Cliente deve seguir o padrão yyyy-MM-dd!" }
+          is: { args: ["[0-9]{4}\\-[0-9]{2}\\-[0-9]{2}"], msg: "Nascimento do Cliente deve seguir o padrão yyyy-MM-dd!" }
+        }
+      },
+      telefone: { 
+        type: DataTypes.STRING, 
+        validate: {
+          notEmpty: { msg: "Número do Cliente deve ser preenchido!" },
+        }
+      },
+      endereco: { 
+        type: DataTypes.STRING, 
+        validate: {
+          notEmpty: { msg: "Endereço do Cliente deve ser preenchido!" },
         }
       }
-    }, { sequelize, modelName: 'cliente', tableName: 'clientes' })
+    }, { sequelize, modelName: 'cliente', tableName: 'clientes' });
   }
 
+  static associate(models) {
+    // Associação 1:N com VeiculoCliente
+    this.hasMany(models.VeiculoCliente, { foreignKey: 'clienteId', as: 'veiculos' });
+
+    // Associação 1:N com Servico
+    this.hasMany(models.Servico, { foreignKey: 'clienteId', as: 'servicos' });
+  }
 }
 
 export { Cliente };

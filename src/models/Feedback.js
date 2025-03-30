@@ -28,7 +28,7 @@ class Feedback extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.Servico, { foreignKey: 'servico_id', as: 'servico' });
+    this.belongsTo(models.servico, { foreignKey: 'servico_id', as: 'servico' });
   }
 }
 

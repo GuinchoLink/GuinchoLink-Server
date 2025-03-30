@@ -29,7 +29,7 @@ class FimServico extends Model {
     }, {
       sequelize,
       modelName: 'fim_servico',
-      tableName: 'fins_servico'
+      tableName: 'fim_servicos'
     });
   }
 

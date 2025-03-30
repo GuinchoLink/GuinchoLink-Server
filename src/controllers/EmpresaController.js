@@ -1,6 +1,6 @@
 import { EmpresaService } from "../services/EmpresaService.js";
 
-class VeiculoEmpresaController {
+class EmpresaController {
 
   static async findAll(req, res) {
     EmpresaService.findAll()
@@ -35,4 +35,4 @@ class VeiculoEmpresaController {
 }
 
 
-export { VeiculoEmpresaController };
+export { EmpresaController };

@@ -21,3 +21,4 @@ logs/
 coverage/
 dist/
 build/
+*.sqlite

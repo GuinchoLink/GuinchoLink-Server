@@ -16,6 +16,7 @@ class VeiculoClienteService {
   static async create(req, res) {
     const { placa, cor, modelo, tipoDeVeiculo } = req.body;
 
+
     // Regra de negócio: não podem existir dois Empresas com o mesmo cor
     //const objByCpf = await VeiculoCliente.findAll({where : {cor: cor}});
     //if (objByCpf.length == 1){

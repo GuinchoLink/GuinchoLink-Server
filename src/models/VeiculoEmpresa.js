@@ -26,7 +26,7 @@ class VeiculoEmpresa extends Model {
         }
       },
       tipoDeVeiculoServico: { 
-        type: DataTypes.ENUM ("moto", "pickup", "caminhaoPrancha", "caminhaoLanca"), 
+        type: DataTypes.ENUM ("moto", "pickup", "caminhaoPrancha","carro", "caminhaoLanca"), 
         validate: {
             isIn:{
                 args: [["moto", "pickup", "caminhaoPrancha", "caminhaoLanca", "carro"]],

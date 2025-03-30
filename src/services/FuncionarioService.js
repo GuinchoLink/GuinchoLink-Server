@@ -14,7 +14,7 @@ class FuncionarioService {
   }
 
   static async create(req, res) {
-    const { nome, cpf, nascimento } = req.body;
+    const { nome, cpf, nascimento, telefone, endereco, cnh, categoria_cnh } = req.body;
 
     // Regra de negócio: não podem existir dois Funcionarios com o mesmo cpf
     const objByCpf = await Funcionario.findAll({where : {cpf: cpf}});
@@ -22,15 +22,15 @@ class FuncionarioService {
       throw new Error ("Já existe um Funcionario com este CPF");
     }
 
-    const obj = await Funcionario.create({ nome, cpf, nascimento });
+    const obj = await Funcionario.create({ nome, cpf, nascimento, telefone, endereco, cnh, categoria_cnh });
     return obj;
   }
 
   static async update(req, res) {
     const { id } = req.params;
-    const { nome, cpf, nascimento } = req.body;
+    const { nome, cpf, nascimento, telefone, endereco, cnh, categoria_cnh } = req.body;
     var obj = await Funcionario.findOne({ where: { id: id } });
-    Object.assign(obj, { nome, cpf, nascimento });
+    Object.assign(obj, { nome, cpf, nascimento, telefone, endereco, cnh, categoria_cnh });
     obj = await obj.save();
     return obj;
   }

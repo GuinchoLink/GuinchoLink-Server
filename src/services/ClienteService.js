@@ -14,7 +14,7 @@ class ClienteService {
   }
 
   static async create(req, res) {
-    const { nome, cpf, nascimento } = req.body;
+    const { nome, cpf, nascimento, telefone, endereco } = req.body;
 
     // Regra de negócio: não podem existir dois clientes com o mesmo cpf
     const objByCpf = await Cliente.findAll({where : {cpf: cpf}});
@@ -22,15 +22,15 @@ class ClienteService {
       throw new Error ("Já existe um cliente com este CPF");
     }
 
-    const obj = await Cliente.create({ nome, cpf, nascimento });
+    const obj = await Cliente.create({ nome, cpf, nascimento, telefone, endereco });
     return obj;
   }
 
   static async update(req, res) {
     const { id } = req.params;
-    const { nome, cpf, nascimento } = req.body;
+    const { nome, cpf, nascimento, telefone, endereco } = req.body;
     var obj = await Cliente.findOne({ where: { id: id } });
-    Object.assign(obj, { nome, cpf, nascimento });
+    Object.assign(obj, { nome, cpf, nascimento, telefone, endereco });
     obj = await obj.save();
     return obj;
   }

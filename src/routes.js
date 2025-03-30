@@ -5,6 +5,8 @@ import { FuncionarioController } from "./controllers/FuncionarioController.js";
 import { EmpresaController } from "./controllers/EmpresaController.js";
 import { VeiculoClienteController } from "./controllers/VeiculoClienteController.js";
 import { VeiculoEmpresaController } from "./controllers/VeiculoEmpresaController.js";
+import TipoServicoController from './controllers/TipoServicoController.js';
+import ServicoController from './controllers/ServicoController.js'; 
 
 const routes = express.Router();
 
@@ -44,5 +46,18 @@ routes.post('/veiculoEmpresa', VeiculoEmpresaController.create);
 routes.put('/veiculoEmpresa/:id', VeiculoEmpresaController.update);
 routes.delete('/veiculoEmpresa/:id', VeiculoEmpresaController.delete);
 
+// Rotas para TipoServico
+routes.post('/tipos-servico', TipoServicoController.create);
+routes.get('/tipos-servico', TipoServicoController.findAll);
+routes.get('/tipos-servico/:id', TipoServicoController.findById);
+routes.put('/tipos-servico/:id', TipoServicoController.update);
+routes.delete('/tipos-servico/:id', TipoServicoController.delete);
+
+// Rotas para Servico
+routes.post('/servicos', ServicoController.create);
+routes.get('/servicos', ServicoController.findAll);
+routes.get('/servicos/:id', ServicoController.findById);
+routes.put('/servicos/:id', ServicoController.update);
+routes.delete('/servicos/:id', ServicoController.delete);
 
 export default routes;

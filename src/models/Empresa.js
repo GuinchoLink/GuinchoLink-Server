@@ -15,7 +15,7 @@ class Empresa extends Model {
         type: DataTypes.STRING, 
         validate: {
           notEmpty: { msg: "CNPJ da Empresa deve ser preenchido!" },
-          // is: {args: ["[0-9]{2}\.[0-9]{3}\.[0-9]{3}\/[0-9]{4}\-[0-9]{2}"], msg: "CNPJ da Empresa deve seguir o padrão NN.NNN.NNN/NNNN-NN!" },
+          is: {args: ["[0-9]{2}\.[0-9]{3}\.[0-9]{3}\/[0-9]{4}\-[0-9]{2}"], msg: "CNPJ da Empresa deve seguir o padrão NN.NNN.NNN/NNNN-NN!" },
         }
       },
       endereco: { 
@@ -30,8 +30,6 @@ class Empresa extends Model {
         validate: {
           notEmpty: { msg: "Digite o telefone da empresa!" },
           is: {args: ["[0-9]{2} [0-9]{5}\-[0-9]{4}"], msg: "O telefone deve conter o seguinte formato xx xxxxx-xxxx" }
-          // is: {args: ["\([0-9]{2}\)[0-9]{5}\-[0-9]{4}"], msg: "O telefone deve conter o seguinte formato (xx)xxxxx-xxxx" }
-
         }
       }
     }, { sequelize, modelName: 'empresa', tableName: 'empresas' })

@@ -35,4 +35,4 @@ class VeiculoEmpresaController {
 }
 
 
-export { VeiculoEmpresaController };
+export { EmpresaController };

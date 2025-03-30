@@ -29,7 +29,7 @@ class VeiculoEmpresa extends Model {
         type: DataTypes.ENUM ("moto", "pickup", "caminhaoPrancha", "caminhaoLanca"), 
         validate: {
             isIn:{
-                args: [["moto", "pickup", "caminhaoPrancha", "caminhaoLanca"]],
+                args: [["moto", "pickup", "caminhaoPrancha", "caminhaoLanca", "carro"]],
                 msg: "Tipo de veiculo invalido"
             }
         }
@@ -43,7 +43,7 @@ class VeiculoEmpresa extends Model {
             }
         }
       }
-    }, { sequelize, modelName: 'veiculoEmpresa', tableName: 'Veiculos da Empresa' })
+    }, { sequelize, modelName: 'veiculoEmpresa', tableName: 'veiculosDaEmpresa' })
   }
 
   static associate(models) {

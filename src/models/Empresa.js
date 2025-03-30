@@ -29,10 +29,12 @@ class Empresa extends Model {
         type: DataTypes.STRING, 
         validate: {
           notEmpty: { msg: "Digite o telefone da empresa!" },
+          is: {args: ["[0-9]{2} [0-9]{5}\-[0-9]{4}"], msg: "O telefone deve conter o seguinte formato xx xxxxx-xxxx" }
           // is: {args: ["\([0-9]{2}\)[0-9]{5}\-[0-9]{4}"], msg: "O telefone deve conter o seguinte formato (xx)xxxxx-xxxx" }
+
         }
       }
-    }, { sequelize, modelName: 'empresa', tableName: 'Empresa' })
+    }, { sequelize, modelName: 'empresa', tableName: 'empresas' })
   }
 
   static associate(models) {

@@ -15,14 +15,14 @@ class VeiculoCliente extends Model {
         type: DataTypes.STRING, 
         validate: {
           notEmpty: { msg: "Cor do veiculo" },
-          len: {args: [2, 20], msg: "A cor deve ter entre 2 e 20 caracteres!" },
+          len: {args: [2, 20], msg: "A cor deve ter entre 2 e 20 caracteres!" }
         }
       },
       modelo: { 
         type: DataTypes.STRING, 
         validate: {
           notEmpty: { msg: "Modelo do veiculo" },
-          len: {args: [2, 20], msg: "O modelo deve ter entre 2 e 20 caracteres!" },
+          len: {args: [2, 20], msg: "O modelo deve ter entre 2 e 20 caracteres!" }
         }
       },
       tipoDeVeiculo: { 
@@ -34,11 +34,13 @@ class VeiculoCliente extends Model {
             }
         }
       }
-    }, { sequelize, modelName: 'veiculoCliente', tableName: 'Veiculos Clientes' })
+    }, { sequelize, modelName: 'veiculoCliente', tableName: 'veiculosClientes' })
   }
 
-  static associate(models) {
-  }
+  //static associate(models) {
+    //this.belongsTo(models.Servico, { foreignKey: 'placaId', as: 'servico' });
+    //this.belongsTo(models.Cliente, { foreignKey: 'clienteId', as: 'cliente' });
+  //}
   
 }
 

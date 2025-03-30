@@ -16,11 +16,12 @@ class VeiculoClienteService {
   static async create(req, res) {
     const { placa, cor, modelo, tipoDeVeiculo } = req.body;
 
-    // Regra de negócio: não podem existir dois VeiculoClientes com a mesma placa
-    const objByPlaca = await VeiculoCliente.findAll({where : {placa: placa}});
-    if (objByPlaca.length == 1){
-      throw new Error ("Já existe um VeiculoCliente com esta placa");
-    }
+
+    // Regra de negócio: não podem existir dois Empresas com o mesmo cor
+    //const objByCpf = await VeiculoCliente.findAll({where : {cor: cor}});
+    //if (objByCpf.length == 1){
+      //throw new Error ("Já existe um VeiculoCliente com este cor");
+    //}
 
     const obj = await VeiculoCliente.create({ placa, cor, modelo, tipoDeVeiculo });
     return obj;

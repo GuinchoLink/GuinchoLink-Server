@@ -16,11 +16,13 @@ class EmpresaService {
   static async create(req, res) {
     const { nome, cnpj, endereco, telefone } = req.body;
 
-    // Regra de negócio: não podem existir dois Empresas com o mesmo cpf
-    const objByCpf = await Empresa.findAll({where : {cpf: cpf}});
-    if (objByCpf.length == 1){
-      throw new Error ("Já existe um Empresa com este CPF");
-    }
+
+    // Regra de negócio: não podem existir dois Empresas com o mesmo cnpj
+    //const objByCpf = await Empresa.findAll({where : {cnpj: cnpj}});
+    //if (objByCpf.length == 1){
+      //throw new Error ("Já existe um Empresa com este CNPJ");
+    //}
+
 
     const obj = await Empresa.create({ nome, cnpj, endereco, telefone });
     return obj;

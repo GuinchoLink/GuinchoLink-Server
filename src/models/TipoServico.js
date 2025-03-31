@@ -34,7 +34,6 @@ class TipoServico extends Model {
   }
 
   static associate(models) {
-    // this.hasMany(models.Servico, { foreignKey: 'tipo_servico_id', as: 'servicos' });
   }
 }
 

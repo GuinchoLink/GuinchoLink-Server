@@ -1,59 +1,116 @@
-<h1 align="center">
-    <img alt="RVM" src="https://github.com/ravarmes/crud-node-sequelize/blob/main/assets/logo.jpg" />
-</h1>
+# GuinchoLink-Server
 
-<h3 align="center">
-  CRUD :: Node & Sequelize
-</h3>
+GuinchoLink-Server é uma API desenvolvida para gerenciar o sistema de guinchos, permitindo o cadastro, consulta, atualização e exclusão de clientes, empresas, veículos e serviços. Este projeto foi construído utilizando Node.js e Express, com integração a um banco de dados relacional.
 
-<p align="center">Elaborando um CRUD com Node e Sequelize</p>
+## 📋 Funcionalidades
 
-<p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/ravarmes/crud-node-sequelize?color=%2304D361">
-
-  <a href="http://www.linkedin.com/in/rafael-vargas-mesquita">
-    <img alt="Made by Rafael Vargas Mesquita" src="https://img.shields.io/badge/made%20by-Rafael%20Vargas%20Mesquita-%2304D361">
-  </a>
-
-  <img alt="License" src="https://img.shields.io/badge/license-MIT-%2304D361">
-
-  <a href="https://github.com/ravarmes/crud-node-sequelize/stargazers">
-    <img alt="Stargazers" src="https://img.shields.io/github/stars/ravarmes/crud-node-sequelize?style=social">
-  </a>
-</p>
-
-<p align="center">
-  <a href="#-instalacao">Instalação e execução</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-telas">Telas</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-links">Links</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-licenca">Licença</a>
-</p>
-
-## :computer: Instalação e execução <a name="-instalacao"/></a>
-
-0. Instale o [Node](https://nodejs.org/en/download/);
-1. Faça um clone desse repositório;
-2. Entre na pasta rodando `cd crud-node-sequelize`;
-3. Rode `npm install` para instalar as dependências;
-4. Rode `npm run dev` para iniciar o servidor de desenvolvimento;
-5. Abra `http://localhost:3333` para ver o projeto no navegador.
-## :clapper: Tela(s) <a name="-telas"/></a>
-
-![Tela](https://github.com/ravarmes/crud-node-sequelize/blob/main/assets/crud-node-sequelize-1.png)
-![Tela](https://github.com/ravarmes/crud-node-sequelize/blob/main/assets/crud-node-sequelize-2.png)
-
-## :link: Links <a name="-links"/></a>
-
-- [YouTube](https://youtu.be/Ug7sMxKNGXE) - Vídeos com explicação do código;
-
-## :memo: Licença <a name="-licenca"/></a>
-
-Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
-
-## :email: Contato
-
-Rafael Vargas Mesquita - [GitHub](https://github.com/ravarmes) - [LinkedIn](https://www.linkedin.com/in/rafael-vargas-mesquita) - [Lattes](http://lattes.cnpq.br/6616283627544820) - **ravarmes@hotmail.com**
+- Gerenciamento de **Clientes**.
+- Gerenciamento de **Empresas**.
+- Gerenciamento de **Funcionários**.
+- Gerenciamento de **Veículos de Clientes** e **Veículos de Empresas**.
+- Gerenciamento de **Tipos de Serviços** e **Serviços**.
 
 ---
 
-Feito com ♥ by Rafael Vargas Mesquita :wink:
+## 🚀 Tecnologias Utilizadas
+
+- **Node.js**: Ambiente de execução para JavaScript.
+- **Express**: Framework para construção de APIs.
+- **Sequelize**: ORM para interação com o banco de dados.
+- **Postman**: Testes de API.
+
+---
+
+## 📦 Instalação e Configuração
+
+### Pré-requisitos
+
+Certifique-se de ter instalado em sua máquina:
+
+- [Node.js](https://nodejs.org/) (versão 14 ou superior)
+- [Git](https://git-scm.com/)
+
+### Passo a passo
+
+1. **Clone o repositório**:
+   ```bash
+   git clone https://github.com/WelingtonGulinelli/GuinchoLink-Server.git
+   cd GuinchoLink-Server
+   ```
+
+2. **Instale as dependências**:
+   ```bash
+   npm install
+   ```
+
+
+3. **Inicie o servidor**:
+   ```bash
+   npm run dev
+   ```
+
+4. O servidor estará rodando em `http://localhost:3333`.
+
+---
+
+## 📚 Rotas da API
+
+### Clientes
+
+- **GET** `/clientes` - Retorna todos os clientes.
+- **GET** `/clientes/:id` - Retorna um cliente pelo ID.
+- **POST** `/clientes` - Cria um novo cliente.
+- **PUT** `/clientes/:id` - Atualiza um cliente pelo ID.
+- **DELETE** `/clientes/:id` - Exclui um cliente pelo ID.
+
+### Empresas
+
+- **GET** `/empresa` - Retorna todas as empresas.
+- **GET** `/empresa/:id` - Retorna uma empresa pelo ID.
+- **POST** `/empresa` - Cria uma nova empresa.
+- **PUT** `/empresa/:id` - Atualiza uma empresa pelo ID.
+- **DELETE** `/empresa/:id` - Exclui uma empresa pelo ID.
+
+### Funcionários
+
+- **GET** `/funcionario` - Retorna todos os funcionários.
+- **GET** `/funcionario/:id` - Retorna um funcionário pelo ID.
+- **POST** `/funcionario` - Cria um novo funcionário.
+- **PUT** `/funcionario/:id` - Atualiza um funcionário pelo ID.
+- **DELETE** `/funcionario/:id` - Exclui um funcionário pelo ID.
+
+### Veículos de Clientes
+
+- **GET** `/veiculoCliente` - Retorna todos os veículos de clientes.
+- **GET** `/veiculoCliente/:id` - Retorna um veículo de cliente pelo ID.
+- **POST** `/veiculoCliente` - Cria um novo veículo de cliente.
+- **PUT** `/veiculoCliente/:id` - Atualiza um veículo de cliente pelo ID.
+- **DELETE** `/veiculoCliente/:id` - Exclui um veículo de cliente pelo ID.
+
+### Veículos de Empresas
+
+- **GET** `/veiculoEmpresa` - Retorna todos os veículos de empresas.
+- **GET** `/veiculoEmpresa/:id` - Retorna um veículo de empresa pelo ID.
+- **POST** `/veiculoEmpresa` - Cria um novo veículo de empresa.
+- **PUT** `/veiculoEmpresa/:id` - Atualiza um veículo de empresa pelo ID.
+- **DELETE** `/veiculoEmpresa/:id` - Exclui um veículo de empresa pelo ID.
+
+### Tipos de Serviços
+
+- **GET** `/tipos-servico` - Retorna todos os tipos de serviços.
+- **GET** `/tipos-servico/:id` - Retorna um tipo de serviço pelo ID.
+- **POST** `/tipos-servico` - Cria um novo tipo de serviço.
+- **PUT** `/tipos-servico/:id` - Atualiza um tipo de serviço pelo ID.
+- **DELETE** `/tipos-servico/:id` - Exclui um tipo de serviço pelo ID.
+
+### Serviços
+
+- **GET** `/servicos` - Retorna todos os serviços.
+- **GET** `/servicos/:id` - Retorna um serviço pelo ID.
+- **POST** `/servicos` - Cria um novo serviço.
+- **PUT** `/servicos/:id` - Atualiza um serviço pelo ID.
+- **DELETE** `/servicos/:id` - Exclui um serviço pelo ID.
+
+---
+
+

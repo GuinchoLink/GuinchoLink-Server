@@ -1,3 +1,4 @@
+// Leandro Carvalho
 import { Model, DataTypes } from 'sequelize';
 
 class VeiculoCliente extends Model {

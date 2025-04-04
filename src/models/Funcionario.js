@@ -1,3 +1,4 @@
+// Welington Gulinelli
 import { Model, DataTypes } from 'sequelize';
 
 class Funcionario extends Model {

@@ -34,7 +34,7 @@ Certifique-se de ter instalado em sua máquina:
 
 1. **Clone o repositório**:
    ```bash
-   git clone https://github.com/WelingtonGulinelli/GuinchoLink-Server.git
+   git clone https://github.com/GuinchoLink/GuinchoLink-Server.git
    cd GuinchoLink-Server
    ```
 

@@ -1,3 +1,5 @@
+//WELINGTON GULINELLI COSTA
+
 import { Administrador } from "../models/Administrador.js";
 
 class AdministradorService {

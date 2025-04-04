@@ -1,3 +1,5 @@
+//EDUARDO RODRIGUES ALMEIDA
+
 import { Empresa } from "../models/Empresa.js";
 
 class EmpresaService {
@@ -16,13 +18,17 @@ class EmpresaService {
   static async create(req, res) {
     const { nome, cnpj, endereco, telefone } = req.body;
 
+    // Validação do formato do CNPJ
+    const cnpjRegex = /^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/;
+    if (!cnpjRegex.test(cnpj)) {
+      throw new Error("CNPJ inválido! O formato deve ser XX.XXX.XXX/XXXX-XX.");
+    }
 
-    // Regra de negócio: não podem existir dois Empresas com o mesmo cnpj
-    //const objByCpf = await Empresa.findAll({where : {cnpj: cnpj}});
-    //if (objByCpf.length == 1){
-      //throw new Error ("Já existe um Empresa com este CNPJ");
-    //}
-
+    // Verificar se já existe uma empresa com o mesmo CNPJ
+    const existingEmpresa = await Empresa.findOne({ where: { cnpj } });
+    if (existingEmpresa) {
+      throw new Error("Já existe uma empresa cadastrada com este CNPJ.");
+    }
 
     const obj = await Empresa.create({ nome, cnpj, endereco, telefone });
     return obj;
@@ -31,6 +37,19 @@ class EmpresaService {
   static async update(req, res) {
     const { id } = req.params;
     const { nome, cnpj, endereco, telefone } = req.body;
+
+    // Validação do formato do CNPJ
+    const cnpjRegex = /^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/;
+    if (!cnpjRegex.test(cnpj)) {
+      throw new Error("CNPJ inválido! O formato deve ser XX.XXX.XXX/XXXX-XX.");
+    }
+
+    // Verificar se já existe uma empresa com o mesmo CNPJ (exceto a atual)
+    const existingEmpresa = await Empresa.findOne({ where: { cnpj, id: { $ne: id } } });
+    if (existingEmpresa) {
+      throw new Error("Já existe uma empresa cadastrada com este CNPJ.");
+    }
+
     var obj = await Empresa.findOne({ where: { id: id } });
     Object.assign(obj, { nome, cnpj, endereco, telefone });
     obj = await obj.save();

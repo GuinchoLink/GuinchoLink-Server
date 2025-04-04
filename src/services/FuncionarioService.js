@@ -1,3 +1,5 @@
+//WELINGTON GULINELLI COSTA
+
 import { Funcionario } from "../models/Funcionario.js";
 
 class FuncionarioService {

@@ -1,3 +1,5 @@
+//EDUARDO RODRIGUES ALMEIDA
+
 import { VeiculoEmpresa } from "../models/VeiculoEmpresa.js";
 
 class VeiculoEmpresaService {

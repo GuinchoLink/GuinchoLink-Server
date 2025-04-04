@@ -33,14 +33,13 @@ class VeiculoCliente extends Model {
                 msg: "Tipo de veiculo invalido"
             }
         }
-      }
+      },
     }, { sequelize, modelName: 'veiculoCliente', tableName: 'veiculosClientes' })
   }
 
-  //static associate(models) {
-    //this.belongsTo(models.Servico, { foreignKey: 'placaId', as: 'servico' });
-    //this.belongsTo(models.Cliente, { foreignKey: 'clienteId', as: 'cliente' });
-  //}
+  static associate(models) {
+    this.belongsTo(models.cliente, { foreignKey: 'clienteId', as: 'cliente' });
+  }
   
 }
 

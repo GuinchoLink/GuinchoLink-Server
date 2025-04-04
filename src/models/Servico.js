@@ -38,27 +38,6 @@ class Servico extends Model {
           len: { args: [5, 255], msg: "Localização deve ter entre 5 e 255 caracteres!" }
         }
       },
-      funcionario_id: { 
-        type: DataTypes.INTEGER, 
-        allowNull: false, // Torna obrigatório
-        validate: {
-          notNull: { msg: "Funcionário é obrigatório!" }
-        }
-      },
-      veiculo_cliente_id: { 
-        type: DataTypes.INTEGER, 
-        allowNull: false, // Torna obrigatório
-        validate: {
-          notNull: { msg: "Veículo do cliente é obrigatório!" }
-        }
-      },
-      veiculo_empresa_id: { 
-        type: DataTypes.INTEGER, 
-        allowNull: false, // Torna obrigatório
-        validate: {
-          notNull: { msg: "Veículo da empresa é obrigatório!" }
-        }
-      }
     }, { 
       sequelize, 
       modelName: 'servico', 

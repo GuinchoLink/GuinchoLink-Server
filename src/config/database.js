@@ -33,16 +33,29 @@ Servico.associate(sequelize.models);
 TipoServico.associate(sequelize.models);
 FimServico.associate(sequelize.models);
 Feedback.associate(sequelize.models);
+Cliente.associate && Cliente.associate(sequelize.models);
+VeiculoCliente.associate(sequelize.models);
+VeiculoEmpresa.associate && VeiculoEmpresa.associate(sequelize.models);
+Empresa.associate && Empresa.associate(sequelize.models);
+Administrador.associate && Administrador.associate(sequelize.models);
+Funcionario.associate && Funcionario.associate(sequelize.models);
 
 (async () => {
     await sequelize.sync({ force: true });
 
-    // Inserção de Veículos de Cliente
-    const veiculoCliente1 = await VeiculoCliente.create({ placa: "ABC1156", cor: "Azul", modelo: "Fusca", tipoDeVeiculo: "van" });
-    const veiculoCliente2 = await VeiculoCliente.create({ placa: "BHG2222", cor: "Vermelho", modelo: "Gol", tipoDeVeiculo: "carro" });
-    await VeiculoCliente.create({placa: "CIU3333", cor: "Verde", modelo: "F4000", tipoDeVeiculo: "caminhao"});
-    await VeiculoCliente.create({placa: "SGA7G15", cor: "Prata", modelo: "Onix", tipoDeVeiculo: "carro"});
-    await VeiculoCliente.create({placa: "EEE5555", cor: "Amarelo", modelo: "Mazerati", tipoDeVeiculo: "carro"});
+    // Inserção de Clientes primeiro
+    const cliente1 = await Cliente.create({ nome: "Alberto", cpf: "111.111.111-11", nascimento: "2001-01-01", telefone: "(28) 99999-9999", endereco: "Rua dos Bobos, 0" });
+    const cliente2 = await Cliente.create({ nome: "Marcos", cpf: "222.222.222-22", nascimento: "2004-02-02", telefone: "(28) 99999-9999", endereco: "Rua dos Bobos, 0" });
+    const cliente3 = await Cliente.create({ nome: "Vinicius", cpf: "333.333.333-33", nascimento: "2005-05-05", telefone: "(28) 99999-9999", endereco: "Rua dos Bobos, 0" });
+    const cliente4 = await Cliente.create({ nome: "Pedro", cpf: "444.444.444-44", nascimento: "2008-02-02", telefone: "(28) 99999-9999", endereco: "Rua dos Bobos, 0" });
+    const cliente5 = await Cliente.create({ nome: "Souza", cpf: "555.555.555-55", nascimento: "2008-02-02", telefone: "(28) 99999-9999", endereco: "Rua dos Bobos, 0" });
+
+    // Inserção de Veículos de Cliente com clienteId obrigatório
+    const veiculoCliente1 = await VeiculoCliente.create({ placa: "ABC1156", cor: "Azul", modelo: "Fusca", tipoDeVeiculo: "van", clienteId: cliente1.id });
+    const veiculoCliente2 = await VeiculoCliente.create({ placa: "BHG2222", cor: "Vermelho", modelo: "Gol", tipoDeVeiculo: "carro", clienteId: cliente2.id });
+    await VeiculoCliente.create({placa: "CIU3333", cor: "Verde", modelo: "F4000", tipoDeVeiculo: "caminhao", clienteId: cliente3.id});
+    await VeiculoCliente.create({placa: "SGA7G15", cor: "Prata", modelo: "Onix", tipoDeVeiculo: "carro", clienteId: cliente4.id});
+    await VeiculoCliente.create({placa: "EEE5555", cor: "Amarelo", modelo: "Mazerati", tipoDeVeiculo: "carro", clienteId: cliente5.id});
 
     // Inserção de Veículos da Empresa
     const veiculoEmpresa1 = await VeiculoEmpresa.create({ placa: "DDD9098", cor: "Preto", modelo: "CG 150", tipoDeVeiculoServico: "moto", statusVeiculo: "livre" });
@@ -52,12 +65,6 @@ Feedback.associate(sequelize.models);
     await VeiculoEmpresa.create({placa: "JHP2178", cor: "Preto", modelo: "CG 150", tipoDeVeiculoServico: "moto", statusVeiculo: "livre"});
 
     await Empresa.create({nome: "GuinchoLink", cnpj: "11.125.825/0001-22", endereco: "Rua Luis Pena, 30. Castelo", telefone: "00 94002-8922"});
-
-    await Cliente.create({ nome: "Alberto", cpf: "111.111.111-11", nascimento: "2001-01-01", telefone: "(28) 99999-9999", endereco: "Rua dos Bobos, 0" });
-    await Cliente.create({ nome: "Marcos", cpf: "222.222.222-22", nascimento: "2004-02-02", telefone: "(28) 99999-9999", endereco: "Rua dos Bobos, 0" });
-    await Cliente.create({ nome: "Vinicius", cpf: "222.222.222-22", nascimento: "2005-05-05", telefone: "(28) 99999-9999", endereco: "Rua dos Bobos, 0" });
-    await Cliente.create({ nome: "Pedro", cpf: "222.222.444-22", nascimento: "2008-02-02", telefone: "(28) 99999-9999", endereco: "Rua dos Bobos, 0" });
-    await Cliente.create({ nome: "Souza", cpf: "222.222.444-22", nascimento: "2008-02-02", telefone: "(28) 99999-9999", endereco: "Rua dos Bobos, 0" });
 
     await Administrador.create({ nome: "Yuri", cpf: "111.111.111-11", nascimento: "2003-01-01", login: "teste", senha: "senha" });
     await Administrador.create({ nome: "Marcos", cpf: "222.222.222-22", nascimento: "2004-02-02", login: "teste", senha: "senha" });
@@ -83,9 +90,9 @@ Feedback.associate(sequelize.models);
         status: "pendente",
         localizacao: "Rua A, 123",
         tipo_servico_id: tipo1.id,
-        funcionario_id: funcionario1.id, // Obrigatório
-        veiculo_cliente_id: veiculoCliente1.id, // Obrigatório
-        veiculo_empresa_id: veiculoEmpresa1.id // Obrigatório
+        funcionario_id: funcionario1.id,
+        veiculo_cliente_id: veiculoCliente1.id,
+        veiculo_empresa_id: veiculoEmpresa1.id
     });
 
     const servico2 = await Servico.create({
@@ -94,9 +101,9 @@ Feedback.associate(sequelize.models);
         status: "andamento",
         localizacao: "Avenida B, 456",
         tipo_servico_id: tipo2.id,
-        funcionario_id: funcionario2.id, // Obrigatório
-        veiculo_cliente_id: veiculoCliente2.id, // Obrigatório
-        veiculo_empresa_id: veiculoEmpresa2.id // Obrigatório
+        funcionario_id: funcionario2.id,
+        veiculo_cliente_id: veiculoCliente2.id,
+        veiculo_empresa_id: veiculoEmpresa2.id
     });
 
     const servico3 = await Servico.create({
@@ -105,9 +112,9 @@ Feedback.associate(sequelize.models);
         status: "finalizado",
         localizacao: "Rodovia C, km 78",
         tipo_servico_id: tipo3.id,
-        funcionario_id: funcionario1.id, // Adicionado para atender à validação
-        veiculo_cliente_id: veiculoCliente1.id, // Adicionado para atender à validação
-        veiculo_empresa_id: veiculoEmpresa1.id // Adicionado para atender à validação
+        funcionario_id: funcionario1.id,
+        veiculo_cliente_id: veiculoCliente1.id,
+        veiculo_empresa_id: veiculoEmpresa1.id
     });
 
     const servico4 = await Servico.create({
@@ -116,9 +123,9 @@ Feedback.associate(sequelize.models);
         status: "pendente",
         localizacao: "Rua D, 789",
         tipo_servico_id: tipo4.id,
-        funcionario_id: funcionario2.id, // Adicionado para atender à validação
-        veiculo_cliente_id: veiculoCliente2.id, // Adicionado para atender à validação
-        veiculo_empresa_id: veiculoEmpresa2.id // Adicionado para atender à validação
+        funcionario_id: funcionario2.id,
+        veiculo_cliente_id: veiculoCliente2.id,
+        veiculo_empresa_id: veiculoEmpresa2.id
     });
 
     // Inserção de Fim de Serviço

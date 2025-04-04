@@ -54,7 +54,7 @@ class Funcionario extends Model {
 
   static associate(models) {
     // Associação 1:N com Servico
-    this.hasMany(models.Servico, { foreignKey: 'funcionarioId', as: 'servicos' });
+    this.hasMany(models.servico, { foreignKey: 'funcionarioId', as: 'servicos' });
   }
 }
 

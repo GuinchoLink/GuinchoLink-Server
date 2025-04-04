@@ -41,10 +41,10 @@ class Cliente extends Model {
 
   static associate(models) {
     // Associação 1:N com VeiculoCliente
-    this.hasMany(models.VeiculoCliente, { foreignKey: 'clienteId', as: 'veiculos' });
+    this.hasMany(models.veiculoCliente, { foreignKey: 'clienteId', as: 'veiculos' });
 
     // Associação 1:N com Servico
-    this.hasMany(models.Servico, { foreignKey: 'clienteId', as: 'servicos' });
+    this.hasMany(models.servico, { foreignKey: 'clienteId', as: 'servicos' });
   }
 }
 

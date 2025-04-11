@@ -19,9 +19,10 @@ class EmpresaService {
     const { nome, cnpj, endereco, telefone } = req.body;
 
     // Validação do formato do CNPJ
-    const cnpjRegex = /^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/;
-    if (!cnpjRegex.test(cnpj)) {
-      throw new Error("CNPJ inválido! O formato deve ser XX.XXX.XXX/XXXX-XX.");
+    // Regra de negócio: não podem existir dois clientes com o mesmo cpf
+    const objByCnpj = await Empresa.findAll({where : {cnpj: cnpj}});
+    if (objByCnpj.length == 1){
+      throw new Error ("Já existe uma empresa com esse cnpj!");
     }
 
     // Verificar se já existe uma empresa com o mesmo CNPJ
@@ -38,10 +39,10 @@ class EmpresaService {
     const { id } = req.params;
     const { nome, cnpj, endereco, telefone } = req.body;
 
-    // Validação do formato do CNPJ
-    const cnpjRegex = /^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/;
-    if (!cnpjRegex.test(cnpj)) {
-      throw new Error("CNPJ inválido! O formato deve ser XX.XXX.XXX/XXXX-XX.");
+    // Regra de negócio: não podem existir dois clientes com o mesmo cpf
+    const objByCnpj = await Empresa.findAll({where : {cnpj: cnpj}});
+    if (objByCnpj.length == 1){
+      throw new Error ("Já existe uma empresa com esse cnpj!");
     }
 
     // Verificar se já existe uma empresa com o mesmo CNPJ (exceto a atual)

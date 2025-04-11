@@ -9,7 +9,7 @@ class TipoServico extends Model {
         allowNull: false,
         validate: {
           isFloat: { msg: "Valor por hora deve ser um número válido!" },
-          min: { args: [0], msg: "Valor por hora deve ser maior ou igual a 0!" }
+          min: { args: [1, 7], msg: "Valor por hora deve ser maior ou igual a 0!" }
         }
       },
       nome: { 
@@ -24,7 +24,7 @@ class TipoServico extends Model {
         type: DataTypes.STRING, 
         allowNull: true,
         validate: {
-          len: { args: [0, 255], msg: "Descrição deve ter no máximo 255 caracteres!" }
+          len: { args: [0, 100], msg: "Descrição deve ter no máximo 100 caracteres!" }
         }
       }
     }, { 

@@ -1,5 +1,6 @@
 //EDUARDO RODRIGUES ALMEIDA
 
+import { Servico } from '../models/Servico.js';
 import { TipoServico } from '../models/TipoServico.js';
 
 class TipoServicoService {
@@ -25,8 +26,18 @@ class TipoServicoService {
   }
 
   async delete(id) {
-    const tipoServico = await this.findById(id);
-    return await tipoServico.destroy();
+    const obj = await TipoServico.findByPk(id);
+    if (!obj) {
+      throw new Error("Tipo Serviço não encontrado.");
+    }
+
+    const servicoAssociado = await Servico.findOne({ where: { tipo_servico_id: id } });
+    if (servicoAssociado) {
+      throw new Error("Não é possível deletar o tipo serviço, pois ele está associado a um serviço.");
+    }
+
+    await obj.destroy();
+    return obj;
   }
 }
 

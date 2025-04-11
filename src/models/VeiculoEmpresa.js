@@ -9,7 +9,7 @@ class VeiculoEmpresa extends Model {
         type: DataTypes.STRING, 
         validate: {
           notEmpty: { msg: "Placa do Veiculo" },
-          len: { args: [7], msg: "Placa deve ter sete letras!" }
+          len: { args: [7, 7], msg: "Placa deve ter 7 carcteres!" }
         }
       },
       cor: { 

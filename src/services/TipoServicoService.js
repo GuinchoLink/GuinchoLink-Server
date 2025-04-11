@@ -1,10 +1,18 @@
 //EDUARDO RODRIGUES ALMEIDA
 
-import { Servico } from '../models/Servico.js';
-import { TipoServico } from '../models/TipoServico.js';
+import { Servico } from "../models/Servico.js";
+import { TipoServico } from "../models/TipoServico.js";
 
 class TipoServicoService {
   async create(data) {
+    const { nome } = data;
+
+    // Regra de negócio: não podem existir dois Tipo de Serviço com este Nome
+    const objByName = await TipoServico.findOne({ where: { nome } });
+    if (objByName) {
+      throw new Error("Já existe um Tipo de Serviço com este Nome!");
+    }
+
     return await TipoServico.create(data);
   }
 
@@ -15,13 +23,21 @@ class TipoServicoService {
   async findById(id) {
     const tipoServico = await TipoServico.findByPk(id);
     if (!tipoServico) {
-      throw new Error('Tipo de Serviço não encontrado!');
+      throw new Error("Tipo de Serviço não encontrado!");
     }
     return tipoServico;
   }
 
   async update(id, data) {
     const tipoServico = await this.findById(id);
+    // Regra de negócio: não podem existir dois Tipo de Serviço com este Nome
+    const { nome } = data;
+
+    // Regra de negócio: não podem existir dois Tipo de Serviço com este Nome
+    const objByName = await TipoServico.findOne({ where: { nome } });
+    if (objByName) {
+      throw new Error("Já existe um Tipo de Serviço com este Nome!");
+    }
     return await tipoServico.update(data);
   }
 
@@ -31,9 +47,13 @@ class TipoServicoService {
       throw new Error("Tipo Serviço não encontrado.");
     }
 
-    const servicoAssociado = await Servico.findOne({ where: { tipo_servico_id: id } });
+    const servicoAssociado = await Servico.findOne({
+      where: { tipo_servico_id: id },
+    });
     if (servicoAssociado) {
-      throw new Error("Não é possível deletar o tipo serviço, pois ele está associado a um serviço.");
+      throw new Error(
+        "Não é possível deletar o tipo serviço, pois ele está associado a um serviço."
+      );
     }
 
     await obj.destroy();

@@ -30,6 +30,7 @@ class Funcionario extends Model {
         type: DataTypes.STRING, 
         validate: {
           notEmpty: { msg: "Numero do Funcionario deve ser preenchido!" },
+          is: {args: ["[0-9]{2} [0-9]{5}\-[0-9]{4}"], msg: "O telefone deve conter o seguinte formato xx xxxxx-xxxx" }
         }
       },
       endereco: { 

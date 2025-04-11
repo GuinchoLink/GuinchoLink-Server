@@ -32,6 +32,11 @@ class VeiculoEmpresaService {
     const { id } = req.params;
     const { placa, cor, modelo, tipoDeVeiculoServico, statusVeiculo } = req.body;
     var obj = await VeiculoEmpresa.findOne({ where: { id: id } });
+     // Regra de negócio: não podem existir dois veículos com a mesma placa
+     const objByCpf = await VeiculoEmpresa.findAll({where : {placa: placa}});
+     if (objByCpf.length == 1){
+       throw new Error ("Já existe um VeiculoEmpresa com esta placa!");
+     }
 
     Object.assign(obj, { placa, cor, modelo, tipoDeVeiculoServico, statusVeiculo });
 

@@ -1,5 +1,4 @@
 import Sequelize from "sequelize";
-
 import { Cliente } from "../models/Cliente.js";
 import { Administrador } from "../models/Administrador.js";
 import { Funcionario } from "../models/Funcionario.js";
@@ -195,7 +194,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     nome: "Wagner",
     cpf: "555.555.555-55",
     nascimento: "2003-01-01",
-    telefone: "2899999999",
+    telefone: "28 99999-9999",
     endereco: "rua teste",
     cnh: "12345678",
     categoria_cnh: "ABCD",
@@ -204,7 +203,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     nome: "Marcos",
     cpf: "222.222.222-22",
     nascimento: "2004-02-02",
-    telefone: "2899999999",
+    telefone: "28 99999-9999",
     endereco: "rua teste",
     cnh: "12345678",
     categoria_cnh: "ABCD",
@@ -213,7 +212,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     nome: "Vinicius",
     cpf: "092.398.847-78",
     nascimento: "2005-05-05",
-    telefone: "2899999999",
+    telefone: "28 99999-9999",
     endereco: "rua teste",
     cnh: "12345678",
     categoria_cnh: "ABCD",
@@ -222,7 +221,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     nome: "Souza",
     cpf: "938.934.837-20",
     nascimento: "2004-02-02",
-    telefone: "2899999999",
+    telefone: "28 99999-9999",
     endereco: "rua teste",
     cnh: "12345678",
     categoria_cnh: "ABCD",

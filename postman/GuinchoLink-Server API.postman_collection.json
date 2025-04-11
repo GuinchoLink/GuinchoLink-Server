@@ -33,7 +33,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3333/clientes/6",
+							"raw": "http://localhost:3333/clientes/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -41,7 +41,7 @@
 							"port": "3333",
 							"path": [
 								"clientes",
-								"6"
+								"1"
 							],
 							"query": [
 								{
@@ -61,7 +61,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nome\": \"Brito\",\r\n    \"cpf\": \"155.452.439-72\",\r\n    \"nascimento\": \"2023-02\",\r\n    \"telefone\" : \"22988013770\",\r\n    \"endereco\" : \"Rua luiz gonzaga de oliveira\"\r\n}",
+							"raw": "{\r\n    \"nome\": \"Brito\",\r\n    \"cpf\": \"155.452.239-17\",\r\n    \"nascimento\": \"2023-02-30\",\r\n    \"telefone\" : \"22 98801-3770\",\r\n    \"endereco\" : \"Rua luiz gonzaga de oliveira\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -74,6 +74,24 @@
 				},
 				{
 					"name": "Create Cliente ERROR",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"B\",\r\n    \"cpf\": \"111.111.111-1\",\r\n    \"nascimento\": \"2023-02\",\r\n    \"telefone\" : \"22 988013770\",\r\n    \"endereco\" : \"R\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3333/clientes"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Cliente ERROR Cpf",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -97,14 +115,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nome\": \"Welington Gulinelli\",\r\n    \"cpf\": \"155.452.437-71\",\r\n    \"nascimento\": \"2003-12-03\",\r\n    \"telefone\" : \"22988013770\",\r\n    \"endereco\" : \"Rua luiz gonzaga de oliveira, 101\"\r\n}",
+							"raw": "{\r\n    \"nome\": \"Welington Gulinelli\",\r\n    \"cpf\": \"155.052.437-71\",\r\n    \"nascimento\": \"2003-12-03\",\r\n    \"telefone\" : \"22 98801-3770\",\r\n    \"endereco\" : \"Rua luiz gonzaga de oliveira, 101\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://localhost:3333/clientes/6"
+						"url": "http://localhost:3333/clientes/4"
 					},
 					"response": []
 				},
@@ -147,7 +165,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nome\": \"Welington\",\r\n    \"cpf\": \"100.100.100-10\",\r\n    \"nascimento\": \"2003-12-03\",\r\n    \"telefone\" : \"22988013770\",\r\n    \"endereco\" : \"Rua luiz gonzaga de oliveira\",\r\n    \"cnh\" : \"1234556\",\r\n    \"categoria_cnh\": \"A\"\r\n}",
+							"raw": "{\r\n    \"nome\": \"Welington\",\r\n    \"cpf\": \"100.100.100-10\",\r\n    \"nascimento\": \"2003-12-03\",\r\n    \"telefone\" : \"22 98801-3770\",\r\n    \"endereco\" : \"Rua luiz gonzaga de oliveira\",\r\n    \"cnh\" : \"1234556\",\r\n    \"categoria_cnh\": \"A\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -177,13 +195,31 @@
 					"response": []
 				},
 				{
+					"name": "Create Funcionario ERROR Cpf",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Welington\",\r\n    \"cpf\": \"555.555.555-55\",\r\n    \"nascimento\": \"2003-12-0\",\r\n    \"telefone\" : \"22988013770\",\r\n    \"endereco\" : \"\",\r\n    \"cnh\" : \"\",\r\n    \"categoria_cnh\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3333/funcionario"
+					},
+					"response": []
+				},
+				{
 					"name": "Update Funcionario",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nome\": \"Welington Gulinelli costa\",\r\n    \"cpf\": \"222.222.222-23\",\r\n    \"nascimento\": \"2003-12-03\",\r\n    \"telefone\" : \"22988013770\",\r\n    \"endereco\" : \"Rua luiz gonzaga de oliveira\",\r\n    \"cnh\" : \"1234556\",\r\n    \"categoria_cnh\": \"B\"\r\n}",
+							"raw": "{\r\n    \"nome\": \"Welington Gulinelli costa\",\r\n    \"cpf\": \"555.555.555-55\",\r\n    \"nascimento\": \"2003-12-03\",\r\n    \"telefone\" : \"22988013770\",\r\n    \"endereco\" : \"Rua luiz gonzaga de oliveira\",\r\n    \"cnh\" : \"1234556\",\r\n    \"categoria_cnh\": \"B\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -263,6 +299,24 @@
 					"response": []
 				},
 				{
+					"name": "Create Administrador ERROR Cpf",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Welington\",\r\n    \"cpf\": \"111.111.111-11\",\r\n    \"nascimento\": \"13122003\",\r\n    \"login\" : \"wgcosta\",\r\n    \"senha\" : \"senhaa12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3333/administrador"
+					},
+					"response": []
+				},
+				{
 					"name": "Update Administrador",
 					"request": {
 						"method": "PUT",
@@ -320,7 +374,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:3333/empresa/1"
+						"url": "http://localhost:3333/empresa/2"
 					},
 					"response": []
 				},
@@ -344,6 +398,24 @@
 				},
 				{
 					"name": "Create Empresa ERRO",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"nome\": \"G\",\r\n        \"cnpj\": \"11.125.5/2221-21\",\r\n        \"endereco\": \"R\",\r\n        \"telefone\": \"002\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3333/empresa"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Empresa ERRO Cnpj",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -406,23 +478,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:3333/veiculoCliente/:id",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"veiculoCliente",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id"
-								}
-							]
-						}
+						"url": "http://localhost:3333/veiculoCliente/1"
 					},
 					"response": []
 				},
@@ -433,7 +489,12 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{}"
+							"raw": "{\r\n    \"placa\": \"ABC1151\",\r\n    \"cor\": \"marrom\",\r\n    \"modelo\": \"mazerati\",\r\n    \"tipoDeVeiculo\": \"carro\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": "http://localhost:3333/veiculoCliente"
 					},
@@ -446,7 +507,12 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{}"
+							"raw": "{\r\n    \"placa\": \"ABC151\",\r\n    \"cor\": \"m\",\r\n    \"modelo\": \"m\",\r\n    \"tipoDeVeiculo\": \"caro\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": "http://localhost:3333/veiculoCliente"
 					},
@@ -459,25 +525,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{}"
-						},
-						"url": {
-							"raw": "http://localhost:3333/veiculoCliente/:id",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"veiculoCliente",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id"
+							"raw": "{\r\n    \"placa\": \"ABC1051\",\r\n    \"cor\": \"marrom\",\r\n    \"modelo\": \"mazerati\",\r\n    \"tipoDeVeiculo\": \"carro\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
-						}
+							}
+						},
+						"url": "http://localhost:3333/veiculoCliente/4"
 					},
 					"response": []
 				},
@@ -486,23 +541,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:3333/veiculoCliente/:id",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"veiculoCliente",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id"
-								}
-							]
-						}
+						"url": "http://localhost:3333/veiculoCliente/5"
 					},
 					"response": []
 				}
@@ -525,7 +564,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:3333/veiculoEmpresa/6"
+						"url": "http://localhost:3333/veiculoEmpresa/4"
 					},
 					"response": []
 				},
@@ -554,6 +593,24 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
+							"raw": "{\r\n    \"placa\": \"DDyyyyD1910\",\r\n    \"cor\": \"P\",\r\n    \"modelo\": \"C\",\r\n    \"tipoDeVeiculoServico\": \"erros\",\r\n    \"statusVeiculo\": \"erros\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3333/veiculoEmpresa"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Veiculo Empresa ERRO Placa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
 							"raw": "{\r\n    \"placa\": \"DDD1010\",\r\n    \"cor\": \"Preto\",\r\n    \"modelo\": \"CG 150\",\r\n    \"tipoDeVeiculoServico\": \"moto\",\r\n    \"statusVeiculo\": \"emUso\"\r\n    }",
 							"options": {
 								"raw": {
@@ -572,14 +629,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"placa\": \"DDD1010\",\r\n    \"cor\": \"Preto\",\r\n    \"modelo\": \"CG 150\",\r\n    \"tipoDeVeiculoServico\": \"moto\",\r\n    \"statusVeiculo\": \"livre\"\r\n}",
+							"raw": "{\r\n    \"placa\": \"DDD9598\",\r\n    \"cor\": \"Preto\",\r\n    \"modelo\": \"CG 150\",\r\n    \"tipoDeVeiculoServico\": \"moto\",\r\n    \"statusVeiculo\": \"livre\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://localhost:3333/veiculoEmpresa/6"
+						"url": "http://localhost:3333/veiculoEmpresa/4"
 					},
 					"response": []
 				},
@@ -588,7 +645,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "http://localhost:3333/veiculoEmpresa/6"
+						"url": "http://localhost:3333/veiculoEmpresa/4"
 					},
 					"response": []
 				}
@@ -652,7 +709,25 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"valor_hora\": 100.00,\r\n    \"nome\": \"Teste\",\r\n    \"descricao\": \"Teste descição\"\r\n}",
+							"raw": "{\r\n    \"valor_hora\": 100.00,\r\n    \"nome\": \"T\",\r\n    \"descricao\": \"Teste desciçãouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3333/tipos-servico"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Tipo de Serviço ERRO Nome",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"valor_hora\": 100.00,\r\n    \"nome\": \"Guincho\",\r\n    \"descricao\": \"Teste descição\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -670,14 +745,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"valor_hora\": 133.00,\r\n    \"nome\": \"Teste UPDATE\",\r\n    \"descricao\": \"Teste descição UPDATE\"\r\n}",
+							"raw": "{\r\n    \"valor_hora\": 133.00,\r\n    \"nome\": \"Guincho\",\r\n    \"descricao\": \"Teste descição UPDATE\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://localhost:3333/tipos-servico/5"
+						"url": "http://localhost:3333/tipos-servico/3"
 					},
 					"response": []
 				},
@@ -695,7 +770,7 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/tipos-servico/5"
+						"url": "http://localhost:3333/tipos-servico/2"
 					},
 					"response": []
 				}

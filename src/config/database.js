@@ -44,11 +44,11 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     await sequelize.sync({ force: true });
 
     // Inserção de Clientes primeiro
-    const cliente1 = await Cliente.create({ nome: "Alberto", cpf: "111.111.111-11", nascimento: "2001-01-01", telefone: "(28) 99999-9999", endereco: "Rua dos Bobos, 0" });
-    const cliente2 = await Cliente.create({ nome: "Marcos", cpf: "222.222.222-22", nascimento: "2004-02-02", telefone: "(28) 99999-9999", endereco: "Rua dos Bobos, 0" });
-    const cliente3 = await Cliente.create({ nome: "Vinicius", cpf: "333.333.333-33", nascimento: "2005-05-05", telefone: "(28) 99999-9999", endereco: "Rua dos Bobos, 0" });
-    const cliente4 = await Cliente.create({ nome: "Pedro", cpf: "444.444.444-44", nascimento: "2008-02-02", telefone: "(28) 99999-9999", endereco: "Rua dos Bobos, 0" });
-    const cliente5 = await Cliente.create({ nome: "Souza", cpf: "555.555.555-55", nascimento: "2008-02-02", telefone: "(28) 99999-9999", endereco: "Rua dos Bobos, 0" });
+    const cliente1 = await Cliente.create({ nome: "Alberto", cpf: "111.111.111-11", nascimento: "2001-01-01", telefone: "28 99999-9999", endereco: "Rua dos Bobos, 0" });
+    const cliente2 = await Cliente.create({ nome: "Marcos", cpf: "222.222.222-22", nascimento: "2004-02-02", telefone: "28 99999-9999", endereco: "Rua dos Bobos, 0" });
+    const cliente3 = await Cliente.create({ nome: "Vinicius", cpf: "333.333.333-33", nascimento: "2005-05-05", telefone: "28 99999-9999", endereco: "Rua dos Bobos, 0" });
+    const cliente4 = await Cliente.create({ nome: "Pedro", cpf: "444.444.444-44", nascimento: "2008-02-02", telefone: "28 99999-9999", endereco: "Rua dos Bobos, 0" });
+    const cliente5 = await Cliente.create({ nome: "Souza", cpf: "555.555.555-55", nascimento: "2008-02-02", telefone: "28 99999-9999", endereco: "Rua dos Bobos, 0" });
 
     // Inserção de Veículos de Cliente com clienteId obrigatório
     const veiculoCliente1 = await VeiculoCliente.create({ placa: "ABC1156", cor: "Azul", modelo: "Fusca", tipoDeVeiculo: "van", clienteId: cliente1.id });

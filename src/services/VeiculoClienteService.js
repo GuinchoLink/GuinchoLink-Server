@@ -18,12 +18,10 @@ class VeiculoClienteService {
   static async create(req, res) {
     const { placa, cor, modelo, tipoDeVeiculo } = req.body;
 
-
-    // Regra de negócio: não podem existir dois Empresas com o mesmo cor
-    //const objByCpf = await VeiculoCliente.findAll({where : {cor: cor}});
-    //if (objByCpf.length == 1){
-      //throw new Error ("Já existe um VeiculoCliente com este cor");
-    //}
+    const objByPlaca = await VeiculoCliente.findAll({ where: { placa: placa } });
+    if(objByPlaca.length == 1){
+      throw new Error("Já existe um veículo cadastrado com esta placa");
+    }
 
     const obj = await VeiculoCliente.create({ placa, cor, modelo, tipoDeVeiculo });
     return obj;
@@ -41,6 +39,8 @@ class VeiculoClienteService {
   static async delete(req, res) {
     const { id } = req.params;
     var obj = await VeiculoCliente.findByPk(id);
+    if (!obj) throw new Error('Veículo não encontrado!');
+    
     obj = await obj.destroy();
     return obj;
   }

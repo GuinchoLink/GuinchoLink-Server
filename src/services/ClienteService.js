@@ -1,6 +1,7 @@
 //LEANDRO CARVALHO FRAGA
 
 import { Cliente } from "../models/Cliente.js";
+import { VeiculoCliente } from "../models/VeiculoCliente.js";
 
 class ClienteService {
   
@@ -32,6 +33,7 @@ class ClienteService {
     const { id } = req.params;
     const { nome, cpf, nascimento, telefone, endereco } = req.body;
     var obj = await Cliente.findOne({ where: { id: id } });
+    
     Object.assign(obj, { nome, cpf, nascimento, telefone, endereco });
     obj = await obj.save();
     return obj;
@@ -40,6 +42,9 @@ class ClienteService {
   static async delete(req, res) {
     const { id } = req.params;
     var obj = await Cliente.findByPk(id);
+    if (!obj) throw new Error ('Cliente não encontrado!');
+    const veiculoAssociado = await VeiculoCliente.findOne({ where: { clienteId: id } });
+    if (veiculoAssociado) throw new Error ('Não é possível excluir o cliente, pois ele possui veículos associados!');
     obj = await obj.destroy();
     return obj;
   }

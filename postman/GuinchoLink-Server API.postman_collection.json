@@ -1,8 +1,11 @@
 {
 	"info": {
+		"_postman_id": "a5371d55-ed04-4650-9923-c85763a120b6",
 		"name": "GuinchoLink-Server API",
 		"description": "Postman collection for testing the GuinchoLink-Server API routes.",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "34138435",
+		"_collection_link": "https://engenharia-de-software-6755.postman.co/workspace/Engenharia-de-Software---Vargas~55dd94ea-7b8a-4501-9124-0c0583c9ea38/collection/34138435-a5371d55-ed04-4650-9923-c85763a120b6?action=share&source=collection_link&creator=34138435"
 	},
 	"item": [
 		{
@@ -13,17 +16,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:3333/clientes",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"clientes"
-							]
-						}
+						"url": "http://localhost:3333/clientes"
 					},
 					"response": []
 				},
@@ -31,9 +24,16 @@
 					"name": "Get Cliente by ID",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"url": {
-							"raw": "http://localhost:3333/clientes/:id",
+							"raw": "http://localhost:3333/clientes/6",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -41,11 +41,13 @@
 							"port": "3333",
 							"path": [
 								"clientes",
-								":id"
+								"6"
 							],
-							"variable": [
+							"query": [
 								{
-									"key": "id"
+									"key": "",
+									"value": "",
+									"disabled": true
 								}
 							]
 						}
@@ -59,19 +61,32 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{}"
+							"raw": "{\r\n    \"nome\": \"Brito\",\r\n    \"cpf\": \"155.452.439-72\",\r\n    \"nascimento\": \"2023-02\",\r\n    \"telefone\" : \"22988013770\",\r\n    \"endereco\" : \"Rua luiz gonzaga de oliveira\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						"url": {
-							"raw": "http://localhost:3333/clientes",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"clientes"
-							]
-						}
+						"url": "http://localhost:3333/clientes"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Cliente ERROR",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Brito\",\r\n    \"cpf\": \"155.452.439-72\",\r\n    \"nascimento\": \"2023-02\",\r\n    \"telefone\" : \"22988013770\",\r\n    \"endereco\" : \"Rua luiz gonzaga de oliveira\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3333/clientes"
 					},
 					"response": []
 				},
@@ -82,25 +97,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{}"
-						},
-						"url": {
-							"raw": "http://localhost:3333/clientes/:id",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"clientes",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id"
+							"raw": "{\r\n    \"nome\": \"Welington Gulinelli\",\r\n    \"cpf\": \"155.452.437-71\",\r\n    \"nascimento\": \"2003-12-03\",\r\n    \"telefone\" : \"22988013770\",\r\n    \"endereco\" : \"Rua luiz gonzaga de oliveira, 101\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
-						}
+							}
+						},
+						"url": "http://localhost:3333/clientes/6"
 					},
 					"response": []
 				},
@@ -109,275 +113,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:3333/clientes/:id",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"clientes",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Empresas",
-			"item": [
-				{
-					"name": "Get All Empresas",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3333/empresa",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"empresa"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Empresa by ID",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3333/empresa/:id",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"empresa",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Empresa",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{}"
-						},
-						"url": {
-							"raw": "http://localhost:3333/empresa",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"empresa"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Empresa",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{}"
-						},
-						"url": {
-							"raw": "http://localhost:3333/empresa/:id",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"empresa",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Empresa",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3333/empresa/:id",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"empresa",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Administradores",
-			"item": [
-				{
-					"name": "Get All Administradores",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3333/administrador",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"administrador"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Administrador by ID",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3333/administrador/:id",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"administrador",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Administrador",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{}"
-						},
-						"url": {
-							"raw": "http://localhost:3333/administrador",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"administrador"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Administrador",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{}"
-						},
-						"url": {
-							"raw": "http://localhost:3333/administrador/:id",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"administrador",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Administrador",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3333/administrador/:id",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"administrador",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id"
-								}
-							]
-						}
+						"url": "http://localhost:3333/clientes/6"
 					},
 					"response": []
 				}
@@ -391,17 +127,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:3333/funcionario",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"funcionario"
-							]
-						}
+						"url": "http://localhost:3333/funcionario"
 					},
 					"response": []
 				},
@@ -410,23 +136,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:3333/funcionario/:id",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"funcionario",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id"
-								}
-							]
-						}
+						"url": "http://localhost:3333/funcionario/4"
 					},
 					"response": []
 				},
@@ -437,19 +147,32 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{}"
+							"raw": "{\r\n    \"nome\": \"Welington\",\r\n    \"cpf\": \"100.100.100-10\",\r\n    \"nascimento\": \"2003-12-03\",\r\n    \"telefone\" : \"22988013770\",\r\n    \"endereco\" : \"Rua luiz gonzaga de oliveira\",\r\n    \"cnh\" : \"1234556\",\r\n    \"categoria_cnh\": \"A\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						"url": {
-							"raw": "http://localhost:3333/funcionario",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"funcionario"
-							]
-						}
+						"url": "http://localhost:3333/funcionario"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Funcionario ERROR",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Welington\",\r\n    \"cpf\": \"155.452.437-7\",\r\n    \"nascimento\": \"2003-12-0\",\r\n    \"telefone\" : \"22988013770\",\r\n    \"endereco\" : \"\",\r\n    \"cnh\" : \"\",\r\n    \"categoria_cnh\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3333/funcionario"
 					},
 					"response": []
 				},
@@ -460,25 +183,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{}"
-						},
-						"url": {
-							"raw": "http://localhost:3333/funcionario/:id",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"funcionario",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id"
+							"raw": "{\r\n    \"nome\": \"Welington Gulinelli costa\",\r\n    \"cpf\": \"222.222.222-23\",\r\n    \"nascimento\": \"2003-12-03\",\r\n    \"telefone\" : \"22988013770\",\r\n    \"endereco\" : \"Rua luiz gonzaga de oliveira\",\r\n    \"cnh\" : \"1234556\",\r\n    \"categoria_cnh\": \"B\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
-						}
+							}
+						},
+						"url": "http://localhost:3333/funcionario/5"
 					},
 					"response": []
 				},
@@ -487,23 +199,191 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:3333/funcionario/:id",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"funcionario",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id"
+						"url": "http://localhost:3333/funcionario/5"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Administradores",
+			"item": [
+				{
+					"name": "Get All Administradores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3333/administrador"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Administrador by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3333/administrador/3"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Administrador",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Helio\",\r\n    \"cpf\": \"222.222.444-23\",\r\n    \"nascimento\": \"2553-12-03\",\r\n    \"telefone\" : \"28988813770\",\r\n    \"endereco\" : \"Rua luiz gonzaga de oliveira\",\r\n    \"login\" : \"123455689\",\r\n    \"senha\": \"AAAAAAaa23\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
-						}
+							}
+						},
+						"url": "http://localhost:3333/administrador"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Administrador ERROR",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Welington\",\r\n    \"cpf\": \"15545243771\",\r\n    \"nascimento\": \"13122003\",\r\n    \"login\" : \"wgcosta\",\r\n    \"senha\" : \"senhaa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3333/administrador"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Administrador",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Eduardo\",\r\n    \"cpf\": \"222.444.437-89\",\r\n    \"nascimento\": \"2033-12-03\",\r\n    \"login\" : \"a123455689\",\r\n    \"senha\": \"AAAAAAa321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3333/administrador/4"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Administrador",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:3333/administrador/4"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Empresas",
+			"item": [
+				{
+					"name": "Get All Empresas",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3333/empresa"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Empresa by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3333/empresa/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Empresa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"nome\": \"GuinchoLink\",\r\n        \"cnpj\": \"11.125.825/0001-21\",\r\n        \"endereco\": \"Rua Luis Pena, 30. Castelo\",\r\n        \"telefone\": \"00 94002-8922\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3333/empresa"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Empresa ERRO",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"nome\": \"GuinchoLink\",\r\n        \"cnpj\": \"11.125.825/0001-21\",\r\n        \"endereco\": \"Rua Luis Pena, 30. Castelo\",\r\n        \"telefone\": \"00 94002-8922\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3333/empresa"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Empresa",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"nome\": \"Teste22222\",\r\n        \"cnpj\": \"11.125.825/0001-33\",\r\n        \"endereco\": \"Rua Luis Pena, 30. Castelo\",\r\n        \"telefone\": \"00 94002-8922\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3333/empresa/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Empresa",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:3333/empresa/2"
 					},
 					"response": []
 				}
@@ -517,17 +397,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:3333/veiculoCliente",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"veiculoCliente"
-							]
-						}
+						"url": "http://localhost:3333/veiculoCliente"
 					},
 					"response": []
 				},
@@ -565,17 +435,20 @@
 							"mode": "raw",
 							"raw": "{}"
 						},
-						"url": {
-							"raw": "http://localhost:3333/veiculoCliente",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"veiculoCliente"
-							]
-						}
+						"url": "http://localhost:3333/veiculoCliente"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Veiculo Cliente ERROR",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": "http://localhost:3333/veiculoCliente"
 					},
 					"response": []
 				},
@@ -643,17 +516,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:3333/veiculoEmpresa",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"veiculoEmpresa"
-							]
-						}
+						"url": "http://localhost:3333/veiculoEmpresa"
 					},
 					"response": []
 				},
@@ -662,23 +525,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:3333/veiculoEmpresa/:id",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"veiculoEmpresa",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id"
-								}
-							]
-						}
+						"url": "http://localhost:3333/veiculoEmpresa/6"
 					},
 					"response": []
 				},
@@ -689,19 +536,32 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{}"
+							"raw": "{\r\n    \"placa\": \"DDD1010\",\r\n    \"cor\": \"Preto\",\r\n    \"modelo\": \"CG 150\",\r\n    \"tipoDeVeiculoServico\": \"moto\",\r\n    \"statusVeiculo\": \"emUso\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						"url": {
-							"raw": "http://localhost:3333/veiculoEmpresa",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"veiculoEmpresa"
-							]
-						}
+						"url": "http://localhost:3333/veiculoEmpresa"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Veiculo Empresa ERRO",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"placa\": \"DDD1010\",\r\n    \"cor\": \"Preto\",\r\n    \"modelo\": \"CG 150\",\r\n    \"tipoDeVeiculoServico\": \"moto\",\r\n    \"statusVeiculo\": \"emUso\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3333/veiculoEmpresa"
 					},
 					"response": []
 				},
@@ -712,25 +572,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{}"
-						},
-						"url": {
-							"raw": "http://localhost:3333/veiculoEmpresa/:id",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"veiculoEmpresa",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id"
+							"raw": "{\r\n    \"placa\": \"DDD1010\",\r\n    \"cor\": \"Preto\",\r\n    \"modelo\": \"CG 150\",\r\n    \"tipoDeVeiculoServico\": \"moto\",\r\n    \"statusVeiculo\": \"livre\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
-						}
+							}
+						},
+						"url": "http://localhost:3333/veiculoEmpresa/6"
 					},
 					"response": []
 				},
@@ -739,23 +588,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:3333/veiculoEmpresa/:id",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"veiculoEmpresa",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id"
-								}
-							]
-						}
+						"url": "http://localhost:3333/veiculoEmpresa/6"
 					},
 					"response": []
 				}
@@ -769,42 +602,28 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:3333/tipos-servico",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"tipos-servico"
-							]
-						}
+						"url": "http://localhost:3333/tipos-servico"
 					},
 					"response": []
 				},
 				{
 					"name": "Get Tipo de Serviço by ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:3333/tipos-servico/:id",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"tipos-servico",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id"
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
-						}
+							}
+						},
+						"url": "http://localhost:3333/tipos-servico/1"
 					},
 					"response": []
 				},
@@ -815,19 +634,32 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{}"
+							"raw": "{\r\n    \"valor_hora\": 100.00,\r\n    \"nome\": \"Teste\",\r\n    \"descricao\": \"Teste descição\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						"url": {
-							"raw": "http://localhost:3333/tipos-servico",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"tipos-servico"
-							]
-						}
+						"url": "http://localhost:3333/tipos-servico"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Tipo de Serviço ERRO",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"valor_hora\": 100.00,\r\n    \"nome\": \"Teste\",\r\n    \"descricao\": \"Teste descição\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3333/tipos-servico"
 					},
 					"response": []
 				},
@@ -838,25 +670,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{}"
-						},
-						"url": {
-							"raw": "http://localhost:3333/tipos-servico/:id",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"tipos-servico",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id"
+							"raw": "{\r\n    \"valor_hora\": 133.00,\r\n    \"nome\": \"Teste UPDATE\",\r\n    \"descricao\": \"Teste descição UPDATE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
-						}
+							}
+						},
+						"url": "http://localhost:3333/tipos-servico/5"
 					},
 					"response": []
 				},
@@ -865,23 +686,16 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:3333/tipos-servico/:id",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"tipos-servico",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id"
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
-						}
+							}
+						},
+						"url": "http://localhost:3333/tipos-servico/5"
 					},
 					"response": []
 				}
@@ -895,17 +709,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:3333/servicos",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"servicos"
-							]
-						}
+						"url": "http://localhost:3333/servicos"
 					},
 					"response": []
 				},
@@ -943,17 +747,7 @@
 							"mode": "raw",
 							"raw": "{}"
 						},
-						"url": {
-							"raw": "http://localhost:3333/servicos",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3333",
-							"path": [
-								"servicos"
-							]
-						}
+						"url": "http://localhost:3333/servicos"
 					},
 					"response": []
 				},

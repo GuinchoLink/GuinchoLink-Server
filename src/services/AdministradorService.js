@@ -3,7 +3,6 @@
 import { Administrador } from "../models/Administrador.js";
 
 class AdministradorService {
-  
   static async findAll(req, res) {
     const objs = await Administrador.findAll();
     return objs;
@@ -16,23 +15,37 @@ class AdministradorService {
   }
 
   static async create(req, res) {
-    const { nome, cpf, nascimento , login, senha} = req.body;
+    const { nome, cpf, nascimento, login, senha } = req.body;
 
     // Regra de negócio: não podem existir dois Administradors com o mesmo cpf
-    const objByCpf = await Administrador.findAll({where : {cpf: cpf}});
-    if (objByCpf.length == 1){
-      throw new Error ("Já existe um Administrador com este CPF");
+    const objByCpf = await Administrador.findAll({ where: { cpf: cpf } });
+    if (objByCpf.length == 1) {
+      throw new Error("Já existe um Administrador com este CPF");
     }
 
-    const obj = await Administrador.create({ nome, cpf, nascimento, login, senha });
+    const obj = await Administrador.create({
+      nome,
+      cpf,
+      nascimento,
+      login,
+      senha,
+    });
     return obj;
   }
 
   static async update(req, res) {
     const { id } = req.params;
-    const { nome, cpf, nascimento , login, senha } = req.body;
+    const { nome, cpf, nascimento, login, senha } = req.body;
     var obj = await Administrador.findOne({ where: { id: id } });
-    Object.assign(obj, { nome, cpf, nascimento , login, senha });
+    
+    // Regra de negócio: não podem existir dois Administradors com o mesmo cpf
+    const objByCpf = await Administrador.findAll({ where: { cpf: cpf } });
+    if (objByCpf.length == 1) {
+      throw new Error("Já existe um Administrador com este CPF");
+    }
+
+    Object.assign(obj, { nome, cpf, nascimento, login, senha });
+    
     obj = await obj.save();
     return obj;
   }
@@ -43,7 +56,6 @@ class AdministradorService {
     obj = await obj.destroy();
     return obj;
   }
-
 }
 
 export { AdministradorService };

@@ -35,7 +35,8 @@ class Administrador extends Model {
       senha: { 
         type: DataTypes.STRING, 
         validate: {
-          notEmpty: { msg: "Senha do Administrador deve ser preenchida!" }
+          notEmpty: { msg: "Senha do Administrador deve ser preenchida!" },
+          is: { args: ["^(?=.*[0-9]).+$"], msg: "Senha do Administrador deve conter pelo menos um número!" }
         }
       }
     }, { sequelize, modelName: 'administrador', tableName: 'administrador' });

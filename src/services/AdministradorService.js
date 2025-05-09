@@ -21,7 +21,7 @@ class AdministradorService {
     const objByCpf = await Administrador.findAll({ where: { cpf: cpf } });
     if (objByCpf.length == 1) {
       throw new Error("Já existe um Administrador com este CPF");
-    }
+    } 
 
     const obj = await Administrador.create({
       nome,

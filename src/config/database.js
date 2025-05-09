@@ -259,6 +259,8 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     funcionario_id: funcionario1.id,
     veiculo_cliente_id: veiculoCliente1.id,
     veiculo_empresa_id: veiculoEmpresa1.id,
+    clienteId: cliente1.id,
+    funcionarioId: funcionario1.id,
   });
 
   const servico2 = await Servico.create({
@@ -270,6 +272,8 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     funcionario_id: funcionario2.id,
     veiculo_cliente_id: veiculoCliente2.id,
     veiculo_empresa_id: veiculoEmpresa2.id,
+    clienteId: cliente2.id,
+    funcionarioId: funcionario2.id,
   });
 
   const servico3 = await Servico.create({
@@ -281,6 +285,8 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     funcionario_id: funcionario3.id,
     veiculo_cliente_id: veiculoCliente1.id,
     veiculo_empresa_id: veiculoEmpresa1.id,
+    clienteId: cliente3.id,
+    funcionarioId: funcionario3.id,
   });
 
   const servico4 = await Servico.create({
@@ -292,6 +298,8 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     funcionario_id: funcionario4.id,
     veiculo_cliente_id: veiculoCliente2.id,
     veiculo_empresa_id: veiculoEmpresa2.id,
+    clienteId: cliente4.id,
+    funcionarioId: funcionario4.id,
   });
 
   // Inserção de Fim de Serviço

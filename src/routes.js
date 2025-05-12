@@ -7,6 +7,7 @@ import { VeiculoClienteController } from "./controllers/VeiculoClienteController
 import { VeiculoEmpresaController } from "./controllers/VeiculoEmpresaController.js";
 import TipoServicoController from './controllers/TipoServicoController.js';
 import ServicoController from './controllers/ServicoController.js'; 
+import FimServicoController from './controllers/FimServicoController.js';
 
 const routes = express.Router();
 
@@ -59,5 +60,14 @@ routes.get('/servicos', ServicoController.findAll);
 routes.get('/servicos/:id', ServicoController.findById);
 routes.put('/servicos/:id', ServicoController.update);
 routes.delete('/servicos/:id', ServicoController.delete);
+
+// Rotas para FimServico
+routes.post('/fim-servicos', FimServicoController.create);
+routes.get('/fim-servicos', FimServicoController.findAll);
+routes.get('/fim-servicos/:id', FimServicoController.findById);
+routes.get('/fim-servicos/servico/:servicoId', FimServicoController.findByServicoId);
+routes.get('/fim-servicos/statistics', FimServicoController.getStatistics);
+routes.put('/fim-servicos/:id', FimServicoController.update);
+routes.delete('/fim-servicos/:id', FimServicoController.delete);
 
 export default routes;

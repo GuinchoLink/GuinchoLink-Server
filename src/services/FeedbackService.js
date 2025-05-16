@@ -16,14 +16,12 @@ class FeedbackService {
   }
 
   static async create(req, res) {
-    const { nota, comentario } = req.body;
+    const { nota, comentario, fim_servico_id } = req.body;
 
-    // Validação do formato do CNPJ
-    // Regra de negócio: não podem existir dois clientes com o mesmo cpf
-    //  const objByCnpj = await Feedback.findAll({where : {cnpj: cnpj}});
-    //  if (objByCnpj.length == 1){
-      //  throw new Error ("Já existe uma empresa com esse cnpj!");
-    //  }
+    const objByServId = await Feedback.findAll({where : {fim_servico_id: fim_servico_id}});
+    if (objByServId.length == 1){
+      throw new Error ("Já existe um serviço finalizado com esse feedback!");
+    }
 
     // Verificar se já existe uma empresa com o mesmo CNPJ
     //    const existingFeedback = await Feedback.findOne({ where: { cnpj } });
@@ -31,7 +29,7 @@ class FeedbackService {
       //    throw new Error("Já existe uma empresa cadastrada com este CNPJ.");
     //    }
 
-    const obj = await Feedback.create({ nota, comentario });
+    const obj = await Feedback.create({ nota, comentario, fim_servico_id });
     return obj;
   }
 

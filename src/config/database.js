@@ -299,28 +299,28 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
   });
 
   // Inserção de Fim de Serviço
-  await FimServico.create({
+  const fimservico1 = await FimServico.create({
     hora_finalizacao: "2025-03-28 14:00:00",
     descricao_fim: "Serviço concluído com sucesso",
     valorTotal: 150.0,
     servico_id: servico1.id,
   });
 
-  await FimServico.create({
+  const fimservico2 = await FimServico.create({
     hora_finalizacao: "2025-03-28 16:00:00",
     descricao_fim: "Serviço em andamento finalizado",
     valorTotal: 200.0,
     servico_id: servico2.id,
   });
 
-  await FimServico.create({
+  const fimservico3 = await FimServico.create({
     hora_finalizacao: "2025-03-29 10:45:00",
     descricao_fim: "Pneu trocado e calibrado",
     valorTotal: 80.0,
     servico_id: servico3.id,
   });
 
-  await FimServico.create({
+  const fimservico4 = await FimServico.create({
     hora_finalizacao: "2025-03-29 15:30:00",
     descricao_fim: "Bateria substituída e sistema elétrico verificado",
     valorTotal: 120.0,
@@ -331,26 +331,21 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
   await Feedback.create({
     nota: 5,
     comentario: "Excelente serviço, muito rápido e eficiente!",
-    servico_id: servico1.id,
+    fim_servico_id: fimservico1.id,
   });
 
   await Feedback.create({
     nota: 4,
     comentario: "Bom serviço, mas poderia ser mais rápido.",
-    servico_id: servico2.id,
+    fim_servico_id: fimservico2.id,
   });
 
   await Feedback.create({
     nota: 5,
     comentario: "Atendimento excepcional, resolveu meu problema rapidamente!",
-    servico_id: servico3.id,
+    fim_servico_id: fimservico3.id,
   });
 
-  await Feedback.create({
-    nota: 3,
-    comentario: "Serviço adequado, mas preço um pouco alto para o problema.",
-    servico_id: servico4.id,
-  });
 })();
 
 export default sequelize;

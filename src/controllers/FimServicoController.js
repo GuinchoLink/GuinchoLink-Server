@@ -36,6 +36,15 @@ class FimServicoController {
       return res.status(404).json({ error: error.message });
     }
   }
+  
+  async findByClienteId(req, res) {
+    try {
+      const finalizacoes = await FimServicoService.findByClienteId(req.params.clienteId);
+      return res.status(200).json(finalizacoes);
+    } catch (error) {
+      return res.status(404).json({ error: error.message });
+    }
+  }
 
   async update(req, res) {
     try {

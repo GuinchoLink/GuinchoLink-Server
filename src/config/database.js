@@ -248,12 +248,12 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     nome: "Socorro Elétrico",
     descricao: "Serviço de assistência para problemas elétricos",
   });
-
   // Inserção de Serviços
+  // Serviços do cliente 1 (terá 3 serviços finalizados no mesmo mês para receber o desconto)
   const servico1 = await Servico.create({
-    hora_solicitacao: "2025-03-28 10:00:00",
+    hora_solicitacao: "2025-05-01 10:00:00",
     descricao: "Reboque de carro quebrado",
-    status: "pendente",
+    status: "finalizado",
     localizacao: "Rua A, 123",
     tipo_servico_id: tipo1.id,
     funcionario_id: funcionario1.id,
@@ -263,19 +263,19 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
   });
 
   const servico2 = await Servico.create({
-    hora_solicitacao: "2025-03-28 12:00:00",
+    hora_solicitacao: "2025-05-05 12:00:00",
     descricao: "Guincho para caminhão",
-    status: "andamento",
+    status: "finalizado",
     localizacao: "Avenida B, 456",
     tipo_servico_id: tipo2.id,
     funcionario_id: funcionario2.id,
-    veiculo_cliente_id: veiculoCliente2.id,
+    veiculo_cliente_id: veiculoCliente1.id,
     veiculo_empresa_id: veiculoEmpresa2.id,
-    clienteId: cliente2.id
+    clienteId: cliente1.id
   });
 
   const servico3 = await Servico.create({
-    hora_solicitacao: "2025-03-29 09:30:00",
+    hora_solicitacao: "2025-05-10 09:30:00",
     descricao: "Troca de pneu furado na rodovia",
     status: "finalizado",
     localizacao: "Rodovia C, km 78",
@@ -283,48 +283,129 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     funcionario_id: funcionario3.id,
     veiculo_cliente_id: veiculoCliente1.id,
     veiculo_empresa_id: veiculoEmpresa1.id,
-    clienteId: cliente3.id
+    clienteId: cliente1.id
   });
 
   const servico4 = await Servico.create({
-    hora_solicitacao: "2025-03-29 14:15:00",
+    hora_solicitacao: "2025-05-15 14:15:00",
     descricao: "Problema com bateria do veículo",
-    status: "pendente",
+    status: "pendente", // Um quarto serviço pendente (ainda não finalizado)
     localizacao: "Rua D, 789",
     tipo_servico_id: tipo4.id,
     funcionario_id: funcionario4.id,
+    veiculo_cliente_id: veiculoCliente1.id,
+    veiculo_empresa_id: veiculoEmpresa2.id,
+    clienteId: cliente1.id
+  });
+
+  // Serviços para outros clientes (sem acumular 3 serviços finalizados no mesmo mês)
+  const servico5 = await Servico.create({
+    hora_solicitacao: "2025-05-12 10:30:00",
+    descricao: "Reboque de carro com motor fundido",
+    status: "finalizado",
+    localizacao: "Avenida E, 567",
+    tipo_servico_id: tipo1.id,
+    funcionario_id: funcionario1.id,
+    veiculo_cliente_id: veiculoCliente2.id,
+    veiculo_empresa_id: veiculoEmpresa1.id,
+    clienteId: cliente2.id
+  });
+
+  const servico6 = await Servico.create({
+    hora_solicitacao: "2025-05-14 11:45:00",
+    descricao: "Socorro para carro sem combustível",
+    status: "finalizado",
+    localizacao: "Rua F, 890",
+    tipo_servico_id: tipo4.id,
+    funcionario_id: funcionario2.id,
     veiculo_cliente_id: veiculoCliente2.id,
     veiculo_empresa_id: veiculoEmpresa2.id,
-    clienteId: cliente4.id
+    clienteId: cliente2.id
   });
-
-  // Inserção de Fim de Serviço
+  // Inserção de Fim de Serviço para testar regras de desconto
+  
+  // Cria mais um serviço para cliente1 (para ter pelo menos 3 serviços no mesmo mês)
+  const servico7 = await Servico.create({
+    hora_solicitacao: "2025-05-18 09:00:00",
+    descricao: "Auxílio para veículo atolado",
+    status: "finalizado",
+    localizacao: "Estrada Rural, km 22",
+    tipo_servico_id: tipo1.id,
+    funcionario_id: funcionario1.id,
+    veiculo_cliente_id: veiculoCliente1.id,
+    veiculo_empresa_id: veiculoEmpresa1.id,
+    clienteId: cliente1.id
+  });
+  
+  // Cria um quarto serviço para cliente1 (este terá o desconto aplicado)
+  const servico8 = await Servico.create({
+    hora_solicitacao: "2025-05-20 11:00:00",
+    descricao: "Troca de óleo emergencial",
+    status: "finalizado",
+    localizacao: "Avenida Principal, 1500",
+    tipo_servico_id: tipo3.id,
+    funcionario_id: funcionario3.id,
+    veiculo_cliente_id: veiculoCliente1.id,
+    veiculo_empresa_id: veiculoEmpresa1.id,
+    clienteId: cliente1.id
+  });
+  
+  // Registros de finalização para os serviços do cliente 1 (mesmo mês)
   await FimServico.create({
-    hora_finalizacao: "2025-03-28 14:00:00",
-    descricao_fim: "Serviço concluído com sucesso",
+    hora_finalizacao: "2025-05-01 12:30:00",
+    descricao_fim: "Serviço realizado com sucesso",
     valorTotal: 150.0,
-    servico_id: servico1.id,
+    on_sale: false, // Primeiro serviço, sem desconto
+    servico_id: servico1.id
   });
 
   await FimServico.create({
-    hora_finalizacao: "2025-03-28 16:00:00",
-    descricao_fim: "Serviço em andamento finalizado",
-    valorTotal: 200.0,
-    servico_id: servico2.id,
+    hora_finalizacao: "2025-05-05 14:45:00",
+    descricao_fim: "Veículo guinchado até a oficina",
+    valorTotal: 220.0,
+    on_sale: false, // Segundo serviço, sem desconto
+    servico_id: servico2.id
   });
 
   await FimServico.create({
-    hora_finalizacao: "2025-03-29 10:45:00",
-    descricao_fim: "Pneu trocado e calibrado",
+    hora_finalizacao: "2025-05-10 10:15:00",
+    descricao_fim: "Pneu trocado no local",
     valorTotal: 80.0,
-    servico_id: servico3.id,
+    on_sale: false, // Terceiro serviço, ainda sem desconto
+    servico_id: servico3.id
+  });
+  
+  await FimServico.create({
+    hora_finalizacao: "2025-05-18 11:30:00",
+    descricao_fim: "Veículo desatolado com sucesso",
+    valorTotal: 200.0, 
+    on_sale: true, // Quarto serviço, com desconto (pois já tem 3 serviços no mês)
+    servico_id: servico7.id
+  });
+  
+  await FimServico.create({
+    hora_finalizacao: "2025-05-20 13:00:00",
+    descricao_fim: "Troca de óleo realizada e revisão básica concluída",
+    valorTotal: 90.0, // Este valor já está com desconto de 10%
+    on_sale: true, // Quinto serviço, também com desconto (pois já tem mais de 3 serviços no mês)
+    servico_id: servico8.id
+  });
+
+  // Registros de finalização para os serviços de outros clientes
+  await FimServico.create({
+    hora_finalizacao: "2025-05-12 12:00:00",
+    descricao_fim: "Veículo rebocado com sucesso",
+    valorTotal: 180.0,
+    on_sale: false, // Sem desconto pois é o primeiro serviço do cliente 2 no mês
+    servico_id: servico5.id
   });
 
   await FimServico.create({
-    hora_finalizacao: "2025-03-29 15:30:00",
-    descricao_fim: "Bateria substituída e sistema elétrico verificado",
+    hora_finalizacao: "2025-05-14 13:30:00",
+    descricao_fim: "Combustível fornecido e carro em funcionamento",
     valorTotal: 120.0,
-    servico_id: servico4.id,
+    on_sale: false, // Sem desconto pois é o segundo serviço do cliente 2 no mês
+    servico_id: servico6.id
   });
 
   // Inserção de Feedback

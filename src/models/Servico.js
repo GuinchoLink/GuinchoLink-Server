@@ -44,13 +44,13 @@ class Servico extends Model {
       tableName: 'servicos' 
     });
   }
-
   static associate(models) {
     this.belongsTo(models.tipoServico, { foreignKey: 'tipo_servico_id', as: 'tipoServico' });
     this.belongsTo(models.funcionario, { foreignKey: 'funcionario_id', as: 'funcionario' }); // Associação com Funcionario
     this.belongsTo(models.veiculoCliente, { foreignKey: 'veiculo_cliente_id', as: 'veiculoCliente' }); // Associação com VeiculoCliente
     this.belongsTo(models.veiculoEmpresa, { foreignKey: 'veiculo_empresa_id', as: 'veiculoEmpresa' }); // Associação com VeiculoEmpresa
     this.hasOne(models.feedback, { foreignKey: 'servico_id', as: 'feedback' }); // Associação com Feedback
+    this.hasOne(models.fim_servico, { foreignKey: 'servico_id', as: 'fimServico' }); // Associação com FimServico
   }
 }
 

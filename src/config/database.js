@@ -226,6 +226,15 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     cnh: "12345678",
     categoria_cnh: "ABCD",
   });
+  const funcionario5 = await Funcionario.create({
+    nome: "Helio",
+    cpf: "155.934.837-24",
+    nascimento: "2003-02-23",
+    telefone: "28 45599-9999",
+    endereco: "rua ifes",
+    cnh: "32456780",
+    categoria_cnh: "ABCD",
+  });
 
   // Inserção de Tipos de Serviço
   const tipo1 = await TipoServico.create({
@@ -251,9 +260,9 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
 
   // Inserção de Serviços
   const servico1 = await Servico.create({
-    hora_solicitacao: "2025-03-28 10:00:00",
+    hora_solicitacao: "2025-05-09 10:00:00",
     descricao: "Reboque de carro quebrado",
-    status: "pendente",
+    status: "finalizado",
     localizacao: "Rua A, 123",
     tipo_servico_id: tipo1.id,
     funcionario_id: funcionario1.id,
@@ -263,7 +272,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
   });
 
   const servico2 = await Servico.create({
-    hora_solicitacao: "2025-03-28 12:00:00",
+    hora_solicitacao: "2025-05-09 12:00:00",
     descricao: "Guincho para caminhão",
     status: "andamento",
     localizacao: "Avenida B, 456",
@@ -275,7 +284,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
   });
 
   const servico3 = await Servico.create({
-    hora_solicitacao: "2025-03-29 09:30:00",
+    hora_solicitacao: "2025-05-09 09:30:00",
     descricao: "Troca de pneu furado na rodovia",
     status: "finalizado",
     localizacao: "Rodovia C, km 78",
@@ -287,9 +296,9 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
   });
 
   const servico4 = await Servico.create({
-    hora_solicitacao: "2025-03-29 14:15:00",
+    hora_solicitacao: "2025-05-09 14:15:00",
     descricao: "Problema com bateria do veículo",
-    status: "pendente",
+    status: "finalizado",
     localizacao: "Rua D, 789",
     tipo_servico_id: tipo4.id,
     funcionario_id: funcionario4.id,

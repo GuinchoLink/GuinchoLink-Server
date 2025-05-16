@@ -9,30 +9,27 @@ import { Op, Sequelize } from 'sequelize';
 class ServicoService {
 
   async create(data) {
-
     await this.verifications(data);
 
-    //Regra de negocio 1 - Não pode ter mais de 10 serviços cadastrados no mesmo dia
-    const count = await this.countServices();
-    if (count >= 10) {
-      throw new Error('Não é possível cadastrar mais de 10 serviços no dia.');
-    }
-
-    //Regra de negócio 2 - Não pode cadastrar um serviço se o funcionario ja estiver 
-    //alocado em outro serviço com status pendente
+    // data da hora de solicitação do serviço
+    const serviceDate = data.hora_solicitacao ? new Date(data.hora_solicitacao) : new Date();
+    
+    // Regra de negócio 1 : Verifica se já existem 5 serviços cadastrados para o mesmo dia(No documento está 10)
+    // Usa a data do serviço para contar os serviços daquele dia
+    const count = await this.countServices(serviceDate);
+    if (count >= 5) {
+      throw new Error('Não é possível cadastrar mais de 5 serviços no dia.');
+    }    
+    
+    //Regra de negócio 2 : Verifica se o funcionário já está alocado em outro serviço pendente,
     const funcionario = await Funcionario.findByPk(data.funcionario_id);
     const servicoExistente = await Servico.findOne({
       where: {
         funcionario_id: data.funcionario_id,
-        status: 'pendente',
-        [Op.and]: [
-          Sequelize.where(
-            Sequelize.fn('DATE', Sequelize.col('createdAt')),
-            Sequelize.fn('DATE', new Date())
-          )
-        ]
+        status: 'pendente'
       }
     });
+    
     if (servicoExistente) {
       throw new Error(`O funcionário ${funcionario.nome} já está alocado em outro serviço pendente.`);
     }
@@ -96,16 +93,21 @@ class ServicoService {
     return await servico.destroy();
   }
 
-  // Método para contar os serviços do dia
-  async countServices() {
-    const today = new Date();
-    const todayString = today.toISOString().split('T')[0]; // Obtém a data no formato YYYY-MM-DD
+  // Método para contar os serviços de uma data específica
+  async countServices(serviceDate) {
+    // Se não for fornecida uma data, usa a data do serviço que está sendo criado
+    // ou como fallback, a data de hoje
+    const dateToCheck = serviceDate 
+      ? new Date(serviceDate)
+      : new Date();
+      
+    const dateString = dateToCheck.toISOString().split('T')[0]; // Obtém a data no formato YYYY-MM-DD
 
-    // Conta os serviços cadastrados no dia
+    // Conta os serviços cadastrados na data especificada
     return await Servico.count({
       where: Sequelize.where(
-        Sequelize.fn('DATE', Sequelize.col('createdAt')), // Extrai apenas a data de createdAt
-        todayString // Compara com a data de hoje
+        Sequelize.fn('DATE', Sequelize.col('hora_solicitacao')), 
+        dateString // Compara com a data especificada
       ),
     });
   }

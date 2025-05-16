@@ -226,6 +226,15 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     cnh: "12345678",
     categoria_cnh: "ABCD",
   });
+  const funcionario5 = await Funcionario.create({
+    nome: "Helio",
+    cpf: "155.934.837-24",
+    nascimento: "2003-02-23",
+    telefone: "28 45599-9999",
+    endereco: "rua ifes",
+    cnh: "32456780",
+    categoria_cnh: "ABCD",
+  });
 
   // Inserção de Tipos de Serviço
   const tipo1 = await TipoServico.create({
@@ -251,7 +260,11 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
   // Inserção de Serviços
   // Serviços do cliente 1 (terá 3 serviços finalizados no mesmo mês para receber o desconto)
   const servico1 = await Servico.create({
+<<<<<<< HEAD
     hora_solicitacao: "2025-05-01 10:00:00",
+=======
+    hora_solicitacao: "2025-05-09 10:00:00",
+>>>>>>> 090f95ad751f1884b80b993bee042629a15553c9
     descricao: "Reboque de carro quebrado",
     status: "finalizado",
     localizacao: "Rua A, 123",
@@ -263,7 +276,11 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
   });
 
   const servico2 = await Servico.create({
+<<<<<<< HEAD
     hora_solicitacao: "2025-05-05 12:00:00",
+=======
+    hora_solicitacao: "2025-05-09 12:00:00",
+>>>>>>> 090f95ad751f1884b80b993bee042629a15553c9
     descricao: "Guincho para caminhão",
     status: "finalizado",
     localizacao: "Avenida B, 456",
@@ -275,7 +292,11 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
   });
 
   const servico3 = await Servico.create({
+<<<<<<< HEAD
     hora_solicitacao: "2025-05-10 09:30:00",
+=======
+    hora_solicitacao: "2025-05-09 09:30:00",
+>>>>>>> 090f95ad751f1884b80b993bee042629a15553c9
     descricao: "Troca de pneu furado na rodovia",
     status: "finalizado",
     localizacao: "Rodovia C, km 78",
@@ -287,9 +308,15 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
   });
 
   const servico4 = await Servico.create({
+<<<<<<< HEAD
     hora_solicitacao: "2025-05-15 14:15:00",
     descricao: "Problema com bateria do veículo",
     status: "pendente", // Um quarto serviço pendente (ainda não finalizado)
+=======
+    hora_solicitacao: "2025-05-09 14:15:00",
+    descricao: "Problema com bateria do veículo",
+    status: "finalizado",
+>>>>>>> 090f95ad751f1884b80b993bee042629a15553c9
     localizacao: "Rua D, 789",
     tipo_servico_id: tipo4.id,
     funcionario_id: funcionario4.id,
@@ -322,6 +349,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     veiculo_empresa_id: veiculoEmpresa2.id,
     clienteId: cliente2.id
   });
+<<<<<<< HEAD
   // Inserção de Fim de Serviço para testar regras de desconto
   
   // Cria mais um serviço para cliente1 (para ter pelo menos 3 serviços no mesmo mês)
@@ -354,11 +382,19 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
   await FimServico.create({
     hora_finalizacao: "2025-05-01 12:30:00",
     descricao_fim: "Serviço realizado com sucesso",
+=======
+
+  // Inserção de Fim de Serviço
+  const fimservico1 = await FimServico.create({
+    hora_finalizacao: "2025-03-28 14:00:00",
+    descricao_fim: "Serviço concluído com sucesso",
+>>>>>>> 090f95ad751f1884b80b993bee042629a15553c9
     valorTotal: 150.0,
     on_sale: false, // Primeiro serviço, sem desconto
     servico_id: servico1.id
   });
 
+<<<<<<< HEAD
   await FimServico.create({
     hora_finalizacao: "2025-05-05 14:45:00",
     descricao_fim: "Veículo guinchado até a oficina",
@@ -370,6 +406,18 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
   await FimServico.create({
     hora_finalizacao: "2025-05-10 10:15:00",
     descricao_fim: "Pneu trocado no local",
+=======
+  const fimservico2 = await FimServico.create({
+    hora_finalizacao: "2025-03-28 16:00:00",
+    descricao_fim: "Serviço em andamento finalizado",
+    valorTotal: 200.0,
+    servico_id: servico2.id,
+  });
+
+  const fimservico3 = await FimServico.create({
+    hora_finalizacao: "2025-03-29 10:45:00",
+    descricao_fim: "Pneu trocado e calibrado",
+>>>>>>> 090f95ad751f1884b80b993bee042629a15553c9
     valorTotal: 80.0,
     on_sale: false, // Terceiro serviço, ainda sem desconto
     servico_id: servico3.id
@@ -400,9 +448,15 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     servico_id: servico5.id
   });
 
+<<<<<<< HEAD
   await FimServico.create({
     hora_finalizacao: "2025-05-14 13:30:00",
     descricao_fim: "Combustível fornecido e carro em funcionamento",
+=======
+  const fimservico4 = await FimServico.create({
+    hora_finalizacao: "2025-03-29 15:30:00",
+    descricao_fim: "Bateria substituída e sistema elétrico verificado",
+>>>>>>> 090f95ad751f1884b80b993bee042629a15553c9
     valorTotal: 120.0,
     on_sale: false, // Sem desconto pois é o segundo serviço do cliente 2 no mês
     servico_id: servico6.id
@@ -412,26 +466,21 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
   await Feedback.create({
     nota: 5,
     comentario: "Excelente serviço, muito rápido e eficiente!",
-    servico_id: servico1.id,
+    fim_servico_id: fimservico1.id,
   });
 
   await Feedback.create({
     nota: 4,
     comentario: "Bom serviço, mas poderia ser mais rápido.",
-    servico_id: servico2.id,
+    fim_servico_id: fimservico2.id,
   });
 
   await Feedback.create({
     nota: 5,
     comentario: "Atendimento excepcional, resolveu meu problema rapidamente!",
-    servico_id: servico3.id,
+    fim_servico_id: fimservico3.id,
   });
 
-  await Feedback.create({
-    nota: 3,
-    comentario: "Serviço adequado, mas preço um pouco alto para o problema.",
-    servico_id: servico4.id,
-  });
 })();
 
 export default sequelize;

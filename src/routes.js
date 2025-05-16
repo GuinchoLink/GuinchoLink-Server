@@ -8,6 +8,7 @@ import { VeiculoEmpresaController } from "./controllers/VeiculoEmpresaController
 import TipoServicoController from './controllers/TipoServicoController.js';
 import ServicoController from './controllers/ServicoController.js'; 
 import FimServicoController from './controllers/FimServicoController.js';
+import { FeedbackController } from './controllers/FeedbackController.js'; 
 
 const routes = express.Router();
 
@@ -70,5 +71,12 @@ routes.get('/fim-servicos/cliente/:clienteId', FimServicoController.findByClient
 routes.get('/fim-servicos/statistics', FimServicoController.getStatistics);
 routes.put('/fim-servicos/:id', FimServicoController.update);
 routes.delete('/fim-servicos/:id', FimServicoController.delete);
+
+// Rotas para Feedback
+routes.post('/feedback', FeedbackController.create);
+routes.get('/feedback', FeedbackController.findAll);
+routes.get('/feedback/:id', FeedbackController.findByPk);
+routes.put('/feedback/:id', FeedbackController.update);
+routes.delete('/feedback/:id', FeedbackController.delete);
 
 export default routes;

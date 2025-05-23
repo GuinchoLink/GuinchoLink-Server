@@ -1,11 +1,11 @@
 {
 	"info": {
-		"_postman_id": "a5371d55-ed04-4650-9923-c85763a120b6",
+		"_postman_id": "7c413ab6-4600-4e1d-a7fd-ad04d354f82c",
 		"name": "GuinchoLink-Server API",
 		"description": "Postman collection for testing the GuinchoLink-Server API routes.",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "34138435",
-		"_collection_link": "https://engenharia-de-software-6755.postman.co/workspace/Engenharia-de-Software---Vargas~55dd94ea-7b8a-4501-9124-0c0583c9ea38/collection/34138435-a5371d55-ed04-4650-9923-c85763a120b6?action=share&source=collection_link&creator=34138435"
+		"_collection_link": "https://engenharia-de-software-6755.postman.co/workspace/Engenharia-de-Software---Vargas~55dd94ea-7b8a-4501-9124-0c0583c9ea38/collection/34138435-7c413ab6-4600-4e1d-a7fd-ad04d354f82c?action=share&source=collection_link&creator=34138435"
 	},
 	"item": [
 		{
@@ -16,7 +16,17 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:3333/clientes"
+						"url": {
+							"raw": "http://localhost:3333/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"clientes"
+							]
+						}
 					},
 					"response": []
 				},
@@ -68,7 +78,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/clientes"
+						"url": {
+							"raw": "http://localhost:3333/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"clientes"
+							]
+						}
 					},
 					"response": []
 				},
@@ -86,7 +106,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/clientes"
+						"url": {
+							"raw": "http://localhost:3333/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"clientes"
+							]
+						}
 					},
 					"response": []
 				},
@@ -104,7 +134,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/clientes"
+						"url": {
+							"raw": "http://localhost:3333/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"clientes"
+							]
+						}
 					},
 					"response": []
 				},
@@ -122,7 +162,18 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/clientes/4"
+						"url": {
+							"raw": "http://localhost:3333/clientes/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"clientes",
+								"4"
+							]
+						}
 					},
 					"response": []
 				},
@@ -131,7 +182,18 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "http://localhost:3333/clientes/6"
+						"url": {
+							"raw": "http://localhost:3333/clientes/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"clientes",
+								"6"
+							]
+						}
 					},
 					"response": []
 				}
@@ -145,7 +207,17 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:3333/funcionario"
+						"url": {
+							"raw": "http://localhost:3333/funcionario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"funcionario"
+							]
+						}
 					},
 					"response": []
 				},
@@ -154,7 +226,18 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:3333/funcionario/4"
+						"url": {
+							"raw": "http://localhost:3333/funcionario/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"funcionario",
+								"4"
+							]
+						}
 					},
 					"response": []
 				},
@@ -172,7 +255,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/funcionario"
+						"url": {
+							"raw": "http://localhost:3333/funcionario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"funcionario"
+							]
+						}
 					},
 					"response": []
 				},
@@ -190,7 +283,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/funcionario"
+						"url": {
+							"raw": "http://localhost:3333/funcionario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"funcionario"
+							]
+						}
 					},
 					"response": []
 				},
@@ -208,7 +311,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/funcionario"
+						"url": {
+							"raw": "http://localhost:3333/funcionario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"funcionario"
+							]
+						}
 					},
 					"response": []
 				},
@@ -226,7 +339,18 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/funcionario/5"
+						"url": {
+							"raw": "http://localhost:3333/funcionario/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"funcionario",
+								"5"
+							]
+						}
 					},
 					"response": []
 				},
@@ -235,7 +359,18 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "http://localhost:3333/funcionario/5"
+						"url": {
+							"raw": "http://localhost:3333/funcionario/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"funcionario",
+								"5"
+							]
+						}
 					},
 					"response": []
 				}
@@ -249,7 +384,17 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:3333/administrador"
+						"url": {
+							"raw": "http://localhost:3333/administrador",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"administrador"
+							]
+						}
 					},
 					"response": []
 				},
@@ -258,7 +403,18 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:3333/administrador/3"
+						"url": {
+							"raw": "http://localhost:3333/administrador/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"administrador",
+								"3"
+							]
+						}
 					},
 					"response": []
 				},
@@ -276,7 +432,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/administrador"
+						"url": {
+							"raw": "http://localhost:3333/administrador",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"administrador"
+							]
+						}
 					},
 					"response": []
 				},
@@ -294,7 +460,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/administrador"
+						"url": {
+							"raw": "http://localhost:3333/administrador",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"administrador"
+							]
+						}
 					},
 					"response": []
 				},
@@ -312,7 +488,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/administrador"
+						"url": {
+							"raw": "http://localhost:3333/administrador",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"administrador"
+							]
+						}
 					},
 					"response": []
 				},
@@ -330,7 +516,18 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/administrador/4"
+						"url": {
+							"raw": "http://localhost:3333/administrador/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"administrador",
+								"4"
+							]
+						}
 					},
 					"response": []
 				},
@@ -339,7 +536,18 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "http://localhost:3333/administrador/4"
+						"url": {
+							"raw": "http://localhost:3333/administrador/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"administrador",
+								"4"
+							]
+						}
 					},
 					"response": []
 				}
@@ -365,7 +573,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/empresa"
+						"url": {
+							"raw": "http://localhost:3333/empresa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"empresa"
+							]
+						}
 					},
 					"response": []
 				},
@@ -374,7 +592,18 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:3333/empresa/2"
+						"url": {
+							"raw": "http://localhost:3333/empresa/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"empresa",
+								"2"
+							]
+						}
 					},
 					"response": []
 				},
@@ -392,7 +621,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/empresa"
+						"url": {
+							"raw": "http://localhost:3333/empresa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"empresa"
+							]
+						}
 					},
 					"response": []
 				},
@@ -410,7 +649,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/empresa"
+						"url": {
+							"raw": "http://localhost:3333/empresa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"empresa"
+							]
+						}
 					},
 					"response": []
 				},
@@ -428,7 +677,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/empresa"
+						"url": {
+							"raw": "http://localhost:3333/empresa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"empresa"
+							]
+						}
 					},
 					"response": []
 				},
@@ -446,7 +705,18 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/empresa/2"
+						"url": {
+							"raw": "http://localhost:3333/empresa/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"empresa",
+								"2"
+							]
+						}
 					},
 					"response": []
 				},
@@ -455,7 +725,18 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "http://localhost:3333/empresa/2"
+						"url": {
+							"raw": "http://localhost:3333/empresa/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"empresa",
+								"2"
+							]
+						}
 					},
 					"response": []
 				}
@@ -469,7 +750,17 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:3333/veiculoCliente"
+						"url": {
+							"raw": "http://localhost:3333/veiculoCliente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"veiculoCliente"
+							]
+						}
 					},
 					"response": []
 				},
@@ -478,7 +769,18 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:3333/veiculoCliente/1"
+						"url": {
+							"raw": "http://localhost:3333/veiculoCliente/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"veiculoCliente",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
@@ -496,7 +798,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/veiculoCliente"
+						"url": {
+							"raw": "http://localhost:3333/veiculoCliente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"veiculoCliente"
+							]
+						}
 					},
 					"response": []
 				},
@@ -514,7 +826,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/veiculoCliente"
+						"url": {
+							"raw": "http://localhost:3333/veiculoCliente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"veiculoCliente"
+							]
+						}
 					},
 					"response": []
 				},
@@ -532,7 +854,18 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/veiculoCliente/4"
+						"url": {
+							"raw": "http://localhost:3333/veiculoCliente/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"veiculoCliente",
+								"4"
+							]
+						}
 					},
 					"response": []
 				},
@@ -541,7 +874,251 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "http://localhost:3333/veiculoCliente/5"
+						"url": {
+							"raw": "http://localhost:3333/veiculoCliente/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"veiculoCliente",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Feedback",
+			"item": [
+				{
+					"name": "Get All Feedback",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/feedback",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"feedback"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Feedback by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/feedback/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"feedback",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CF ERROR nota em branco",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nota\": \"\",\r\n    \"comentario\": \"\",\r\n    \"fim_servico_id\": \"4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/feedback",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"feedback"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CF ERROR apenas 1 feedback",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nota\": \"1\",\r\n    \"comentario\": \"Péssimo\",\r\n    \"fim_servico_id\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/feedback",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"feedback"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CF ERROR servico finalizado",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nota\": \"3\",\r\n    \"comentario\": \"Foi mais ou menos...\",\r\n    \"fim_servico_id\": \"5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/feedback",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"feedback"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CF ERROR nao existe servico",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nota\": \"3\",\r\n    \"comentario\": \"Foi mais ou menos...\",\r\n    \"fim_servico_id\": \"10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/feedback",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"feedback"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Feedback",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nota\": \"5\",\r\n    \"comentario\": \"Muito bom!\",\r\n    \"fim_servico_id\": \"4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/feedback",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"feedback"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Feedback",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nota\": \"1\",\r\n    \"comentario\": \"Péssimo serviço!\",\r\n    \"fim_servico_id\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/feedback/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"feedback",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Feedback",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/feedback/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"feedback",
+								"3"
+							]
+						}
 					},
 					"response": []
 				}
@@ -555,7 +1132,17 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:3333/veiculoEmpresa"
+						"url": {
+							"raw": "http://localhost:3333/veiculoEmpresa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"veiculoEmpresa"
+							]
+						}
 					},
 					"response": []
 				},
@@ -564,7 +1151,18 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:3333/veiculoEmpresa/4"
+						"url": {
+							"raw": "http://localhost:3333/veiculoEmpresa/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"veiculoEmpresa",
+								"4"
+							]
+						}
 					},
 					"response": []
 				},
@@ -582,7 +1180,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/veiculoEmpresa"
+						"url": {
+							"raw": "http://localhost:3333/veiculoEmpresa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"veiculoEmpresa"
+							]
+						}
 					},
 					"response": []
 				},
@@ -600,7 +1208,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/veiculoEmpresa"
+						"url": {
+							"raw": "http://localhost:3333/veiculoEmpresa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"veiculoEmpresa"
+							]
+						}
 					},
 					"response": []
 				},
@@ -618,7 +1236,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/veiculoEmpresa"
+						"url": {
+							"raw": "http://localhost:3333/veiculoEmpresa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"veiculoEmpresa"
+							]
+						}
 					},
 					"response": []
 				},
@@ -636,7 +1264,18 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/veiculoEmpresa/4"
+						"url": {
+							"raw": "http://localhost:3333/veiculoEmpresa/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"veiculoEmpresa",
+								"4"
+							]
+						}
 					},
 					"response": []
 				},
@@ -645,7 +1284,18 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "http://localhost:3333/veiculoEmpresa/4"
+						"url": {
+							"raw": "http://localhost:3333/veiculoEmpresa/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"veiculoEmpresa",
+								"4"
+							]
+						}
 					},
 					"response": []
 				}
@@ -659,7 +1309,17 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:3333/tipos-servico"
+						"url": {
+							"raw": "http://localhost:3333/tipos-servico",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"tipos-servico"
+							]
+						}
 					},
 					"response": []
 				},
@@ -680,7 +1340,18 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/tipos-servico/1"
+						"url": {
+							"raw": "http://localhost:3333/tipos-servico/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"tipos-servico",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
@@ -698,7 +1369,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/tipos-servico"
+						"url": {
+							"raw": "http://localhost:3333/tipos-servico",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"tipos-servico"
+							]
+						}
 					},
 					"response": []
 				},
@@ -716,7 +1397,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/tipos-servico"
+						"url": {
+							"raw": "http://localhost:3333/tipos-servico",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"tipos-servico"
+							]
+						}
 					},
 					"response": []
 				},
@@ -734,7 +1425,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/tipos-servico"
+						"url": {
+							"raw": "http://localhost:3333/tipos-servico",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"tipos-servico"
+							]
+						}
 					},
 					"response": []
 				},
@@ -752,7 +1453,18 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/tipos-servico/3"
+						"url": {
+							"raw": "http://localhost:3333/tipos-servico/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"tipos-servico",
+								"3"
+							]
+						}
 					},
 					"response": []
 				},
@@ -770,7 +1482,18 @@
 								}
 							}
 						},
-						"url": "http://localhost:3333/tipos-servico/2"
+						"url": {
+							"raw": "http://localhost:3333/tipos-servico/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"tipos-servico",
+								"2"
+							]
+						}
 					},
 					"response": []
 				}
@@ -780,21 +1503,12 @@
 			"name": "Serviços",
 			"item": [
 				{
-					"name": "Get All Serviços",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": "http://localhost:3333/servicos"
-					},
-					"response": []
-				},
-				{
 					"name": "Get Serviço by ID",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3333/servicos/:id",
+							"raw": "http://localhost:3333/servicos/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -802,12 +1516,26 @@
 							"port": "3333",
 							"path": [
 								"servicos",
-								":id"
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Serviços",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/servicos",
+							"protocol": "http",
+							"host": [
+								"localhost"
 							],
-							"variable": [
-								{
-									"key": "id"
-								}
+							"port": "3333",
+							"path": [
+								"servicos"
 							]
 						}
 					},
@@ -820,9 +1548,131 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{}"
+							"raw": "{\r\n  \"hora_solicitacao\": \"2025-05-20\",\r\n  \"descricao\": \"Reboque de veículo com pane mecanica\",\r\n  \"status\": \"pendente\",\r\n  \"localizacao\": \"Rua das Flores, 123\",\r\n  \"tipo_servico_id\": 2,\r\n  \"funcionario_id\": 3,\r\n  \"veiculo_cliente_id\": 1,\r\n  \"veiculo_empresa_id\": 5,\r\n  \"clienteId\": 2\r\n}\r\n//OBS: Para seguir o fluxo perfeito de teste, faca o primeiro Post Create Servico e depois os Post de Erros. Configurei o banco para seguir esse fluxo e facilitar o teste",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						"url": "http://localhost:3333/servicos"
+						"url": {
+							"raw": "http://localhost:3333/servicos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"servicos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Serviço (Erro Campos basicos)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"hora_solicitacao\": \"2025-05-09\",\r\n  \"descricao\": \"Reboque de veículo com pane mecanica\",\r\n  \"status\": \"pendente\",\r\n  \"localizacao\": \"Rua das Flores, 123\",\r\n  \"tipo_servico_id\": 10,\r\n  \"funcionario_id\": 10,\r\n  \"veiculo_cliente_id\": 10,\r\n  \"veiculo_empresa_id\": 10,\r\n  \"clienteId\": 10\r\n}\r\n//Erro para ativar as verificacoes dos campos e verificar se os clientes, funcionarios, tipos de servico, veiculo do cliente e veiculo da empresa existem.\r\n//Caso o veiculo da empresa mencionado esteja em uso tambem, ele reporta um erro\r\n//OBS: Para seguir o fluxo perfeito de teste, faca o primeiro Post Create Servico e depois os Post de Erros. Configurei o banco para seguir esse fluxo e facilitar o teste",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/servicos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"servicos"
+							]
+						},
+						"description": "Erro para ativar as verificacoes dos campos e verificar se os clientes, funcionarios, tipos de servico, veiculo do cliente e veiculo da empresa existem.\n\nCaso o veiculo da empresa mencionado esteja em uso tambem, ele reporta um erroEndFragment"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Serviço (Erro Regra neg. 1)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"hora_solicitacao\": \"2025-05-20\",\r\n  \"descricao\": \"Reboque de veículo com pane mecanica\",\r\n  \"status\": \"pendente\",\r\n  \"localizacao\": \"Rua das Flores, 123\",\r\n  \"tipo_servico_id\": 2,\r\n  \"funcionario_id\": 2,\r\n  \"veiculo_cliente_id\": 3,\r\n  \"veiculo_empresa_id\": 6,\r\n  \"clienteId\": 2\r\n}\r\n//Erro para ativar a regra de negocio 1 - Nao pode haver mais de 10 servicos no dia( Para fins de teste coloquei no codigo \r\n// setado para no maximo 3 OS no dia)\r\n//OBS: Para seguir o fluxo perfeito de teste, faca o primeiro Post Create Servico e depois os Post de Erros. Configurei o banco para seguir esse fluxo e facilitar o teste",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/servicos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"servicos"
+							]
+						},
+						"description": "Erro para ativar a regra de negocio 1 - Nao pode haver mais de 10 servicos no dia( Para fins de teste coloquei no codigo setado para no maximo 3 OS no dia)"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Serviço (Erro Regra neg. 2)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"hora_solicitacao\": \"2025-05-30\",\r\n  \"descricao\": \"Reboque de veículo com pane mecanica\",\r\n  \"status\": \"pendente\",\r\n  \"localizacao\": \"Rua das Flores, 123\",\r\n  \"tipo_servico_id\": 2,\r\n  \"funcionario_id\": 3,\r\n  \"veiculo_cliente_id\": 3,\r\n  \"veiculo_empresa_id\": 6,\r\n  \"clienteId\": 3\r\n}\r\n// Erro Regra de negócio 2 : Verifica se o funcionário já está alocado em outro serviço pendente",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/servicos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"servicos"
+							]
+						},
+						"description": "Erro Regra de negócio 2 : Verifica se o funcionário já está alocado em outro serviço pendente"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Serviço",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/servicos/9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"servicos",
+								"9"
+							]
+						}
 					},
 					"response": []
 				},
@@ -833,10 +1683,15 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{}"
+							"raw": "{\r\n        \"descricao\": \"Teste ordem de serviço 7\",\r\n        \"status\": \"pendente\",\r\n        \"localizacao\": \"Rua Gonzaga, 890\",\r\n        \"tipo_servico_id\": 3,\r\n        \"funcionario_id\": 3,\r\n        \"veiculo_cliente_id\": 3,\r\n        \"veiculo_empresa_id\": 3,\r\n        \"clienteId\": 3\r\n}\r\n    ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "http://localhost:3333/servicos/:id",
+							"raw": "http://localhost:3333/servicos/8",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -844,37 +1699,242 @@
 							"port": "3333",
 							"path": [
 								"servicos",
-								":id"
+								"8"
 							],
-							"variable": [
+							"query": [
 								{
-									"key": "id"
+									"key": "",
+									"value": "",
+									"disabled": true
 								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Fim Serviço",
+			"item": [
+				{
+					"name": "Get Fim_Serviço by ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/fim-servicos/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"fim-servicos",
+								"3"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Delete Serviço",
+					"name": "get ALL",
 					"request": {
-						"method": "DELETE",
+						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3333/servicos/:id",
+							"raw": "http://localhost:3333/fim-servicos",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3333",
 							"path": [
-								"servicos",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id"
+								"fim-servicos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Fim_Serviço (RN 1, 3)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"descricao_fim\": \"Serviço realizado com sucesso\",\r\n        \"hora_finalizacao\": \"2025-05-03T16:30:00.000Z\",\r\n        \"valorTotal\": 600,\r\n        \"servico_id\": 5\r\n}\r\n// Ao fazer esse cadastro o status do veículo empresa será alterado para livre e o status do serviço para finalizado",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/fim-servicos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"fim-servicos"
+							]
+						},
+						"description": "Ao fazer esse cadastro o status do veículo empresa será alterado para livre e o status do serviço para finalizado"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Fim_Serviço (RN 2)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"descricao_fim\": \"Serviço realizado com sucesso\",\r\n        \"hora_finalizacao\": \"2025-05-03T16:30:00.000Z\",\r\n        \"valorTotal\": 600,\r\n        \"servico_id\": 4\r\n}\r\n// Ao fazer o cadastro é aplicado um desconto de 10% para esse cliente, pois ele já tem 3 serviços finalizados nesse mês ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/fim-servicos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"fim-servicos"
+							]
+						},
+						"description": "Ao fazer o cadastro é aplicado um desconto de 10% para esse cliente, pois ele já tem 3 serviços finalizados nesse mês"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Fim_Serviço (Erro Campos basico)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"descricao_fim\": \"\",\r\n        \"hora_finalizacao\": \"\",\r\n        \"valorTotal\": 0,\r\n        \"servico_id\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/fim-servicos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"fim-servicos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Fim_Serviço (Serviço já finalizado)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"descricao_fim\": \"Teste ERRO\",\r\n        \"hora_finalizacao\": \"2025-05-03T16:30:00.000Z\",\r\n        \"valorTotal\": 800,\r\n        \"servico_id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/fim-servicos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"fim-servicos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Fim Serviço",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/fim-servicos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"fim-servicos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Fim serviço",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"descricao_fim\": \"sucesso\",\r\n        \"hora_finalizacao\": \"2025-05-03T16:30:00.000Z\",\r\n        \"valorTotal\": 600,\r\n        \"servico_id\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/fim-servicos/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"fim-servicos",
+								"4"
 							]
 						}
 					},

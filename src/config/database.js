@@ -168,6 +168,15 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     tipoDeVeiculoServico: "pickup",
     statusVeiculo: "livre", // Um veículo em uso para demonstrar a regra de negócio
   });
+
+  const veiculoEmpresa6 = await VeiculoEmpresa.create({
+    placa: "ABC1N23",
+    cor: "Azul",
+    modelo: "Volkswagem Amarok",
+    tipoDeVeiculoServico: "pickup",
+    statusVeiculo: "livre", // Um veículo em uso para demonstrar a regra de negócio
+  });
+
   // Inserção de 1 Empresa
   await Empresa.create({
     nome: "GuinchoLink",
@@ -250,10 +259,9 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     nome: "Troca de Pneu",
     descricao: "Serviço de troca de pneu na estrada",
   });
-  // Inserção de Serviços para cliente1 (exatamente 3 finalizados no mesmo mês)
-  // Após adicionar estes 3 serviços, o próximo serviço do cliente1 terá desconto automático de 10%
+  
   const servico1 = await Servico.create({
-    hora_solicitacao: "2025-05-01 10:00:00", // Serviço #1 - Mesmo mês (maio/2025)
+    hora_solicitacao: "2025-05-01 10:00:00", 
     descricao: "Reboque de carro quebrado",
     status: "finalizado",
     localizacao: "Rua A, 123",
@@ -265,7 +273,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
   });
 
   const servico2 = await Servico.create({
-    hora_solicitacao: "2025-05-05 12:00:00", // Serviço #2 - Mesmo mês (maio/2025)
+    hora_solicitacao: "2025-05-05 12:00:00", 
     descricao: "Guincho para caminhão",
     status: "finalizado",
     localizacao: "Avenida B, 456",
@@ -277,7 +285,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
   });
 
   const servico3 = await Servico.create({
-    hora_solicitacao: "2025-05-10 09:30:00", // Serviço #3 - Mesmo mês (maio/2025)
+    hora_solicitacao: "2025-05-10 09:30:00", 
     descricao: "Troca de pneu furado na rodovia",
     status: "finalizado",
     localizacao: "Rodovia C, km 78",
@@ -288,9 +296,9 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     clienteId: cliente1.id
   });
 
-  // Um serviço adicional para cliente1 que deve receber desconto (pois é o 4º serviço no mês)
+ 
   const servico4 = await Servico.create({
-    hora_solicitacao: "2025-05-15 14:15:00", // Mesmo mês (4º serviço = desconto!)
+    hora_solicitacao: "2025-05-15 14:15:00", 
     descricao: "Problema com bateria do veículo",
     status: "andamento",
     localizacao: "Rua D, 789",
@@ -301,13 +309,10 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     clienteId: cliente1.id
   });
 
-
-  // Um serviço associado ao veículo em uso (veiculoEmpresa3) 
-  // Isso demonstra o motivo pelo qual o veículo está com status "emUso"
   const servico5 = await Servico.create({
     hora_solicitacao: "2025-05-14 11:45:00",
     descricao: "Socorro para carro sem combustível",
-    status: "andamento", // Ainda pendente, explicando por que o veículo está em uso
+    status: "andamento", 
     localizacao: "Rua F, 890",
     tipo_servico_id: tipo3.id,
     funcionario_id: funcionario3.id,
@@ -315,9 +320,6 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     veiculo_empresa_id: veiculoEmpresa3.id,
     clienteId: cliente3.id
   });
-  // Inserção de FimServico para os serviços finalizados
-  // Após estes 3 serviços finalizados para cliente1 no mesmo mês,
-  // o próximo serviço que for finalizado para cliente1 terá desconto de 10%
 
   const servico6 = await Servico.create({
     hora_solicitacao: "2025-05-29 11:45:00",

@@ -19,7 +19,7 @@ class ServicoService {
         ? new Date(data.hora_solicitacao)
         : new Date();
 
-      // Regra de negócio 1 : Verifica se já existem 2 serviços cadastrados para o mesmo dia
+      // Regra de negócio 1 : Verifica se já existem 3 serviços cadastrados para o mesmo dia
       const count = await this.countServices(serviceDate, transaction);
       if (count >= 3) {
         throw new Error("Não é possível cadastrar mais de 3 serviços no dia.");

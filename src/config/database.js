@@ -10,6 +10,18 @@ import { TipoServico } from "../models/TipoServico.js";
 import { FimServico } from "../models/FimServico.js";
 import { Feedback } from "../models/Feedback.js";
 
+/**
+ * Arquivo de seed do banco de dados com valores iniciais
+ * 
+ * REGRA DE NEGÓCIO DE DESCONTO:
+ * Quando um cliente possuir 3 ou mais serviços finalizados no mesmo mês,
+ * ele terá direito a um desconto de 10% em todos os serviços subsequentes no mesmo mês.
+ * 
+ * Neste seed, cliente1 já tem exatamente 3 serviços finalizados em maio/2025,
+ * portanto o próximo serviço que for finalizado para ele nesse mês
+ * terá desconto de 10% automaticamente pelo FimServicoService.
+ */
+
 const sequelize = new Sequelize({
   dialect: "sqlite",
   storage: "GuinchoLink.sqlite",
@@ -42,51 +54,40 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
 (async () => {
   await sequelize.sync({ force: true });
 
-  // Inserção de Clientes primeiro
+  // Inserção de 3 Clientes
   const cliente1 = await Cliente.create({
-    nome: "Alberto",
+    nome: "Alberto Santos",
     cpf: "111.111.111-11",
     nascimento: "2001-01-01",
     telefone: "28 99999-9999",
     endereco: "Rua dos Bobos, 0",
   });
+  
   const cliente2 = await Cliente.create({
-    nome: "Marcos",
+    nome: "Marcos Silva",
     cpf: "222.222.222-22",
     nascimento: "2004-02-02",
-    telefone: "28 99999-9999",
-    endereco: "Rua dos Bobos, 0",
+    telefone: "28 98888-8888",
+    endereco: "Avenida Principal, 123",
   });
+  
   const cliente3 = await Cliente.create({
-    nome: "Vinicius",
+    nome: "Vinicius Oliveira",
     cpf: "333.333.333-33",
     nascimento: "2005-05-05",
-    telefone: "28 99999-9999",
-    endereco: "Rua dos Bobos, 0",
-  });
-  const cliente4 = await Cliente.create({
-    nome: "Pedro",
-    cpf: "444.444.444-44",
-    nascimento: "2008-02-02",
-    telefone: "28 99999-9999",
-    endereco: "Rua dos Bobos, 0",
-  });
-  const cliente5 = await Cliente.create({
-    nome: "Souza",
-    cpf: "555.555.555-55",
-    nascimento: "2008-02-02",
-    telefone: "28 99999-9999",
-    endereco: "Rua dos Bobos, 0",
+    telefone: "28 97777-7777",
+    endereco: "Praça Central, 45",
   });
 
-  // Inserção de Veículos de Cliente com clienteId obrigatório
+  // Inserção de 3 Veículos de Cliente (com clienteId obrigatório)
   const veiculoCliente1 = await VeiculoCliente.create({
     placa: "ABC1156",
     cor: "Azul",
     modelo: "Fusca",
-    tipoDeVeiculo: "van",
+    tipoDeVeiculo: "carro",
     clienteId: cliente1.id,
   });
+  
   const veiculoCliente2 = await VeiculoCliente.create({
     placa: "BHG2222",
     cor: "Vermelho",
@@ -94,29 +95,16 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     tipoDeVeiculo: "carro",
     clienteId: cliente2.id,
   });
-  await VeiculoCliente.create({
+  
+  const veiculoCliente3 = await VeiculoCliente.create({
     placa: "CIU3333",
     cor: "Verde",
     modelo: "F4000",
     tipoDeVeiculo: "caminhao",
     clienteId: cliente3.id,
   });
-  await VeiculoCliente.create({
-    placa: "SGA7G15",
-    cor: "Prata",
-    modelo: "Onix",
-    tipoDeVeiculo: "carro",
-    clienteId: cliente4.id,
-  });
-  await VeiculoCliente.create({
-    placa: "EEE5555",
-    cor: "Amarelo",
-    modelo: "Mazerati",
-    tipoDeVeiculo: "carro",
-    clienteId: cliente5.id,
-  });
 
-  // Inserção de Veículos da Empresa
+  // Inserção de 3 Veículos da Empresa (2 livres, 1 em uso)
   const veiculoEmpresa1 = await VeiculoEmpresa.create({
     placa: "DDD9098",
     cor: "Preto",
@@ -124,6 +112,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     tipoDeVeiculoServico: "moto",
     statusVeiculo: "livre",
   });
+  
   const veiculoEmpresa2 = await VeiculoEmpresa.create({
     placa: "EEE9411",
     cor: "Azul",
@@ -131,28 +120,16 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     tipoDeVeiculoServico: "caminhaoPrancha",
     statusVeiculo: "emUso",
   });
-  await VeiculoEmpresa.create({
-    placa: "LPU6A87",
-    cor: "Vermelho",
-    modelo: "Gol",
-    tipoDeVeiculoServico: "carro",
-    statusVeiculo: "livre",
-  });
-  await VeiculoEmpresa.create({
-    placa: "LPO7H28",
-    cor: "Verde",
-    modelo: "F4000",
-    tipoDeVeiculoServico: "caminhaoLanca",
-    statusVeiculo: "livre",
-  });
-  await VeiculoEmpresa.create({
-    placa: "JHP2178",
-    cor: "Preto",
-    modelo: "CG 150",
-    tipoDeVeiculoServico: "moto",
-    statusVeiculo: "livre",
+  
+  const veiculoEmpresa3 = await VeiculoEmpresa.create({
+    placa: "KTR5693",
+    cor: "Branco",
+    modelo: "Strada",
+    tipoDeVeiculoServico: "pickup",
+    statusVeiculo: "emUso", // Um veículo em uso para demonstrar a regra de negócio
   });
 
+  // Inserção de 1 Empresa
   await Empresa.create({
     nome: "GuinchoLink",
     cnpj: "11.125.825/0001-22",
@@ -160,107 +137,84 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     telefone: "00 94002-8922",
   });
 
+  // Inserção de 3 Administradores
   await Administrador.create({
-    nome: "Yuri",
-    cpf: "111.111.111-11",
+    nome: "Yuri Administrador",
+    cpf: "444.444.444-44",
     nascimento: "2003-01-01",
-    login: "teste",
-    senha: "senha576",
+    login: "admin1",
+    senha: "senha123",
   });
+  
   await Administrador.create({
-    nome: "Marcos",
-    cpf: "238.291.120-10",
-    nascimento: "2004-02-02",
-    login: "teste",
-    senha: "senha109",
-  });
-  await Administrador.create({
-    nome: "Vinicius",
-    cpf: "333.209.092-87",
-    nascimento: "2005-05-05",
-    login: "teste",
-    senha: "senha309",
-  });
-  await Administrador.create({
-    nome: "Pedro",
-    cpf: "222.222.444-22",
-    nascimento: "2008-02-02",
-    login: "teste",
-    senha: "senha3094",
-  });
-
-  // Inserção de Funcionários
-  const funcionario1 = await Funcionario.create({
-    nome: "Wagner",
+    nome: "Marcos Gestor",
     cpf: "555.555.555-55",
+    nascimento: "2004-02-02",
+    login: "admin2",
+    senha: "senha456",
+  });
+  
+  await Administrador.create({
+    nome: "Vinicius Supervisor",
+    cpf: "666.666.666-66",
+    nascimento: "2005-05-05",
+    login: "admin3",
+    senha: "senha789",
+  });
+
+  // Inserção de 3 Funcionários
+  const funcionario1 = await Funcionario.create({
+    nome: "Wagner Motorista",
+    cpf: "777.777.777-77",
     nascimento: "2003-01-01",
     telefone: "28 99999-9999",
-    endereco: "rua teste",
+    endereco: "Rua dos Motoristas, 10",
     cnh: "12345678",
     categoria_cnh: "ABCD",
   });
+  
   const funcionario2 = await Funcionario.create({
-    nome: "Marcos",
-    cpf: "222.222.222-22",
+    nome: "Marcos Técnico",
+    cpf: "888.888.888-88",
     nascimento: "2004-02-02",
-    telefone: "28 99999-9999",
-    endereco: "rua teste",
-    cnh: "12345678",
+    telefone: "28 98888-8888",
+    endereco: "Avenida dos Técnicos, 20",
+    cnh: "23456789",
     categoria_cnh: "ABCD",
   });
+  
   const funcionario3 = await Funcionario.create({
-    nome: "Vinicius",
-    cpf: "092.398.847-78",
+    nome: "Vinicius Mecânico",
+    cpf: "999.999.999-99",
     nascimento: "2005-05-05",
-    telefone: "28 99999-9999",
-    endereco: "rua teste",
-    cnh: "12345678",
-    categoria_cnh: "ABCD",
-  });
-  const funcionario4 = await Funcionario.create({
-    nome: "Souza",
-    cpf: "938.934.837-20",
-    nascimento: "2004-02-02",
-    telefone: "28 99999-9999",
-    endereco: "rua teste",
-    cnh: "12345678",
-    categoria_cnh: "ABCD",
-  });
-  const funcionario5 = await Funcionario.create({
-    nome: "Helio",
-    cpf: "155.934.837-24",
-    nascimento: "2003-02-23",
-    telefone: "28 45599-9999",
-    endereco: "rua ifes",
-    cnh: "32456780",
+    telefone: "28 97777-7777",
+    endereco: "Praça dos Mecânicos, 30",
+    cnh: "34567890",
     categoria_cnh: "ABCD",
   });
 
-  // Inserção de Tipos de Serviço
+  // Inserção de 3 Tipos de Serviço
   const tipo1 = await TipoServico.create({
     valor_hora: 50.0,
     nome: "Reboque",
     descricao: "Serviço de reboque de veículos",
   });
+  
   const tipo2 = await TipoServico.create({
     valor_hora: 70.0,
     nome: "Guincho",
     descricao: "Serviço de guincho para veículos pesados",
   });
+  
   const tipo3 = await TipoServico.create({
     valor_hora: 40.0,
     nome: "Troca de Pneu",
     descricao: "Serviço de troca de pneu na estrada",
   });
-  const tipo4 = await TipoServico.create({
-    valor_hora: 60.0,
-    nome: "Socorro Elétrico",
-    descricao: "Serviço de assistência para problemas elétricos",
-  });
-  // Inserção de Serviços
-  // Serviços do cliente 1 (terá 3 serviços finalizados no mesmo mês para receber o desconto)
+  // Inserção de Serviços para cliente1 (exatamente 3 finalizados no mesmo mês)
+  // Após adicionar estes 3 serviços, o próximo serviço do cliente1 terá desconto automático de 10%
   const servico1 = await Servico.create({
-    hora_solicitacao: "2025-05-10 10:00:00",
+    hora_solicitacao: "2025-05-01 10:00:00", // Serviço #1 - Mesmo mês (maio/2025)
     descricao: "Reboque de carro quebrado",
     status: "finalizado",
     localizacao: "Rua A, 123",
@@ -272,7 +226,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
   });
 
   const servico2 = await Servico.create({
-    hora_solicitacao: "2025-05-10 12:00:00",
+    hora_solicitacao: "2025-05-05 12:00:00", // Serviço #2 - Mesmo mês (maio/2025)
     descricao: "Guincho para caminhão",
     status: "finalizado",
     localizacao: "Avenida B, 456",
@@ -284,7 +238,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
   });
 
   const servico3 = await Servico.create({
-    hora_solicitacao: "2025-05-10 09:30:00",
+    hora_solicitacao: "2025-05-10 09:30:00", // Serviço #3 - Mesmo mês (maio/2025)
     descricao: "Troca de pneu furado na rodovia",
     status: "finalizado",
     localizacao: "Rodovia C, km 78",
@@ -295,145 +249,82 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     clienteId: cliente1.id
   });
 
+  // Um serviço adicional para cliente1 que deve receber desconto (pois é o 4º serviço no mês)
   const servico4 = await Servico.create({
-    hora_solicitacao: "2025-05-10 14:15:00",
+    hora_solicitacao: "2025-05-15 14:15:00", // Mesmo mês (4º serviço = desconto!)
     descricao: "Problema com bateria do veículo",
-    status: "pendente", // Um quarto serviço pendente (ainda não finalizado)
+    status: "andamento",
     localizacao: "Rua D, 789",
-    tipo_servico_id: tipo4.id,
-    funcionario_id: funcionario4.id,
+    tipo_servico_id: tipo2.id,
+    funcionario_id: funcionario1.id,
     veiculo_cliente_id: veiculoCliente1.id,
     veiculo_empresa_id: veiculoEmpresa2.id,
     clienteId: cliente1.id
   });
 
-  // Serviços para outros clientes (sem acumular 3 serviços finalizados no mesmo mês)
-  const servico5 = await Servico.create({
-    hora_solicitacao: "2025-05-09 10:30:00",
-    descricao: "Reboque de carro com motor fundido",
-    status: "finalizado",
-    localizacao: "Avenida E, 567",
-    tipo_servico_id: tipo1.id,
-    funcionario_id: funcionario1.id,
-    veiculo_cliente_id: veiculoCliente2.id,
-    veiculo_empresa_id: veiculoEmpresa1.id,
-    clienteId: cliente2.id
-  });
 
-  const servico6 = await Servico.create({
+  // Um serviço associado ao veículo em uso (veiculoEmpresa3) 
+  // Isso demonstra o motivo pelo qual o veículo está com status "emUso"
+  const servico5 = await Servico.create({
     hora_solicitacao: "2025-05-14 11:45:00",
     descricao: "Socorro para carro sem combustível",
-    status: "finalizado",
+    status: "andamento", // Ainda pendente, explicando por que o veículo está em uso
     localizacao: "Rua F, 890",
-    tipo_servico_id: tipo4.id,
-    funcionario_id: funcionario2.id,
-    veiculo_cliente_id: veiculoCliente2.id,
-    veiculo_empresa_id: veiculoEmpresa2.id,
-    clienteId: cliente2.id
-  });
-  // Inserção de Fim de Serviço para testar regras de desconto
-  
-  // Cria mais um serviço para cliente1 (para ter pelo menos 3 serviços no mesmo mês)
-  const servico7 = await Servico.create({
-    hora_solicitacao: "2025-05-18 09:00:00",
-    descricao: "Auxílio para veículo atolado",
-    status: "finalizado",
-    localizacao: "Estrada Rural, km 22",
-    tipo_servico_id: tipo1.id,
-    funcionario_id: funcionario1.id,
-    veiculo_cliente_id: veiculoCliente1.id,
-    veiculo_empresa_id: veiculoEmpresa1.id,
-    clienteId: cliente1.id
-  });
-  
-  // Cria um quarto serviço para cliente1 (este terá o desconto aplicado)
-  const servico8 = await Servico.create({
-    hora_solicitacao: "2025-05-20 11:00:00",
-    descricao: "Troca de óleo emergencial",
-    status: "finalizado",
-    localizacao: "Avenida Principal, 1500",
     tipo_servico_id: tipo3.id,
     funcionario_id: funcionario3.id,
-    veiculo_cliente_id: veiculoCliente1.id,
-    veiculo_empresa_id: veiculoEmpresa1.id,
-    clienteId: cliente1.id
+    veiculo_cliente_id: veiculoCliente3.id,
+    veiculo_empresa_id: veiculoEmpresa3.id,
+    clienteId: cliente3.id
   });
-  
-  // Registros de finalização para os serviços do cliente 1 (mesmo mês)
-  const fimservico1 = await FimServico.create({
-    hora_finalizacao: "2025-05-01 12:30:00",
-    descricao_fim: "Serviço realizado com sucesso",
-    valorTotal: 150.0,
-    on_sale: false, // Primeiro serviço, sem desconto
+  // Inserção de FimServico para os serviços finalizados
+  // Após estes 3 serviços finalizados para cliente1 no mesmo mês,
+  // o próximo serviço que for finalizado para cliente1 terá desconto de 10%
+
+  // FimServico para serviço1 - sem desconto (primeiro serviço)
+  await FimServico.create({
+    hora_finalizacao: "2025-05-01 11:30:00",
+    descricao_fim: "Veículo rebocado com sucesso",
+    valorTotal: 100.0,
+    on_sale: false, // Sem desconto (primeiro serviço do mês)
     servico_id: servico1.id
   });
 
-  const fimservico2 = await FimServico.create({
-    hora_finalizacao: "2025-05-05 14:45:00",
-    descricao_fim: "Veículo guinchado até a oficina",
-    valorTotal: 220.0,
-    on_sale: false, // Segundo serviço, sem desconto
+  // FimServico para serviço2 - sem desconto (segundo serviço)
+  await FimServico.create({
+    hora_finalizacao: "2025-05-05 13:30:00",
+    descricao_fim: "Guincho realizado com sucesso",
+    valorTotal: 140.0,
+    on_sale: false, // Sem desconto (segundo serviço do mês)
     servico_id: servico2.id
   });
 
-  const fimservico3 = await FimServico.create({
-    hora_finalizacao: "2025-05-10 10:15:00",
-    descricao_fim: "Pneu trocado no local",
+  // FimServico para serviço3 - sem desconto (terceiro serviço do cliente1)
+  await FimServico.create({
+    hora_finalizacao: "2025-05-10 10:45:00", 
+    descricao_fim: "Pneu trocado com sucesso",
     valorTotal: 80.0,
-    on_sale: false, // Terceiro serviço, ainda sem desconto
+    on_sale: false, // Sem desconto (terceiro serviço do mês)
     servico_id: servico3.id
   });
-  
-  const fimservico4 = await FimServico.create({
-    hora_finalizacao: "2025-05-18 11:30:00",
-    descricao_fim: "Veículo desatolado com sucesso",
-    valorTotal: 200.0, 
-    on_sale: true, // Quarto serviço, com desconto (pois já tem 3 serviços no mês)
-    servico_id: servico7.id
-  });
-  
-  const fimservico5 = await FimServico.create({
-    hora_finalizacao: "2025-05-20 13:00:00",
-    descricao_fim: "Troca de óleo realizada e revisão básica concluída",
-    valorTotal: 90.0, // Este valor já está com desconto de 10%
-    on_sale: true, // Quinto serviço, também com desconto (pois já tem mais de 3 serviços no mês)
-    servico_id: servico8.id
-  });
 
-  // Registros de finalização para os serviços de outros clientes
-  const fimservico6 = await FimServico.create({
-    hora_finalizacao: "2025-05-12 12:00:00",
-    descricao_fim: "Veículo rebocado com sucesso",
-    valorTotal: 180.0,
-    on_sale: false, // Sem desconto pois é o primeiro serviço do cliente 2 no mês
-    servico_id: servico5.id
-  });
 
-  const fimservico7 = await FimServico.create({
-    hora_finalizacao: "2025-05-14 13:30:00",
-    descricao_fim: "Combustível fornecido e carro em funcionamento",
-    valorTotal: 120.0,
-    on_sale: false, // Sem desconto pois é o segundo serviço do cliente 2 no mês
-    servico_id: servico6.id
-  });
-
-  // Inserção de Feedback
+  // Inserção de 3 Feedbacks
   await Feedback.create({
     nota: 5,
     comentario: "Excelente serviço, muito rápido e eficiente!",
-    fim_servico_id: fimservico1.id,
+    servico_id: servico1.id,
   });
 
   await Feedback.create({
     nota: 4,
     comentario: "Bom serviço, mas poderia ser mais rápido.",
-    fim_servico_id: fimservico2.id,
+    servico_id: servico2.id,
   });
 
   await Feedback.create({
     nota: 5,
     comentario: "Atendimento excepcional, resolveu meu problema rapidamente!",
-    fim_servico_id: fimservico3.id,
+    servico_id: servico3.id,
   });
 
 })();

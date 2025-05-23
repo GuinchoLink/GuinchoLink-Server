@@ -79,6 +79,14 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     endereco: "Praça Central, 45",
   });
 
+  const cliente5 = await Cliente.create({
+    nome: "Welington gulinelli",
+    cpf: "333.555.333-33",
+    nascimento: "2003-12-13",
+    telefone: "28 99999-7777",
+    endereco: "Praça Gonzaga, 45",
+  });
+
   // Inserção de 3 Veículos de Cliente (com clienteId obrigatório)
   const veiculoCliente1 = await VeiculoCliente.create({
     placa: "ABC1156",
@@ -129,6 +137,13 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     statusVeiculo: "emUso", // Um veículo em uso para demonstrar a regra de negócio
   });
 
+  const veiculoEmpresa5 = await VeiculoEmpresa.create({
+    placa: "KBT6N23",
+    cor: "Preto",
+    modelo: "Ford Raptor",
+    tipoDeVeiculoServico: "pickup",
+    statusVeiculo: "livre", // Um veículo em uso para demonstrar a regra de negócio
+  });
   // Inserção de 1 Empresa
   await Empresa.create({
     nome: "GuinchoLink",
@@ -280,6 +295,29 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
   // Após estes 3 serviços finalizados para cliente1 no mesmo mês,
   // o próximo serviço que for finalizado para cliente1 terá desconto de 10%
 
+  const servico7 = await Servico.create({
+    hora_solicitacao: "2025-05-20 10:00:00",
+    descricao: "Teste ordem de serviço 6",
+    status: "finalizado", 
+    localizacao: "Rua F, 890",
+    tipo_servico_id: tipo3.id,
+    funcionario_id: funcionario3.id,
+    veiculo_cliente_id: veiculoCliente2.id,
+    veiculo_empresa_id: veiculoEmpresa3.id,
+    clienteId: cliente3.id
+  });
+
+  const servico8 = await Servico.create({
+    hora_solicitacao: "2025-05-20 11:00:00",
+    descricao: "Teste ordem de serviço 7",
+    status: "finalizado", 
+    localizacao: "Rua Gonzaga, 890",
+    tipo_servico_id: tipo3.id,
+    funcionario_id: funcionario3.id,
+    veiculo_cliente_id: veiculoCliente3.id,
+    veiculo_empresa_id: veiculoEmpresa3.id,
+    clienteId: cliente3.id
+  });
   // FimServico para serviço1 - sem desconto (primeiro serviço)
   const fimServico1 = await FimServico.create({
     hora_finalizacao: "2025-05-01 11:30:00",

@@ -281,7 +281,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
   // o próximo serviço que for finalizado para cliente1 terá desconto de 10%
 
   // FimServico para serviço1 - sem desconto (primeiro serviço)
-  await FimServico.create({
+  const fimServico1 = await FimServico.create({
     hora_finalizacao: "2025-05-01 11:30:00",
     descricao_fim: "Veículo rebocado com sucesso",
     valorTotal: 100.0,
@@ -290,7 +290,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
   });
 
   // FimServico para serviço2 - sem desconto (segundo serviço)
-  await FimServico.create({
+  const fimServico2 = await FimServico.create({
     hora_finalizacao: "2025-05-05 13:30:00",
     descricao_fim: "Guincho realizado com sucesso",
     valorTotal: 140.0,
@@ -299,7 +299,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
   });
 
   // FimServico para serviço3 - sem desconto (terceiro serviço do cliente1)
-  await FimServico.create({
+  const fimServico3 = await FimServico.create({
     hora_finalizacao: "2025-05-10 10:45:00", 
     descricao_fim: "Pneu trocado com sucesso",
     valorTotal: 80.0,
@@ -307,24 +307,31 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     servico_id: servico3.id
   });
 
+  const fimServico4 = await FimServico.create({
+    hora_finalizacao: "2025-05-10 10:45:00", 
+    descricao_fim: "Bateria trocado com sucesso",
+    valorTotal: 170.0,
+    on_sale: false, // Sem desconto (terceiro serviço do mês)
+    servico_id: servico4.id
+  });
 
-  // Inserção de 3 Feedbacks
+  // Inserção de 3 Feedbacks, o 4 será de forma manual
   await Feedback.create({
     nota: 5,
     comentario: "Excelente serviço, muito rápido e eficiente!",
-    servico_id: servico1.id,
+    fim_servico_id: fimServico1.id,
   });
 
   await Feedback.create({
     nota: 4,
     comentario: "Bom serviço, mas poderia ser mais rápido.",
-    servico_id: servico2.id,
+    fim_servico_id: fimServico2.id,
   });
 
   await Feedback.create({
     nota: 5,
     comentario: "Atendimento excepcional, resolveu meu problema rapidamente!",
-    servico_id: servico3.id,
+    fim_servico_id: fimServico3.id,
   });
 
 })();

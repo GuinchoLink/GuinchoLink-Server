@@ -79,6 +79,14 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     endereco: "Praça Central, 45",
   });
 
+  const cliente4 = await Cliente.create({
+    nome: "Bruno Costa",
+    cpf: "333.333.221-33",
+    nascimento: "2000-05-05",
+    telefone: "28 97337-7777",
+    endereco: "Praça Central do morro, 5",
+  });
+
   // Inserção de 3 Veículos de Cliente (com clienteId obrigatório)
   const veiculoCliente1 = await VeiculoCliente.create({
     placa: "ABC1156",
@@ -104,6 +112,14 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     clienteId: cliente3.id,
   });
 
+  const veiculoCliente4 = await VeiculoCliente.create({
+    placa: "CUR3903",
+    cor: "Verde",
+    modelo: "Gol",
+    tipoDeVeiculo: "carro",
+    clienteId: cliente4.id,
+  });
+
   // Inserção de 3 Veículos da Empresa (2 livres, 1 em uso)
   const veiculoEmpresa1 = await VeiculoEmpresa.create({
     placa: "DDD9098",
@@ -125,6 +141,14 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     placa: "KTR5693",
     cor: "Branco",
     modelo: "Strada",
+    tipoDeVeiculoServico: "pickup",
+    statusVeiculo: "emUso", // Um veículo em uso para demonstrar a regra de negócio
+  });
+
+  const veiculoEmpresa4 = await VeiculoEmpresa.create({
+    placa: "MQU0993",
+    cor: "Branco",
+    modelo: "Saveiro",
     tipoDeVeiculoServico: "pickup",
     statusVeiculo: "emUso", // Um veículo em uso para demonstrar a regra de negócio
   });
@@ -280,6 +304,18 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
   // Após estes 3 serviços finalizados para cliente1 no mesmo mês,
   // o próximo serviço que for finalizado para cliente1 terá desconto de 10%
 
+  const servico6 = await Servico.create({
+    hora_solicitacao: "2025-05-29 11:45:00",
+    descricao: "Socorro para carro sem combustível",
+    status: "finalizado",
+    localizacao: "Rua F, 890",
+    tipo_servico_id: tipo3.id,
+    funcionario_id: funcionario3.id,
+    veiculo_cliente_id: veiculoCliente4.id,
+    veiculo_empresa_id: veiculoEmpresa4.id,
+    clienteId: cliente4.id
+  });
+
   // FimServico para serviço1 - sem desconto (primeiro serviço)
   const fimServico1 = await FimServico.create({
     hora_finalizacao: "2025-05-01 11:30:00",
@@ -308,11 +344,11 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
   });
 
   const fimServico4 = await FimServico.create({
-    hora_finalizacao: "2025-05-10 10:45:00", 
+    hora_finalizacao: "2025-06-10 10:45:00", 
     descricao_fim: "Bateria trocado com sucesso",
     valorTotal: 170.0,
     on_sale: false, // Sem desconto (terceiro serviço do mês)
-    servico_id: servico4.id
+    servico_id: servico6.id
   });
 
   // Inserção de 3 Feedbacks, o 4 será de forma manual

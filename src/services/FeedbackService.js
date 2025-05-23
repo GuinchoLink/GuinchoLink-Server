@@ -18,17 +18,35 @@ class FeedbackService {
   static async create(req, res) {
     const { nota, comentario, fim_servico_id } = req.body;
 
-    const objByServId = await Feedback.findAll({where : {fim_servico_id: fim_servico_id}});
-    if (objByServId.length == 1){
+    // ---------------------------------------------------
+    // Regra de negocio 1: apenas um feedback por serviço
+    const existingFeedback = await Feedback.findOne({where : {fim_servico_id: fim_servico_id}});
+    if (existingFeedback){
       throw new Error ("Já existe um serviço finalizado com esse feedback!");
     }
+    // ---------------------------------------------------
 
-    // Verificar se já existe uma empresa com o mesmo CNPJ
-    //    const existingFeedback = await Feedback.findOne({ where: { cnpj } });
-    //    if (existingFeedback) {
-      //    throw new Error("Já existe uma empresa cadastrada com este CNPJ.");
-    //    }
 
+
+    // ---------------------------------------------------
+    // Regra de negocio 2: o serviço deve estar finalizado
+    const fimServicoExists = await import('../models/FimServico.js').then(module => {
+      const FimServico = module.FimServico;
+      return FimServico.findByPk(fim_servico_id);
+    });
+    const servicoExists = await import('../models/Servico.js').then(module => {
+      const Servico = module.Servico;
+      return Servico.findByPk(fim_servico_id);
+    });
+    // Aqui ele verifica se o serviço em si existe
+    if (!fimServicoExists && !servicoExists) {
+      throw new Error("O serviço informado não existe no sistema!");
+    // Aqui caso o serviço exista, porém o serviço não está com o status finalizado
+    } else if(servicoExists && !fimServicoExists) {
+      throw new Error("Não é possivel adicionar feedback, pois o serviço ainda não foi finalizado!")
+    }
+    // ---------------------------------------------------
+    
     const obj = await Feedback.create({ nota, comentario, fim_servico_id });
     return obj;
   }

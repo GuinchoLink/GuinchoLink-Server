@@ -307,13 +307,6 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     servico_id: servico3.id
   });
 
-  const fimServico4 = await FimServico.create({
-    hora_finalizacao: "2025-05-10 10:45:00", 
-    descricao_fim: "Bateria trocado com sucesso",
-    valorTotal: 170.0,
-    on_sale: false, // Sem desconto (terceiro serviço do mês)
-    servico_id: servico4.id
-  });
 
   // Inserção de 3 Feedbacks, o 4 será de forma manual
   await Feedback.create({

@@ -17,7 +17,7 @@ class FimServico extends Model {
         validate: {
           len: { args: [0, 255], msg: "Descrição do fim deve ter no máximo 255 caracteres!" }
         }
-      },
+      },      
       valorTotal: {
         type: DataTypes.DOUBLE,
         allowNull: false,
@@ -25,6 +25,11 @@ class FimServico extends Model {
           isFloat: { msg: "Valor total deve ser um número válido!" },
           min: { args: [0], msg: "Valor total deve ser maior ou igual a 0!" }
         }
+      },
+      on_sale: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
       }
     }, {
       sequelize,

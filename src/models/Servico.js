@@ -44,7 +44,6 @@ class Servico extends Model {
       tableName: 'servicos' 
     });
   }
-
   static associate(models) {
     this.belongsTo(models.tipoServico, { foreignKey: 'tipo_servico_id', as: 'tipoServico' });
     this.belongsTo(models.funcionario, { foreignKey: 'funcionario_id', as: 'funcionario' }); // Associação com Funcionario

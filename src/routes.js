@@ -67,6 +67,7 @@ routes.post('/fim-servicos', FimServicoController.create);
 routes.get('/fim-servicos', FimServicoController.findAll);
 routes.get('/fim-servicos/:id', FimServicoController.findById);
 routes.get('/fim-servicos/servico/:servicoId', FimServicoController.findByServicoId);
+routes.get('/fim-servicos/cliente/:clienteId', FimServicoController.findByClienteId);
 routes.get('/fim-servicos/statistics', FimServicoController.getStatistics);
 routes.put('/fim-servicos/:id', FimServicoController.update);
 routes.delete('/fim-servicos/:id', FimServicoController.delete);

@@ -54,10 +54,10 @@ class FimServicoService {    // Método para criar um novo registro de finaliza�
     
     // Verifica se o cliente tem direito a desconto (3 ou mais serviços finalizados no mesmo mês)
     if (servico.veiculoCliente && servico.veiculoCliente.cliente) {
-      // Obtém o mês e ano atual
-      const dataAtual = new Date();
-      const mesAtual = dataAtual.getMonth();
-      const anoAtual = dataAtual.getFullYear();
+      // Obtém o mês e ano da finalização do serviço (não a data atual do sistema)
+      const dataFinalizacao = new Date(data.hora_finalizacao);
+      const mesFinalizacao = dataFinalizacao.getMonth();
+      const anoFinalizacao = dataFinalizacao.getFullYear();
       
       // Busca o clienteId do veículo do cliente
       const clienteId = servico.veiculoCliente.cliente.id;
@@ -87,17 +87,18 @@ class FimServicoService {    // Método para criar um novo registro de finaliza�
         ]
       });
       
-      // Filtra os serviços finalizados no mês atual
+      // Filtra os serviços finalizados no mesmo mês da finalização
       const servicosFinalizadosNoMes = servicosFinalizados.filter(serv => {
         if (serv.fimServico && serv.fimServico.hora_finalizacao) {
-          const dataFinalizacao = new Date(serv.fimServico.hora_finalizacao);
-          return dataFinalizacao.getMonth() === mesAtual && 
-                 dataFinalizacao.getFullYear() === anoAtual;
+          const dataFimServico = new Date(serv.fimServico.hora_finalizacao);
+          const mesServico = dataFimServico.getMonth();
+          const anoServico = dataFimServico.getFullYear();
+          return mesServico === mesFinalizacao && anoServico === anoFinalizacao;
         }
         return false;
       });
       
-      // Se o cliente já tiver 3 ou mais serviços finalizados no mês atual (sem contar o atual)
+      // Se o cliente já tiver 3 ou mais serviços finalizados no mesmo mês (sem contar o atual)
       if (servicosFinalizadosNoMes.length >= 3) {
         // Aplica desconto de 10%
         data.valorTotal = data.valorTotal * 0.9; // 90% do valor original

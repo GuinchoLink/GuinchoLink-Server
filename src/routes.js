@@ -43,6 +43,7 @@ routes.put('/veiculoCliente/:id', VeiculoClienteController.update);
 routes.delete('/veiculoCliente/:id', VeiculoClienteController.delete);
 
 routes.get('/veiculoEmpresa', VeiculoEmpresaController.findAll);
+routes.get('/veiculoEmpresa/status', VeiculoEmpresaController.findByStatus);
 routes.get('/veiculoEmpresa/:id', VeiculoEmpresaController.findByPk);
 routes.post('/veiculoEmpresa', VeiculoEmpresaController.create);
 routes.put('/veiculoEmpresa/:id', VeiculoEmpresaController.update);
@@ -67,10 +68,11 @@ routes.delete('/servicos/:id', ServicoController.delete);
 // Rotas para FimServico
 routes.post('/fim-servicos', FimServicoController.create);
 routes.get('/fim-servicos', FimServicoController.findAll);
-routes.get('/fim-servicos/:id', FimServicoController.findById);
+routes.get('/fim-servicos/cliente-statistics/:clienteId', FimServicoController.getClienteStatistics);
+routes.get('/fim-servicos/cliente-statistics', FimServicoController.getClienteStatistics);
 routes.get('/fim-servicos/servico/:servicoId', FimServicoController.findByServicoId);
 routes.get('/fim-servicos/cliente/:clienteId', FimServicoController.findByClienteId);
-routes.get('/fim-servicos/statistics', FimServicoController.getStatistics);
+routes.get('/fim-servicos/:id', FimServicoController.findById);
 routes.put('/fim-servicos/:id', FimServicoController.update);
 routes.delete('/fim-servicos/:id', FimServicoController.delete);
 

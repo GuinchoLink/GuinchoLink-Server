@@ -34,7 +34,12 @@ class VeiculoEmpresaController {
       .catch(err => res.status(400).json({ err: err.message }));
   }
 
-}
+  static async findByStatus(req, res) {
+    VeiculoEmpresaService.findByStatus(req)
+      .then(result => res.json(result))
+      .catch(err => res.status(400).json({ err: err.message }));
+  }
 
+}
 
 export { VeiculoEmpresaController };

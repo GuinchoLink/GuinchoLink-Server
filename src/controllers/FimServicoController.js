@@ -64,9 +64,11 @@ class FimServicoController {
     }
   }
 
-  async getStatistics(req, res) {
+
+  async getClienteStatistics(req, res) {
     try {
-      const statistics = await FimServicoService.getStatistics();
+      const clienteId = req.params.clienteId || null;
+      const statistics = await FimServicoService.getClienteStatistics(clienteId);
       return res.status(200).json(statistics);
     } catch (error) {
       return res.status(500).json({ error: error.message });

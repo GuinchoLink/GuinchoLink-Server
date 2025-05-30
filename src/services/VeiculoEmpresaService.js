@@ -62,6 +62,27 @@ class VeiculoEmpresaService {
     return obj;
   }
 
+  static async findByStatus(req, res) {
+    const { status } = req.query;
+    
+    let whereClause = {};
+    if (status && status.trim() !== '') {
+      whereClause = { statusVeiculo: status };
+    }
+
+    const veiculos = await VeiculoEmpresa.findAll({
+      where: whereClause
+    });
+
+    const quantidade = veiculos.length;
+
+    return {
+      veiculos,
+      quantidade,
+      status: status || 'todos'
+    };
+  }
+
 }
 
 export { VeiculoEmpresaService };

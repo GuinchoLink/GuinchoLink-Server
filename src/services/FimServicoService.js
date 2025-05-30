@@ -243,34 +243,121 @@ class FimServicoService {    // Método para criar um novo registro de finaliza�
     return await fimServico.destroy();
   }
 
-  // Método para obter estatísticas de finalizações de serviço
-  async getStatistics() {    
-    // Total de serviços finalizados
-    const totalFinalizados = await FimServico.count();
-    
-    // Valor total de todos os serviços finalizados
-    const valorTotal = await FimServico.sum('valorTotal');
-    
-    // Média de valor por serviço
-    const mediaValor = valorTotal / (totalFinalizados || 1);
-    
-    // Serviços finalizados hoje
-    const today = new Date();
-    const todayString = today.toISOString().split('T')[0];
-    
-    const finalizadosHoje = await FimServico.count({
-      where: Sequelize.where(
-        Sequelize.fn('DATE', Sequelize.col('hora_finalizacao')),
-        todayString
-      ),
-    });
-    
-    return {
-      totalFinalizados,
-      valorTotal,
-      mediaValor,
-      finalizadosHoje
-    };
+
+
+  // Método para obter estatísticas de finalizações por cliente
+  async getClienteStatistics(clienteId = null) {
+    try {
+      if (clienteId) {
+        // Estatísticas para um cliente específico
+        const veiculosDoCliente = await VeiculoCliente.findAll({
+          where: { clienteId },
+          attributes: ['id']
+        });
+        
+        if (!veiculosDoCliente || veiculosDoCliente.length === 0) {
+          return {
+            clienteId,
+            nomeCliente: null,
+            quantidade: 0,
+            valorTotal: 0,
+            finalizacoes: []
+          };
+        }
+        
+        const veiculoIds = veiculosDoCliente.map(veiculo => veiculo.id);
+        
+        const servicos = await Servico.findAll({
+          where: {
+            veiculo_cliente_id: {
+              [Op.in]: veiculoIds
+            },
+            status: 'finalizado'
+          },
+          attributes: ['id']
+        });
+        
+        if (!servicos || servicos.length === 0) {
+          return {
+            clienteId,
+            nomeCliente: null,
+            quantidade: 0,
+            valorTotal: 0,
+            finalizacoes: []
+          };
+        }
+        
+        const servicoIds = servicos.map(servico => servico.id);
+        
+        const finalizacoes = await FimServico.findAll({
+          where: {
+            servico_id: {
+              [Op.in]: servicoIds
+            }
+          },
+          include: [
+            {
+              association: 'servico',
+              include: [
+                { association: 'tipoServico' },
+                { 
+                  association: 'veiculoCliente',
+                  include: [{ association: 'cliente' }]
+                }
+              ]
+            }
+          ],
+          order: [['hora_finalizacao', 'DESC']]
+        });
+        
+        const valorTotal = finalizacoes.reduce((total, fim) => total + (fim.valorTotal || 0), 0);
+        const nomeCliente = finalizacoes.length > 0 && finalizacoes[0].servico?.veiculoCliente?.cliente?.nome || null;
+        
+        return {
+          clienteId,
+          nomeCliente,
+          quantidade: finalizacoes.length,
+          valorTotal,
+          finalizacoes
+        };      } else {
+        // Estatísticas gerais de todos os serviços finalizados
+        const todasFinalizacoes = await FimServico.findAll({
+          include: [
+            {
+              association: 'servico',
+              include: [
+                { association: 'tipoServico' },
+                { 
+                  association: 'veiculoCliente',
+                  include: [{ association: 'cliente' }]
+                }
+              ]
+            }
+          ],
+          order: [['hora_finalizacao', 'DESC']]
+        });
+        
+        if (!todasFinalizacoes || todasFinalizacoes.length === 0) {
+          return {
+            quantidade: 0,
+            valorTotal: 0,
+            finalizacoes: []
+          };
+        }
+        
+        // Calcula a quantidade total e valor total de todos os serviços finalizados
+        const quantidade = todasFinalizacoes.length;
+        const valorTotal = todasFinalizacoes.reduce((total, fim) => total + (fim.valorTotal || 0), 0);
+        
+        return {
+          quantidade,
+          valorTotal,
+          finalizacoes: todasFinalizacoes
+        };
+      }
+    } catch (error) {
+      throw new Error(`Erro ao buscar estatísticas de clientes: ${error.message}`);
+    }
   }
 }
 

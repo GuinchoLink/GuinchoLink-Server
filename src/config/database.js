@@ -1,4 +1,7 @@
 import Sequelize from "sequelize";
+import { databaseConfig } from "./database-config.js";
+
+
 import { Cliente } from "../models/Cliente.js";
 import { Administrador } from "../models/Administrador.js";
 import { Funcionario } from "../models/Funcionario.js";
@@ -22,10 +25,13 @@ import { Feedback } from "../models/Feedback.js";
  * terá desconto de 10% automaticamente pelo FimServicoService.
  */
 
-const sequelize = new Sequelize({
-  dialect: "sqlite",
-  storage: "GuinchoLink.sqlite",
-});
+// const sequelize = new Sequelize({
+//   dialect: "sqlite",
+//   storage: "GuinchoLink.sqlite",
+// });
+
+const sequelize = new Sequelize(databaseConfig);
+
 
 // Inicialização dos modelos
 Cliente.init(sequelize);

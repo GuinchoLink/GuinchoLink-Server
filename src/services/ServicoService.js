@@ -153,10 +153,10 @@ class ServicoService {
     
     const servicos = await sequelize.query(
       "SELECT s.id, s.hora_solicitacao, s.descricao, s.status, s.localizacao, " +
-      "ts.nome as tiposServico, f.nome as funcionarios, vc.placa as veiculosClientes, " +
+      "ts.nome as tipos_servico, f.nome as funcionarios, vc.placa as veiculosClientes, " +
       "ve.placa as veiculo_empresa " +
       "FROM servicos s " +
-      "LEFT JOIN tiposServico ts ON s.tipo_servico_id = ts.id " +
+      "LEFT JOIN tipos_ervico ts ON s.tipo_servico_id = ts.id " +
       "LEFT JOIN funcionarios f ON s.funcionario_id = f.id " +
       "LEFT JOIN veiculosClientes vc ON s.veiculo_cliente_id = vc.id " +
       "LEFT JOIN veiculosDaEmpresa ve ON s.veiculo_empresa_id = ve.id " +
@@ -187,10 +187,10 @@ class ServicoService {
     
     const servicos = await sequelize.query(
       "SELECT s.id, s.hora_solicitacao, s.descricao, s.status, s.localizacao, " +
-      "ts.nome as tiposServico, f.nome as funcionarios, vc.placa as veiculosClientes, " +
+      "ts.nome as tipos_servico, f.nome as funcionarios, vc.placa as veiculosClientes, " +
       "ve.placa as veiculo_empresa, c.nome as cliente " +
       "FROM servicos s " +
-      "LEFT JOIN tiposServico ts ON s.tipo_servico_id = ts.id " +
+      "LEFT JOIN tipos_servico ts ON s.tipo_servico_id = ts.id " +
       "LEFT JOIN funcionarios f ON s.funcionario_id = f.id " +
       "LEFT JOIN veiculosClientes vc ON s.veiculo_cliente_id = vc.id " +
       "LEFT JOIN veiculosDaEmpresa ve ON s.veiculo_empresa_id = ve.id " +

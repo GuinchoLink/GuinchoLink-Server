@@ -33,7 +33,7 @@ class Empresa extends Model {
           is: {args: ["[0-9]{2} [0-9]{5}\-[0-9]{4}"], msg: "O telefone deve conter o seguinte formato xx xxxxx-xxxx" }
         }
       }
-    }, { sequelize, modelName: 'empresa', tableName: 'empresas' })
+    }, { sequelize, underscored: true, modelName: 'empresa', tableName: 'empresas' })
   }
 
   static associate(models) {

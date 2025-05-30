@@ -14,8 +14,8 @@ class TipoServicoController {
 
   async findAll(req, res) {
     try {
-      const tiposServico = await TipoServicoService.findAll();
-      return res.status(200).json(tiposServico);
+      const tipos_servico = await TipoServicoService.findAll();
+      return res.status(200).json(tipos_servico);
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }

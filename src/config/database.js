@@ -360,7 +360,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
   const fimServico1 = await FimServico.create({
     hora_finalizacao: "2025-05-01 11:30:00",
     descricao_fim: "Veículo rebocado com sucesso",
-    valorTotal: 100.0,
+    valor_total: 100.0,
     on_sale: false, // Sem desconto (primeiro serviço do mês)
     servico_id: servico1.id
   });
@@ -369,7 +369,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
   const fimServico2 = await FimServico.create({
     hora_finalizacao: "2025-05-05 13:30:00",
     descricao_fim: "Guincho realizado com sucesso",
-    valorTotal: 140.0,
+    valor_total: 140.0,
     on_sale: false, // Sem desconto (segundo serviço do mês)
     servico_id: servico2.id
   });
@@ -378,7 +378,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
   const fimServico3 = await FimServico.create({
     hora_finalizacao: "2025-05-10 10:45:00", 
     descricao_fim: "Pneu trocado com sucesso",
-    valorTotal: 80.0,
+    valor_total: 80.0,
     on_sale: false, // Sem desconto (terceiro serviço do mês)
     servico_id: servico3.id
   });
@@ -386,7 +386,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
   const fimServico4 = await FimServico.create({
     hora_finalizacao: "2025-06-10 10:45:00", 
     descricao_fim: "Bateria trocado com sucesso",
-    valorTotal: 170.0,
+    valor_total: 170.0,
     on_sale: false, // Sem desconto (terceiro serviço do mês)
     servico_id: servico6.id
   });

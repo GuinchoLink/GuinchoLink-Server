@@ -18,7 +18,7 @@ class FimServico extends Model {
           len: { args: [0, 255], msg: "Descrição do fim deve ter no máximo 255 caracteres!" }
         }
       },      
-      valorTotal: {
+      valor_total: {
         type: DataTypes.DOUBLE,
         allowNull: false,
         validate: {
@@ -33,6 +33,7 @@ class FimServico extends Model {
       }
     }, {
       sequelize,
+      underscored: true,
       modelName: 'fim_servico',
       tableName: 'fim_servicos'
     });

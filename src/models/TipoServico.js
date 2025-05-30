@@ -29,8 +29,9 @@ class TipoServico extends Model {
       }
     }, { 
       sequelize, 
-      modelName: 'tipoServico', 
-      tableName: 'tiposServico' 
+      underscored: true,
+      modelName: 'tipo_servico', 
+      tableName: 'tipos_servico' 
     });
   }
 

@@ -1775,7 +1775,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"descricao_fim\": \"Serviço realizado com sucesso\",\r\n        \"hora_finalizacao\": \"2025-05-03T16:30:00.000Z\",\r\n        \"valorTotal\": 600,\r\n        \"servico_id\": 5\r\n}\r\n// Ao fazer esse cadastro o status do veículo empresa será alterado para livre e o status do serviço para finalizado",
+							"raw": "{\r\n        \"descricao_fim\": \"Serviço realizado com sucesso\",\r\n        \"hora_finalizacao\": \"2025-05-03T16:30:00.000Z\",\r\n        \"valor_total\": 600,\r\n        \"servico_id\": 5\r\n}\r\n// Ao fazer esse cadastro o status do veículo empresa será alterado para livre e o status do serviço para finalizado",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1804,7 +1804,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"descricao_fim\": \"Serviço realizado com sucesso\",\r\n        \"hora_finalizacao\": \"2025-05-03T16:30:00.000Z\",\r\n        \"valorTotal\": 600,\r\n        \"servico_id\": 4\r\n}\r\n// Ao fazer o cadastro é aplicado um desconto de 10% para esse cliente, pois ele já tem 3 serviços finalizados nesse mês ",
+							"raw": "{\r\n        \"descricao_fim\": \"Serviço realizado com sucesso\",\r\n        \"hora_finalizacao\": \"2025-05-03T16:30:00.000Z\",\r\n        \"valor_total\": 600,\r\n        \"servico_id\": 4\r\n}\r\n// Ao fazer o cadastro é aplicado um desconto de 10% para esse cliente, pois ele já tem 3 serviços finalizados nesse mês ",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1833,7 +1833,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"descricao_fim\": \"\",\r\n        \"hora_finalizacao\": \"\",\r\n        \"valorTotal\": 0,\r\n        \"servico_id\": 10\r\n}",
+							"raw": "{\r\n        \"descricao_fim\": \"\",\r\n        \"hora_finalizacao\": \"\",\r\n        \"valor_total\": 0,\r\n        \"servico_id\": 10\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1861,7 +1861,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"descricao_fim\": \"Teste ERRO\",\r\n        \"hora_finalizacao\": \"2025-05-03T16:30:00.000Z\",\r\n        \"valorTotal\": 800,\r\n        \"servico_id\": 2\r\n}",
+							"raw": "{\r\n        \"descricao_fim\": \"Teste ERRO\",\r\n        \"hora_finalizacao\": \"2025-05-03T16:30:00.000Z\",\r\n        \"valor_total\": 800,\r\n        \"servico_id\": 2\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1918,7 +1918,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"descricao_fim\": \"sucesso\",\r\n        \"hora_finalizacao\": \"2025-05-03T16:30:00.000Z\",\r\n        \"valorTotal\": 600,\r\n        \"servico_id\": 5\r\n}",
+							"raw": "{\r\n        \"descricao_fim\": \"sucesso\",\r\n        \"hora_finalizacao\": \"2025-05-03T16:30:00.000Z\",\r\n        \"valor_total\": 600,\r\n        \"servico_id\": 5\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

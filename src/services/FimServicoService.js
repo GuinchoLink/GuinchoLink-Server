@@ -17,8 +17,8 @@ class FimServicoService {    // Método para criar um novo registro de finaliza�
       errors.push('A hora da finalização não pode estar vazia!');
     }
 
-    // Corrige a validação do valorTotal (que é um número/double, não uma string)
-    if (data.valorTotal === undefined || data.valorTotal === null || isNaN(data.valorTotal) || data.valorTotal <= 0) {
+    // Corrige a validação do valor_total (que é um número/double, não uma string)
+    if (data.valor_total === undefined || data.valor_total === null || isNaN(data.valor_total) || data.valor_total <= 0) {
       errors.push('O valor total deve ser um número positivo maior que zero!');
     }
       // Verifica se o serviço existe
@@ -101,7 +101,7 @@ class FimServicoService {    // Método para criar um novo registro de finaliza�
       // Se o cliente já tiver 3 ou mais serviços finalizados no mesmo mês (sem contar o atual)
       if (servicosFinalizadosNoMes.length >= 3) {
         // Aplica desconto de 10%
-        data.valorTotal = data.valorTotal * 0.9; // 90% do valor original
+        data.valor_total = data.valor_total * 0.9; // 90% do valor original
         data.on_sale = true; // Marca como em promoção
       } else {
         // Garante que o campo on_sale seja falso se não tiver direito ao desconto
@@ -260,7 +260,7 @@ class FimServicoService {    // Método para criar um novo registro de finaliza�
             clienteId,
             nomeCliente: null,
             quantidade: 0,
-            valorTotal: 0,
+            valor_total: 0,
             finalizacoes: []
           };
         }
@@ -282,7 +282,7 @@ class FimServicoService {    // Método para criar um novo registro de finaliza�
             clienteId,
             nomeCliente: null,
             quantidade: 0,
-            valorTotal: 0,
+            valor_total: 0,
             finalizacoes: []
           };
         }
@@ -310,14 +310,14 @@ class FimServicoService {    // Método para criar um novo registro de finaliza�
           order: [['hora_finalizacao', 'DESC']]
         });
         
-        const valorTotal = finalizacoes.reduce((total, fim) => total + (fim.valorTotal || 0), 0);
+        const valor_total = finalizacoes.reduce((total, fim) => total + (fim.valor_total || 0), 0);
         const nomeCliente = finalizacoes.length > 0 && finalizacoes[0].servico?.veiculoCliente?.cliente?.nome || null;
         
         return {
           clienteId,
           nomeCliente,
           quantidade: finalizacoes.length,
-          valorTotal,
+          valor_total,
           finalizacoes
         };      } else {
         // Estatísticas gerais de todos os serviços finalizados
@@ -340,18 +340,18 @@ class FimServicoService {    // Método para criar um novo registro de finaliza�
         if (!todasFinalizacoes || todasFinalizacoes.length === 0) {
           return {
             quantidade: 0,
-            valorTotal: 0,
+            valor_total: 0,
             finalizacoes: []
           };
         }
         
         // Calcula a quantidade total e valor total de todos os serviços finalizados
         const quantidade = todasFinalizacoes.length;
-        const valorTotal = todasFinalizacoes.reduce((total, fim) => total + (fim.valorTotal || 0), 0);
+        const valor_total = todasFinalizacoes.reduce((total, fim) => total + (fim.valor_total || 0), 0);
         
         return {
           quantidade,
-          valorTotal,
+          valor_total,
           finalizacoes: todasFinalizacoes
         };
       }

@@ -37,6 +37,7 @@ routes.put('/funcionario/:id', FuncionarioController.update);
 routes.delete('/funcionario/:id', FuncionarioController.delete);
 
 routes.get('/veiculoCliente', VeiculoClienteController.findAll);
+routes.get('/veiculoCliente/clienteId', VeiculoClienteController.findByClientId);
 routes.get('/veiculoCliente/:id', VeiculoClienteController.findByPk);
 routes.post('/veiculoCliente', VeiculoClienteController.create);
 routes.put('/veiculoCliente/:id', VeiculoClienteController.update);
@@ -79,6 +80,7 @@ routes.delete('/fim-servicos/:id', FimServicoController.delete);
 // Rotas para Feedback
 routes.post('/feedback', FeedbackController.create);
 routes.get('/feedback', FeedbackController.findAll);
+routes.get('/feedback/nota', FeedbackController.findByNota);
 routes.get('/feedback/:id', FeedbackController.findByPk);
 routes.put('/feedback/:id', FeedbackController.update);
 routes.delete('/feedback/:id', FeedbackController.delete);

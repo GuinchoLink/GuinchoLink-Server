@@ -139,48 +139,48 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     placa: "DDD9098",
     cor: "Preto",
     modelo: "CG 150",
-    tipoDeVeiculoServico: "moto",
-    statusVeiculo: "livre",
+    tipo_de_veiculo_servico: "moto",
+    status_veiculo: "livre",
   });
   
   const veiculoEmpresa2 = await VeiculoEmpresa.create({
     placa: "EEE9411",
     cor: "Azul",
     modelo: "F5000",
-    tipoDeVeiculoServico: "caminhaoPrancha",
-    statusVeiculo: "emUso",
+    tipo_de_veiculo_servico: "caminhaoPrancha",
+    status_veiculo: "emUso",
   });
   
   const veiculoEmpresa3 = await VeiculoEmpresa.create({
     placa: "KTR5693",
     cor: "Branco",
     modelo: "Strada",
-    tipoDeVeiculoServico: "pickup",
-    statusVeiculo: "emUso", // Um veículo em uso para demonstrar a regra de negócio
+    tipo_de_veiculo_servico: "pickup",
+    status_veiculo: "emUso", // Um veículo em uso para demonstrar a regra de negócio
   });
 
   const veiculoEmpresa4 = await VeiculoEmpresa.create({
     placa: "MQU0993",
     cor: "Branco",
     modelo: "Saveiro",
-    tipoDeVeiculoServico: "pickup",
-    statusVeiculo: "emUso", // Um veículo em uso para demonstrar a regra de negócio
+    tipo_de_veiculo_servico: "pickup",
+    status_veiculo: "emUso", // Um veículo em uso para demonstrar a regra de negócio
   });
 
   const veiculoEmpresa5 = await VeiculoEmpresa.create({
     placa: "KBT6N23",
     cor: "Preto",
     modelo: "Ford Raptor",
-    tipoDeVeiculoServico: "pickup",
-    statusVeiculo: "livre", // Um veículo em uso para demonstrar a regra de negócio
+    tipo_de_veiculo_servico: "pickup",
+    status_veiculo: "livre", // Um veículo em uso para demonstrar a regra de negócio
   });
 
   const veiculoEmpresa6 = await VeiculoEmpresa.create({
     placa: "ABC1N23",
     cor: "Azul",
     modelo: "Volkswagem Amarok",
-    tipoDeVeiculoServico: "pickup",
-    statusVeiculo: "livre", // Um veículo em uso para demonstrar a regra de negócio
+    tipo_de_veiculo_servico: "pickup",
+    status_veiculo: "livre", // Um veículo em uso para demonstrar a regra de negócio
   });
 
   // Inserção de 1 Empresa

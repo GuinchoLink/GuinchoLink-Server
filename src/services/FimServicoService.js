@@ -24,7 +24,7 @@ class FimServicoService {    // Método para criar um novo registro de finaliza�
       // Verifica se o serviço existe
     const servico = await Servico.findByPk(data.servico_id, {
       include: [
-        { association: 'veiculoEmpresa' }, // Inclui o veículo da empresa associado
+        { association: 'veiculo_empresa' }, // Inclui o veículo da empresa associado
         { 
           association: 'veiculoCliente',
           include: [
@@ -116,8 +116,8 @@ class FimServicoService {    // Método para criar um novo registro de finaliza�
     await servico.update({ status: 'finalizado' });
 
     // Verifica se existe um veículo da empresa associado e atualiza seu status para "livre"
-    if (servico.veiculoEmpresa) {
-      await servico.veiculoEmpresa.update({ statusVeiculo: 'livre' });
+    if (servico.veiculo_empresa) {
+      await servico.veiculo_empresa.update({ status_veiculo: 'livre' });
     }
 
     // Cria o registro de finalização de serviço
@@ -214,7 +214,7 @@ class FimServicoService {    // Método para criar um novo registro de finaliza�
                 association: 'veiculoCliente',
                 include: [{ association: 'cliente' }]
               },
-              { association: 'veiculoEmpresa' }
+              { association: 'veiculo_empresa' }
             ]
           }
         ],
@@ -299,7 +299,7 @@ class FimServicoService {    // Método para criar um novo registro de finaliza�
             {
               association: 'servico',
               include: [
-                { association: 'tipoServico' },
+                { association: 'tipo_servico' },
                 { 
                   association: 'veiculoCliente',
                   include: [{ association: 'cliente' }]
@@ -326,7 +326,7 @@ class FimServicoService {    // Método para criar um novo registro de finaliza�
             {
               association: 'servico',
               include: [
-                { association: 'tipoServico' },
+                { association: 'tipo_servico' },
                 { 
                   association: 'veiculoCliente',
                   include: [{ association: 'cliente' }]

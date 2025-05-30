@@ -47,7 +47,7 @@ class ServicoService {
 
 
       await VeiculoEmpresa.update(
-        { statusVeiculo: "emUso" },
+        { status_veiculo: "emUso" },
         {
           where: { id: data.veiculo_empresa_id },
           transaction,
@@ -99,7 +99,7 @@ class ServicoService {
 
     if (!veiculo_empresa) {
       errors.push("Veículo da Empresa não encontrado!");
-    } else if (veiculo_empresa.statusVeiculo !== "livre") {
+    } else if (veiculo_empresa.status_veiculo !== "livre") {
       errors.push("Veículo da Empresa não está livre para uso!");
     }
 

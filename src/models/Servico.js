@@ -45,10 +45,10 @@ class Servico extends Model {
     });
   }
   static associate(models) {
-    this.belongsTo(models.tipoServico, { foreignKey: 'tipo_servico_id', as: 'tipoServico' });
+    this.belongsTo(models.tipo_servico, { foreignKey: 'tipo_servico_id', as: 'tipo_servico' });
     this.belongsTo(models.funcionario, { foreignKey: 'funcionario_id', as: 'funcionario' }); // Associação com Funcionario
     this.belongsTo(models.veiculoCliente, { foreignKey: 'veiculo_cliente_id', as: 'veiculoCliente' }); // Associação com VeiculoCliente
-    this.belongsTo(models.veiculoEmpresa, { foreignKey: 'veiculo_empresa_id', as: 'veiculoEmpresa' }); // Associação com VeiculoEmpresa
+    this.belongsTo(models.veiculo_empresa, { foreignKey: 'veiculo_empresa_id', as: 'veiculo_empresa' }); // Associação com VeiculoEmpresa
     this.hasOne(models.fim_servico, { foreignKey: 'servico_id', as: 'fimServico' }); // Associação com FimServico
   }
 }

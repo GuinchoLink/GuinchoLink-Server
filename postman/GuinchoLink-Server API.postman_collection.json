@@ -1173,7 +1173,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"placa\": \"DDD1010\",\r\n    \"cor\": \"Preto\",\r\n    \"modelo\": \"CG 150\",\r\n    \"tipoDeVeiculoServico\": \"moto\",\r\n    \"statusVeiculo\": \"emUso\"\r\n    }",
+							"raw": "{\r\n    \"placa\": \"DDD1010\",\r\n    \"cor\": \"Preto\",\r\n    \"modelo\": \"CG 150\",\r\n    \"tipo_de_veiculo_servico\": \"moto\",\r\n    \"status_veiculo\": \"emUso\"\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1201,7 +1201,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"placa\": \"DDyyyyD1910\",\r\n    \"cor\": \"P\",\r\n    \"modelo\": \"C\",\r\n    \"tipoDeVeiculoServico\": \"erros\",\r\n    \"statusVeiculo\": \"erros\"\r\n    }",
+							"raw": "{\r\n    \"placa\": \"DDyyyyD1910\",\r\n    \"cor\": \"P\",\r\n    \"modelo\": \"C\",\r\n    \"tipo_de_veiculo_servico\": \"erros\",\r\n    \"status_veiculo\": \"erros\"\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1229,7 +1229,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"placa\": \"DDD1010\",\r\n    \"cor\": \"Preto\",\r\n    \"modelo\": \"CG 150\",\r\n    \"tipoDeVeiculoServico\": \"moto\",\r\n    \"statusVeiculo\": \"emUso\"\r\n    }",
+							"raw": "{\r\n    \"placa\": \"DDD1010\",\r\n    \"cor\": \"Preto\",\r\n    \"modelo\": \"CG 150\",\r\n    \"tipo_de_veiculo_servico\": \"moto\",\r\n    \"status_veiculo\": \"emUso\"\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1257,7 +1257,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"placa\": \"DDD9598\",\r\n    \"cor\": \"Preto\",\r\n    \"modelo\": \"CG 150\",\r\n    \"tipoDeVeiculoServico\": \"moto\",\r\n    \"statusVeiculo\": \"livre\"\r\n}",
+							"raw": "{\r\n    \"placa\": \"DDD9598\",\r\n    \"cor\": \"Preto\",\r\n    \"modelo\": \"CG 150\",\r\n    \"tipo_de_veiculo_servico\": \"moto\",\r\n    \"status_veiculo\": \"livre\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

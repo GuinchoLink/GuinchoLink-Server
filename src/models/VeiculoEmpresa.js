@@ -26,7 +26,7 @@ class VeiculoEmpresa extends Model {
           len: {args: [2, 20], msg: "O modelo deve ter entre 2 e 20 caracteres!" },
         }
       },
-      tipoDeVeiculoServico: { 
+      tipo_de_veiculo_servico: { 
         type: DataTypes.ENUM ("moto", "pickup", "caminhaoPrancha","carro", "caminhaoLanca"), 
         validate: {
             isIn:{
@@ -35,7 +35,7 @@ class VeiculoEmpresa extends Model {
             }
         }
       },
-      statusVeiculo: { 
+      status_veiculo: { 
         type: DataTypes.ENUM ("livre", "emUso", "manutencao"), 
         validate: {
             isIn:{
@@ -44,7 +44,7 @@ class VeiculoEmpresa extends Model {
             }
         }
       }
-    }, { sequelize, modelName: 'veiculoEmpresa', tableName: 'veiculosDaEmpresa' })
+    }, { sequelize, underscored: true, modelName: 'veiculo_empresa', tableName: 'veiculos_da_empresa' })
   }
 
   static associate(models) {

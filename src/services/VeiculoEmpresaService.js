@@ -18,19 +18,19 @@ class VeiculoEmpresaService {
 
   static async create(req, res) {
 
-    const { placa, cor, modelo, tipoDeVeiculoServico, statusVeiculo } = req.body;
+    const { placa, cor, modelo, tipo_de_veiculo_servico, status_veiculo } = req.body;
     // Regra de negócio: não podem existir dois veículos com a mesma placa
     const objByCpf = await VeiculoEmpresa.findAll({where : {placa: placa}});
     if (objByCpf.length == 1){
       throw new Error ("Já existe um VeiculoEmpresa com esta placa!");
     }
-    const obj = await VeiculoEmpresa.create({ placa, cor, modelo, tipoDeVeiculoServico, statusVeiculo });
+    const obj = await VeiculoEmpresa.create({ placa, cor, modelo, tipo_de_veiculo_servico, status_veiculo });
     return obj;
   }
 
   static async update(req, res) {
     const { id } = req.params;
-    const { placa, cor, modelo, tipoDeVeiculoServico, statusVeiculo } = req.body;
+    const { placa, cor, modelo, tipo_de_veiculo_servico, status_veiculo } = req.body;
     var obj = await VeiculoEmpresa.findOne({ where: { id: id } });
      // Regra de negócio: não podem existir dois veículos com a mesma placa
      const objByCpf = await VeiculoEmpresa.findAll({where : {placa: placa}});
@@ -38,7 +38,7 @@ class VeiculoEmpresaService {
        throw new Error ("Já existe um VeiculoEmpresa com esta placa!");
      }
 
-    Object.assign(obj, { placa, cor, modelo, tipoDeVeiculoServico, statusVeiculo });
+    Object.assign(obj, { placa, cor, modelo, tipo_de_veiculo_servico, status_veiculo });
 
     obj = await obj.save();
     return obj;
@@ -67,7 +67,7 @@ class VeiculoEmpresaService {
     
     let whereClause = {};
     if (status && status.trim() !== '') {
-      whereClause = { statusVeiculo: status };
+      whereClause = { status_veiculo: status };
     }
 
     const veiculos = await VeiculoEmpresa.findAll({

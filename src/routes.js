@@ -58,6 +58,8 @@ routes.delete('/tipos-servico/:id', TipoServicoController.delete);
 // Rotas para Servico
 routes.post('/servicos', ServicoController.create);
 routes.get('/servicos', ServicoController.findAll);
+routes.get('/servicos/cliente/:clienteId', ServicoController.findByCliente); // Rota específica deve vir antes da genérica
+routes.get('/servicos/status/:status', ServicoController.findByStatus); // Nova rota para filtrar por status
 routes.get('/servicos/:id', ServicoController.findById);
 routes.put('/servicos/:id', ServicoController.update);
 routes.delete('/servicos/:id', ServicoController.delete);

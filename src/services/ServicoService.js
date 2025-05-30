@@ -4,8 +4,8 @@ import { Funcionario } from "../models/Funcionario.js";
 import { TipoServico } from "../models/TipoServico.js";
 import { VeiculoCliente } from "../models/VeiculoCliente.js";
 import { VeiculoEmpresa } from "../models/VeiculoEmpresa.js";
-import { Op, Sequelize } from "sequelize";
-import sequelize from "../config/database.js"; // Ajuste o caminho conforme a estrutura do seu projeto
+import { Op, Sequelize, QueryTypes } from "sequelize";
+import sequelize from "../config/database.js"; // Importação do banco de dados
 
 class ServicoService {
   async create(data) {
@@ -138,10 +138,72 @@ class ServicoService {
     const servico = await this.findById(id);
     return await servico.update(data);
   }
-
   async delete(id) {
     const servico = await this.findById(id);
     return await servico.destroy();
+  }
+
+  /**
+   * Método para gerar relatório de serviços por cliente específico
+   * @param {Object} req - Objeto de requisição contendo o ID do cliente
+   * @returns {Array} Lista de serviços do cliente
+   */
+  async findByCliente(req) {
+    const { clienteId } = req.params;
+    
+    const servicos = await sequelize.query(
+      "SELECT s.id, s.hora_solicitacao, s.descricao, s.status, s.localizacao, " +
+      "ts.nome as tiposServico, f.nome as funcionarios, vc.placa as veiculosClientes, " +
+      "ve.placa as veiculo_empresa " +
+      "FROM servicos s " +
+      "LEFT JOIN tiposServico ts ON s.tipo_servico_id = ts.id " +
+      "LEFT JOIN funcionarios f ON s.funcionario_id = f.id " +
+      "LEFT JOIN veiculosClientes vc ON s.veiculo_cliente_id = vc.id " +
+      "LEFT JOIN veiculosDaEmpresa ve ON s.veiculo_empresa_id = ve.id " +
+      "WHERE s.clienteId = :clienteId " +
+      "ORDER BY s.hora_solicitacao DESC",
+      { 
+        replacements: { clienteId },
+        type: QueryTypes.SELECT 
+      }
+    );
+    
+    return servicos;
+  }
+
+  /**
+   * Método para gerar relatório de serviços por status específico
+   * @param {Object} req - Objeto de requisição contendo o status
+   * @returns {Array} Lista de serviços com o status especificado
+   */
+  async findByStatus(req) {
+    const { status } = req.params;
+    
+    // Validar se o status é válido
+    const statusValidos = ['andamento', 'pendente', 'finalizado', 'cancelado'];
+    if (!statusValidos.includes(status)) {
+      throw new Error(`Status inválido. Status deve ser um dos seguintes: ${statusValidos.join(', ')}`);
+    }
+    
+    const servicos = await sequelize.query(
+      "SELECT s.id, s.hora_solicitacao, s.descricao, s.status, s.localizacao, " +
+      "ts.nome as tiposServico, f.nome as funcionarios, vc.placa as veiculosClientes, " +
+      "ve.placa as veiculo_empresa, c.nome as cliente " +
+      "FROM servicos s " +
+      "LEFT JOIN tiposServico ts ON s.tipo_servico_id = ts.id " +
+      "LEFT JOIN funcionarios f ON s.funcionario_id = f.id " +
+      "LEFT JOIN veiculosClientes vc ON s.veiculo_cliente_id = vc.id " +
+      "LEFT JOIN veiculosDaEmpresa ve ON s.veiculo_empresa_id = ve.id " +
+      "LEFT JOIN clientes c ON s.clienteId = c.id " +
+      "WHERE s.status = :status " +
+      "ORDER BY s.hora_solicitacao DESC",
+      { 
+        replacements: { status },
+        type: QueryTypes.SELECT 
+      }
+    );
+    
+    return servicos;
   }
 }
 

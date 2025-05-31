@@ -785,6 +785,52 @@
 					"response": []
 				},
 				{
+					"name": "List Veic by ClientId Especifico",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/veiculoCliente/clienteId?clienteId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"veiculoCliente",
+								"clienteId"
+							],
+							"query": [
+								{
+									"key": "clienteId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Veic by ClientId Todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/veiculoCliente/clienteId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"veiculoCliente",
+								"clienteId"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Create Veiculo Cliente",
 					"request": {
 						"method": "POST",
@@ -928,6 +974,52 @@
 							"path": [
 								"feedback",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Feedback by Nota Especifica",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/feedback/nota?nota=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"feedback",
+								"nota"
+							],
+							"query": [
+								{
+									"key": "nota",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Feedback by Nota Todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/feedback/nota",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"feedback",
+								"nota"
 							]
 						}
 					},
@@ -1298,6 +1390,52 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Listagem Veiculo Empresa status especifico",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/veiculoEmpresa/status?status=livre",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"veiculoEmpresa",
+								"status"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "livre"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listagem Veiculo Empresa status todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/veiculoEmpresa/status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"veiculoEmpresa",
+								"status"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1657,6 +1795,60 @@
 					"response": []
 				},
 				{
+					"name": "Relatorio Servicos Cliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/servicos/cliente/:clienteId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"servicos",
+								"cliente",
+								":clienteId"
+							],
+							"variable": [
+								{
+									"key": "clienteId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Relatorio Servicos status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/servicos/status/:status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"servicos",
+								"status",
+								":status"
+							],
+							"variable": [
+								{
+									"key": "status",
+									"value": "finalizado"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Delete Serviço",
 					"request": {
 						"method": "DELETE",
@@ -1935,6 +2127,71 @@
 							"path": [
 								"fim-servicos",
 								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listagem Fim Statistics Todos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/fim-servicos/cliente-statistics",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"fim-servicos",
+								"cliente-statistics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listagem Fim Statistics Especificos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/fim-servicos/cliente-statistics/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"fim-servicos",
+								"cliente-statistics",
+								"1"
 							]
 						}
 					},

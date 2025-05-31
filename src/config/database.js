@@ -134,6 +134,14 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     clienteId: cliente4.id,
   });
 
+  const veiculoCliente5 = await VeiculoCliente.create({
+    placa: "BAS3D03",
+    cor: "Verde",
+    modelo: "Camaro",
+    tipoDeVeiculo: "carro",
+    clienteId: cliente1.id,
+  });
+  
   // Inserção de 3 Veículos da Empresa (2 livres, 1 em uso)
   const veiculoEmpresa1 = await VeiculoEmpresa.create({
     placa: "DDD9098",

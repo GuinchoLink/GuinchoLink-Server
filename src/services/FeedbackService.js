@@ -69,6 +69,27 @@ class FeedbackService {
     return obj;
   }
 
+  static async findByNota(req, res) {
+    const { nota } = req.query;
+
+    let whereClause = {};
+    if (nota && nota.trim() !== '') {
+      whereClause = { nota: nota };
+    }
+
+    const feedbackNota = await Feedback.findAll({
+      where: whereClause
+    });
+
+    const quantidade = feedbackNota.length;
+
+    return {
+      feedbackNota,
+      quantidade,
+      nota: nota || 'Todas as notas'
+    };
+  }
+
 }
 
 export { FeedbackService };

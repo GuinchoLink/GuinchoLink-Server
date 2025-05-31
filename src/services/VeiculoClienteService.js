@@ -45,6 +45,27 @@ class VeiculoClienteService {
     return obj;
   }
 
+  static async findByClientId(req, res) {
+    const { clienteId } = req.query;
+
+    let whereClause = {};
+    if (clienteId && clienteId.trim() !== '') {
+      whereClause = { clienteId: clienteId };
+    }
+
+    const veiculosCliente = await VeiculoCliente.findAll({
+      where: whereClause
+    });
+
+    const quantidade = veiculosCliente.length;
+
+    return {
+      veiculosCliente,
+      quantidade,
+      clienteId: clienteId || "Todos os clientes"
+    };
+  }
+
 }
 
 export { VeiculoClienteService };

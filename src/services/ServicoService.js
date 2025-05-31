@@ -153,14 +153,14 @@ class ServicoService {
     
     const servicos = await sequelize.query(
       "SELECT s.id, s.hora_solicitacao, s.descricao, s.status, s.localizacao, " +
-      "ts.nome as tipos_servico, f.nome as funcionarios, vc.placa as veiculosClientes, " +
+      "ts.nome as tipos_servico, f.nome as funcionarios, vc.placa as veiculos_clientes, " +
       "ve.placa as veiculo_empresa " +
       "FROM servicos s " +
-      "LEFT JOIN tipos_ervico ts ON s.tipo_servico_id = ts.id " +
+      "LEFT JOIN tipos_servico ts ON s.tipo_servico_id = ts.id " +
       "LEFT JOIN funcionarios f ON s.funcionario_id = f.id " +
-      "LEFT JOIN veiculosClientes vc ON s.veiculo_cliente_id = vc.id " +
-      "LEFT JOIN veiculosDaEmpresa ve ON s.veiculo_empresa_id = ve.id " +
-      "WHERE s.clienteId = :clienteId " +
+      "LEFT JOIN veiculos_clientes vc ON s.veiculo_cliente_id = vc.id " +
+      "LEFT JOIN veiculos_da_empresa ve ON s.veiculo_empresa_id = ve.id " +
+      "WHERE s.cliente_id = :clienteId " +
       "ORDER BY s.hora_solicitacao DESC",
       { 
         replacements: { clienteId },
@@ -187,14 +187,14 @@ class ServicoService {
     
     const servicos = await sequelize.query(
       "SELECT s.id, s.hora_solicitacao, s.descricao, s.status, s.localizacao, " +
-      "ts.nome as tipos_servico, f.nome as funcionarios, vc.placa as veiculosClientes, " +
+      "ts.nome as tipos_servico, f.nome as funcionarios, vc.placa as veiculos_clientes, " +
       "ve.placa as veiculo_empresa, c.nome as cliente " +
       "FROM servicos s " +
       "LEFT JOIN tipos_servico ts ON s.tipo_servico_id = ts.id " +
       "LEFT JOIN funcionarios f ON s.funcionario_id = f.id " +
-      "LEFT JOIN veiculosClientes vc ON s.veiculo_cliente_id = vc.id " +
-      "LEFT JOIN veiculosDaEmpresa ve ON s.veiculo_empresa_id = ve.id " +
-      "LEFT JOIN clientes c ON s.clienteId = c.id " +
+      "LEFT JOIN veiculos_clientes vc ON s.veiculo_cliente_id = vc.id " +
+      "LEFT JOIN veiculos_da_empresa ve ON s.veiculo_empresa_id = ve.id " +
+      "LEFT JOIN clientes c ON s.cliente_id = c.id " +
       "WHERE s.status = :status " +
       "ORDER BY s.hora_solicitacao DESC",
       { 

@@ -35,7 +35,7 @@ class VeiculoCliente extends Model {
             }
         }
       },
-    }, { sequelize, underscored: true, modelName: 'veiculoCliente', tableName: 'veiculosClientes' })
+    }, { sequelize, underscored: true, modelName: 'veiculoCliente', tableName: 'veiculos_clientes' })
   }
 
   static associate(models) {

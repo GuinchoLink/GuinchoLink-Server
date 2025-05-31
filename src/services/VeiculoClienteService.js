@@ -16,14 +16,14 @@ class VeiculoClienteService {
   }
 
   static async create(req, res) {
-    const { placa, cor, modelo, tipoDeVeiculo } = req.body;
+    const { placa, cor, modelo, tipoDeVeiculo, cliente_id } = req.body;
 
     const objByPlaca = await VeiculoCliente.findAll({ where: { placa: placa } });
     if(objByPlaca.length == 1){
       throw new Error("Já existe um veículo cadastrado com esta placa");
     }
 
-    const obj = await VeiculoCliente.create({ placa, cor, modelo, tipoDeVeiculo });
+    const obj = await VeiculoCliente.create({ placa, cor, modelo, tipoDeVeiculo, cliente_id });
     return obj;
   }
 
@@ -46,11 +46,11 @@ class VeiculoClienteService {
   }
 
   static async findByClientId(req, res) {
-    const { clienteId } = req.query;
+    const { cliente_id } = req.query;
 
     let whereClause = {};
-    if (clienteId && clienteId.trim() !== '') {
-      whereClause = { clienteId: clienteId };
+    if (cliente_id && cliente_id.trim() !== '') {
+      whereClause = { cliente_id: cliente_id };
     }
 
     const veiculosCliente = await VeiculoCliente.findAll({
@@ -62,7 +62,7 @@ class VeiculoClienteService {
     return {
       veiculosCliente,
       quantidade,
-      clienteId: clienteId || "Todos os clientes"
+      cliente_id: cliente_id || "Todos os clientes"
     };
   }
 

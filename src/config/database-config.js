@@ -15,7 +15,7 @@ export const databaseConfig = {
   dialect: 'postgres',
   host: 'localhost',
   username: 'postgres',
-  password: '3274',
+  password: 'bd',
   database: 'guincho-link',
   define: {
     timestamps: true,

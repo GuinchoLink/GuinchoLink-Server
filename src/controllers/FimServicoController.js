@@ -39,7 +39,7 @@ class FimServicoController {
   
   async findByClienteId(req, res) {
     try {
-      const finalizacoes = await FimServicoService.findByClienteId(req.params.clienteId);
+      const finalizacoes = await FimServicoService.findByClienteId(req.params.cliente_id);
       return res.status(200).json(finalizacoes);
     } catch (error) {
       return res.status(404).json({ error: error.message });
@@ -67,8 +67,8 @@ class FimServicoController {
 
   async getClienteStatistics(req, res) {
     try {
-      const clienteId = req.params.clienteId || null;
-      const statistics = await FimServicoService.getClienteStatistics(clienteId);
+      const cliente_id = req.params.cliente_id || null;
+      const statistics = await FimServicoService.getClienteStatistics(cliente_id);
       return res.status(200).json(statistics);
     } catch (error) {
       return res.status(500).json({ error: error.message });

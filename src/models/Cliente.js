@@ -39,15 +39,16 @@ class Cliente extends Model {
           len: {args: [2,50], msg: "O endereco deve conter de 2 ate 50 caracteres" }
         }
       }
-    }, { sequelize, modelName: 'cliente', tableName: 'clientes' });
+    }, { 
+      sequelize, 
+      modelName: 'cliente', 
+      tableName: 'clientes' 
+    });
   }
 
   static associate(models) {
-    // Associação 1:N com VeiculoCliente
-    this.hasMany(models.veiculoCliente, { foreignKey: 'clienteId', as: 'veiculos' });
-
-    // Associação 1:N com Servico
-    this.hasMany(models.servico, { foreignKey: 'clienteId', as: 'servicos' });
+    this.hasMany(models.veiculo_cliente, { foreignKey: 'cliente_id', as: 'veiculos' });
+    this.hasMany(models.servico, { foreignKey: 'cliente_id', as: 'servicos' });
   }
 }
 

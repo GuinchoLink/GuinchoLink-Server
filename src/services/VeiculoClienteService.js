@@ -5,7 +5,14 @@ import { VeiculoCliente } from "../models/VeiculoCliente.js";
 class VeiculoClienteService {
   
   static async findAll(req, res) {
-    const objs = await VeiculoCliente.findAll();
+    const objs = await VeiculoCliente.findAll({
+      include: [
+        {
+          association: "cliente",
+          attributes: ["nome"]
+        }
+      ]
+  });
     return objs;
   }
 
@@ -16,14 +23,14 @@ class VeiculoClienteService {
   }
 
   static async create(req, res) {
-    const { placa, cor, modelo, tipoDeVeiculo } = req.body;
+    const { placa, cor, modelo, tipoDeVeiculo, cliente_id } = req.body;
 
     const objByPlaca = await VeiculoCliente.findAll({ where: { placa: placa } });
     if(objByPlaca.length == 1){
       throw new Error("Já existe um veículo cadastrado com esta placa");
     }
 
-    const obj = await VeiculoCliente.create({ placa, cor, modelo, tipoDeVeiculo });
+    const obj = await VeiculoCliente.create({ placa, cor, modelo, tipoDeVeiculo, cliente_id });
     return obj;
   }
 
@@ -43,6 +50,27 @@ class VeiculoClienteService {
     
     obj = await obj.destroy();
     return obj;
+  }
+
+  static async findByClientId(req, res) {
+    const { cliente_id } = req.query;
+
+    let whereClause = {};
+    if (cliente_id && cliente_id.trim() !== '') {
+      whereClause = { cliente_id: cliente_id };
+    }
+
+    const veiculosCliente = await VeiculoCliente.findAll({
+      where: whereClause
+    });
+
+    const quantidade = veiculosCliente.length;
+
+    return {
+      veiculosCliente,
+      quantidade,
+      cliente_id: cliente_id || "Todos os clientes"
+    };
   }
 
 }

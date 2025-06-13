@@ -35,11 +35,16 @@ class VeiculoCliente extends Model {
             }
         }
       },
-    }, { sequelize, underscored: true, modelName: 'veiculoCliente', tableName: 'veiculos_clientes' })
+    }, { 
+      sequelize, 
+      underscored: true, 
+      modelName: 'veiculo_cliente', 
+      tableName: 'veiculos_clientes' 
+    })
   }
 
   static associate(models) {
-    this.belongsTo(models.cliente, { foreignKey: 'clienteId', as: 'cliente' });
+    this.belongsTo(models.cliente, { foreignKey: 'cliente_id', as: 'cliente' });
   }
   
 }

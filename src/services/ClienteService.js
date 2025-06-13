@@ -43,7 +43,7 @@ class ClienteService {
     const { id } = req.params;
     var obj = await Cliente.findByPk(id);
     if (!obj) throw new Error ('Cliente não encontrado!');
-    const veiculoAssociado = await VeiculoCliente.findOne({ where: { clienteId: id } });
+    const veiculoAssociado = await VeiculoCliente.findOne({ where: { cliente_id: id } });
     if (veiculoAssociado) throw new Error ('Não é possível excluir o cliente, pois ele possui veículos associados!');
     obj = await obj.destroy();
     return obj;

@@ -42,6 +42,7 @@ class FimServico extends Model {
   static associate(models) {
     // Change this line to use the correct model name as defined in the Servico.js file
     this.belongsTo(models.servico, { foreignKey: 'servico_id', as: 'servico' });
+    this.hasOne(models.feedback, { foreignKey: 'fim_servico_id', as: 'feedback' }); // Associação com FimServico
   }
 }
 

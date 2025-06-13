@@ -37,6 +37,7 @@ routes.put('/funcionario/:id', FuncionarioController.update);
 routes.delete('/funcionario/:id', FuncionarioController.delete);
 
 routes.get('/veiculoCliente', VeiculoClienteController.findAll);
+routes.get('/veiculoCliente/cliente_id', VeiculoClienteController.findByClientId);
 routes.get('/veiculoCliente/:id', VeiculoClienteController.findByPk);
 routes.post('/veiculoCliente', VeiculoClienteController.create);
 routes.put('/veiculoCliente/:id', VeiculoClienteController.update);
@@ -59,7 +60,7 @@ routes.delete('/tipos-servico/:id', TipoServicoController.delete);
 // Rotas para Servico
 routes.post('/servicos', ServicoController.create);
 routes.get('/servicos', ServicoController.findAll);
-routes.get('/servicos/cliente/:clienteId', ServicoController.findByCliente); // Rota específica deve vir antes da genérica
+routes.get('/servicos/cliente/:cliente_id', ServicoController.findByCliente); // Rota específica deve vir antes da genérica
 routes.get('/servicos/status/:status', ServicoController.findByStatus); // Nova rota para filtrar por status
 routes.get('/servicos/:id', ServicoController.findById);
 routes.put('/servicos/:id', ServicoController.update);
@@ -68,10 +69,10 @@ routes.delete('/servicos/:id', ServicoController.delete);
 // Rotas para FimServico
 routes.post('/fim-servicos', FimServicoController.create);
 routes.get('/fim-servicos', FimServicoController.findAll);
-routes.get('/fim-servicos/cliente-statistics/:clienteId', FimServicoController.getClienteStatistics);
+routes.get('/fim-servicos/cliente-statistics/:cliente_id', FimServicoController.getClienteStatistics);
 routes.get('/fim-servicos/cliente-statistics', FimServicoController.getClienteStatistics);
 routes.get('/fim-servicos/servico/:servicoId', FimServicoController.findByServicoId);
-routes.get('/fim-servicos/cliente/:clienteId', FimServicoController.findByClienteId);
+routes.get('/fim-servicos/cliente/:cliente_id', FimServicoController.findByClienteId);
 routes.get('/fim-servicos/:id', FimServicoController.findById);
 routes.put('/fim-servicos/:id', FimServicoController.update);
 routes.delete('/fim-servicos/:id', FimServicoController.delete);
@@ -79,6 +80,7 @@ routes.delete('/fim-servicos/:id', FimServicoController.delete);
 // Rotas para Feedback
 routes.post('/feedback', FeedbackController.create);
 routes.get('/feedback', FeedbackController.findAll);
+routes.get('/feedback/nota', FeedbackController.findByNota);
 routes.get('/feedback/:id', FeedbackController.findByPk);
 routes.put('/feedback/:id', FeedbackController.update);
 routes.delete('/feedback/:id', FeedbackController.delete);

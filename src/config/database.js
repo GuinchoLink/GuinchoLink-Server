@@ -101,13 +101,13 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     telefone: "28 99999-7777",
     endereco: "Praça Gonzaga, 45",
   });
-  // Inserção de 3 Veículos de Cliente (com clienteId obrigatório)
+  // Inserção de 3 Veículos de Cliente (com cliente obrigatório)
   const veiculoCliente1 = await VeiculoCliente.create({
     placa: "ABC1156",
     cor: "Azul",
     modelo: "Fusca",
     tipoDeVeiculo: "carro",
-    clienteId: cliente1.id,
+    cliente_id: cliente1.id,
   });
   
   const veiculoCliente2 = await VeiculoCliente.create({
@@ -115,7 +115,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     cor: "Vermelho",
     modelo: "Gol",
     tipoDeVeiculo: "carro",
-    clienteId: cliente2.id,
+    cliente_id: cliente2.id,
   });
   
   const veiculoCliente3 = await VeiculoCliente.create({
@@ -123,7 +123,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     cor: "Verde",
     modelo: "F4000",
     tipoDeVeiculo: "caminhao",
-    clienteId: cliente3.id,
+    cliente_id: cliente3.id,
   });
 
   const veiculoCliente4 = await VeiculoCliente.create({
@@ -131,9 +131,17 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     cor: "Verde",
     modelo: "Gol",
     tipoDeVeiculo: "carro",
-    clienteId: cliente4.id,
+    cliente_id: cliente4.id,
   });
 
+  const veiculoCliente5 = await VeiculoCliente.create({
+    placa: "BAS3D03",
+    cor: "Verde",
+    modelo: "Camaro",
+    tipoDeVeiculo: "carro",
+    cliente_id: cliente1.id,
+  });
+  
   // Inserção de 3 Veículos da Empresa (2 livres, 1 em uso)
   const veiculoEmpresa1 = await VeiculoEmpresa.create({
     placa: "DDD9098",
@@ -275,7 +283,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     funcionario_id: funcionario1.id,
     veiculo_cliente_id: veiculoCliente1.id,
     veiculo_empresa_id: veiculoEmpresa1.id,
-    clienteId: cliente1.id
+    cliente_id: cliente1.id
   });
 
   const servico2 = await Servico.create({
@@ -287,7 +295,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     funcionario_id: funcionario2.id,
     veiculo_cliente_id: veiculoCliente1.id,
     veiculo_empresa_id: veiculoEmpresa2.id,
-    clienteId: cliente1.id
+    cliente_id: cliente1.id
   });
 
   const servico3 = await Servico.create({
@@ -299,7 +307,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     funcionario_id: funcionario3.id,
     veiculo_cliente_id: veiculoCliente1.id,
     veiculo_empresa_id: veiculoEmpresa1.id,
-    clienteId: cliente1.id
+    cliente_id: cliente1.id
   });
 
  
@@ -312,7 +320,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     funcionario_id: funcionario1.id,
     veiculo_cliente_id: veiculoCliente1.id,
     veiculo_empresa_id: veiculoEmpresa2.id,
-    clienteId: cliente1.id
+    cliente_id: cliente1.id
   });
 
   const servico5 = await Servico.create({
@@ -324,7 +332,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     funcionario_id: funcionario3.id,
     veiculo_cliente_id: veiculoCliente3.id,
     veiculo_empresa_id: veiculoEmpresa3.id,
-    clienteId: cliente3.id
+    cliente_id: cliente3.id
   });
 
   const servico6 = await Servico.create({
@@ -336,7 +344,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     funcionario_id: funcionario3.id,
     veiculo_cliente_id: veiculoCliente4.id,
     veiculo_empresa_id: veiculoEmpresa4.id,
-    clienteId: cliente4.id
+    cliente_id: cliente4.id
   });
 
   const servico7 = await Servico.create({
@@ -348,7 +356,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     funcionario_id: funcionario3.id,
     veiculo_cliente_id: veiculoCliente2.id,
     veiculo_empresa_id: veiculoEmpresa3.id,
-    clienteId: cliente3.id
+    cliente_id: cliente3.id
   });
 
   const servico8 = await Servico.create({
@@ -360,7 +368,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     funcionario_id: funcionario3.id,
     veiculo_cliente_id: veiculoCliente3.id,
     veiculo_empresa_id: veiculoEmpresa3.id,
-    clienteId: cliente3.id
+    cliente_id: cliente3.id
   });
   // FimServico para serviço1 - sem desconto (primeiro serviço)
   const fimServico1 = await FimServico.create({

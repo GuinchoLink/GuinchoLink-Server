@@ -61,7 +61,7 @@ class ServicoService {
   }
 
   async verifications(data, transaction) {
-    const cliente = await Cliente.findByPk(data.clienteId, { transaction });
+    const cliente = await Cliente.findByPk(data.cliente_id, { transaction });
     const funcionario = await Funcionario.findByPk(data.funcionario_id, {
       transaction,
     });
@@ -152,8 +152,43 @@ class ServicoService {
     return await servico.update(data);
   }
   async delete(id) {
-    const servico = await this.findById(id);
-    return await servico.destroy();
+    const transaction = await sequelize.transaction();
+    
+    try {
+      // Busca o serviço a ser deletado com todas as informações
+      const servico = await Servico.findByPk(id, { transaction });
+      
+      if (!servico) {
+        throw new Error("Serviço não encontrado!");
+      }
+      
+      // Verifica se o serviço tem um veículo da empresa associado
+      if (servico.veiculo_empresa_id) {
+        // Atualiza o status do veículo da empresa para "livre"
+        const [updatedRows] = await VeiculoEmpresa.update(
+          { status_veiculo: "livre" },
+          {
+            where: { id: servico.veiculo_empresa_id },
+            transaction,
+          }
+        );
+        
+        console.log(`Veículo ${servico.veiculo_empresa_id} atualizado. Linhas afetadas: ${updatedRows}`);
+      }
+      
+      // Remove o serviço
+      const result = await servico.destroy({ transaction });
+      
+      // Confirma a transação
+      await transaction.commit();
+      
+      return result;
+    } catch (error) {
+      // Desfaz a transação em caso de erro
+      await transaction.rollback();
+      console.error("Erro ao deletar serviço:", error);
+      throw error;
+    }
   }
 
   /**
@@ -162,22 +197,22 @@ class ServicoService {
    * @returns {Array} Lista de serviços do cliente
    */
   async findByCliente(req) {
-    const { clienteId } = req.params;
-
+    const { cliente_id } = req.params;
+    
     const servicos = await sequelize.query(
       "SELECT s.id, s.hora_solicitacao, s.descricao, s.status, s.localizacao, " +
-        "ts.nome as tipos_servico, f.nome as funcionarios, vc.placa as veiculos_clientes, " +
-        "ve.placa as veiculo_empresa " +
-        "FROM servicos s " +
-        "LEFT JOIN tipos_servico ts ON s.tipo_servico_id = ts.id " +
-        "LEFT JOIN funcionarios f ON s.funcionario_id = f.id " +
-        "LEFT JOIN veiculos_clientes vc ON s.veiculo_cliente_id = vc.id " +
-        "LEFT JOIN veiculos_da_empresa ve ON s.veiculo_empresa_id = ve.id " +
-        "WHERE s.cliente_id = :clienteId " +
-        "ORDER BY s.hora_solicitacao DESC",
-      {
+      "ts.nome as tipos_servico, f.nome as funcionarios, vc.placa as veiculos_clientes, " +
+      "ve.placa as veiculo_empresa " +
+      "FROM servicos s " +
+      "LEFT JOIN tipos_servico ts ON s.tipo_servico_id = ts.id " +
+      "LEFT JOIN funcionarios f ON s.funcionario_id = f.id " +
+      "LEFT JOIN veiculos_clientes vc ON s.veiculo_cliente_id = vc.id " +
+      "LEFT JOIN veiculos_da_empresa ve ON s.veiculo_empresa_id = ve.id " +
+      "WHERE s.cliente_id = :clienteId " +
+      "ORDER BY s.hora_solicitacao DESC",
+      { 
         replacements: { clienteId },
-        type: QueryTypes.SELECT,
+        type: QueryTypes.SELECT 
       }
     );
 

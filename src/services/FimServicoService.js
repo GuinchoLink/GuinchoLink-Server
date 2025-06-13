@@ -26,7 +26,7 @@ class FimServicoService {    // Método para criar um novo registro de finaliza�
       include: [
         { association: 'veiculo_empresa' }, // Inclui o veículo da empresa associado
         { 
-          association: 'veiculoCliente',
+          association: 'veiculo_cliente',
           include: [
             { association: 'cliente' } // Inclui o cliente associado ao veículo
           ]
@@ -53,18 +53,18 @@ class FimServicoService {    // Método para criar um novo registro de finaliza�
     }
     
     // Verifica se o cliente tem direito a desconto (3 ou mais serviços finalizados no mesmo mês)
-    if (servico.veiculoCliente && servico.veiculoCliente.cliente) {
+    if (servico.veiculo_cliente && servico.veiculo_cliente.cliente) {
       // Obtém o mês e ano da finalização do serviço (não a data atual do sistema)
       const dataFinalizacao = new Date(data.hora_finalizacao);
       const mesFinalizacao = dataFinalizacao.getMonth();
       const anoFinalizacao = dataFinalizacao.getFullYear();
       
-      // Busca o clienteId do veículo do cliente
-      const clienteId = servico.veiculoCliente.cliente.id;
+      // Busca o cliente_id do veículo do cliente
+      const cliente_id = servico.veiculo_cliente.cliente.id;
       
       // Busca todos os veículos do cliente
       const veiculosDoCliente = await VeiculoCliente.findAll({
-        where: { clienteId },
+        where: { cliente_id },
         attributes: ['id']
       });
       
@@ -165,11 +165,11 @@ class FimServicoService {    // Método para criar um novo registro de finaliza�
   }
   
   // Método para encontrar registros de finalização de serviço por cliente
-  async findByClienteId(clienteId) {
+  async findByClienteId(cliente_id) {
     try {
       // Primeiro, encontre todos os veículos do cliente
       const veiculosDoCliente = await VeiculoCliente.findAll({
-        where: { clienteId },
+        where: { cliente_id },
         attributes: ['id']
       });
       
@@ -211,7 +211,7 @@ class FimServicoService {    // Método para criar um novo registro de finaliza�
             include: [
               { association: 'tipoServico' },
               { 
-                association: 'veiculoCliente',
+                association: 'veiculo_cliente',
                 include: [{ association: 'cliente' }]
               },
               { association: 'veiculo_empresa' }
@@ -246,18 +246,18 @@ class FimServicoService {    // Método para criar um novo registro de finaliza�
 
 
   // Método para obter estatísticas de finalizações por cliente
-  async getClienteStatistics(clienteId = null) {
+  async getClienteStatistics(cliente_id = null) {
     try {
-      if (clienteId) {
+      if (cliente_id) {
         // Estatísticas para um cliente específico
         const veiculosDoCliente = await VeiculoCliente.findAll({
-          where: { clienteId },
+          where: { cliente_id },
           attributes: ['id']
         });
         
         if (!veiculosDoCliente || veiculosDoCliente.length === 0) {
           return {
-            clienteId,
+            cliente_id,
             nomeCliente: null,
             quantidade: 0,
             valor_total: 0,
@@ -279,7 +279,7 @@ class FimServicoService {    // Método para criar um novo registro de finaliza�
         
         if (!servicos || servicos.length === 0) {
           return {
-            clienteId,
+            cliente_id,
             nomeCliente: null,
             quantidade: 0,
             valor_total: 0,
@@ -301,7 +301,7 @@ class FimServicoService {    // Método para criar um novo registro de finaliza�
               include: [
                 { association: 'tipo_servico' },
                 { 
-                  association: 'veiculoCliente',
+                  association: 'veiculo_cliente',
                   include: [{ association: 'cliente' }]
                 }
               ]
@@ -311,10 +311,10 @@ class FimServicoService {    // Método para criar um novo registro de finaliza�
         });
         
         const valor_total = finalizacoes.reduce((total, fim) => total + (fim.valor_total || 0), 0);
-        const nomeCliente = finalizacoes.length > 0 && finalizacoes[0].servico?.veiculoCliente?.cliente?.nome || null;
+        const nomeCliente = finalizacoes.length > 0 && finalizacoes[0].servico?.veiculo_cliente?.cliente?.nome || null;
         
         return {
-          clienteId,
+          cliente_id,
           nomeCliente,
           quantidade: finalizacoes.length,
           valor_total,
@@ -328,7 +328,7 @@ class FimServicoService {    // Método para criar um novo registro de finaliza�
               include: [
                 { association: 'tipo_servico' },
                 { 
-                  association: 'veiculoCliente',
+                  association: 'veiculo_cliente',
                   include: [{ association: 'cliente' }]
                 }
               ]

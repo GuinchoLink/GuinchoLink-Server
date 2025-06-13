@@ -34,6 +34,11 @@ class FeedbackController {
       .catch(err => res.status(400).json({ err: err.message }));
   }
 
+  static async findByNota(req, res) {
+    FeedbackService.findByNota(req)
+      .then(result => res.json(result))
+      .catch(err => res.status(400).json({ err: err.message }));
+  }
 }
 
 

@@ -34,6 +34,12 @@ class VeiculoClienteController {
       .catch(err => res.status(400).json({ err: err.message }));
   }
 
+  static async findByClientId(req, res) {
+    VeiculoClienteService.findByClientId(req)
+      .then(result => res.json(result))
+      .catch(err => res.status(400).json({ err: err.message }));
+  }
+
 }
 
 

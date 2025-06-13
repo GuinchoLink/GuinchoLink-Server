@@ -5,7 +5,14 @@ import { VeiculoCliente } from "../models/VeiculoCliente.js";
 class VeiculoClienteService {
   
   static async findAll(req, res) {
-    const objs = await VeiculoCliente.findAll();
+    const objs = await VeiculoCliente.findAll({
+      include: [
+        {
+          association: "cliente",
+          attributes: ["nome"]
+        }
+      ]
+  });
     return objs;
   }
 

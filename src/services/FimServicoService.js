@@ -59,7 +59,7 @@ class FimServicoService {    // Método para criar um novo registro de finaliza�
       const mesFinalizacao = dataFinalizacao.getMonth();
       const anoFinalizacao = dataFinalizacao.getFullYear();
       
-      // Busca o clienteId do veículo do cliente
+      // Busca o cliente_id do veículo do cliente
       const cliente_id = servico.veiculo_cliente.cliente.id;
       
       // Busca todos os veículos do cliente

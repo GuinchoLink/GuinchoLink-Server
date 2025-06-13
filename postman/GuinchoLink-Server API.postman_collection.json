@@ -1548,7 +1548,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"hora_solicitacao\": \"2025-05-20\",\r\n  \"descricao\": \"Reboque de veículo com pane mecanica\",\r\n  \"status\": \"pendente\",\r\n  \"localizacao\": \"Rua das Flores, 123\",\r\n  \"tipo_servico_id\": 2,\r\n  \"funcionario_id\": 3,\r\n  \"veiculo_cliente_id\": 1,\r\n  \"veiculo_empresa_id\": 5,\r\n  \"clienteId\": 2\r\n}\r\n//OBS: Para seguir o fluxo perfeito de teste, faca o primeiro Post Create Servico e depois os Post de Erros. Configurei o banco para seguir esse fluxo e facilitar o teste",
+							"raw": "{\r\n  \"hora_solicitacao\": \"2025-05-20\",\r\n  \"descricao\": \"Reboque de veículo com pane mecanica\",\r\n  \"status\": \"pendente\",\r\n  \"localizacao\": \"Rua das Flores, 123\",\r\n  \"tipo_servico_id\": 2,\r\n  \"funcionario_id\": 3,\r\n  \"veiculo_cliente_id\": 1,\r\n  \"veiculo_empresa_id\": 5,\r\n  \"cliente_id\": 2\r\n}\r\n//OBS: Para seguir o fluxo perfeito de teste, faca o primeiro Post Create Servico e depois os Post de Erros. Configurei o banco para seguir esse fluxo e facilitar o teste",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1576,7 +1576,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"hora_solicitacao\": \"2025-05-09\",\r\n  \"descricao\": \"Reboque de veículo com pane mecanica\",\r\n  \"status\": \"pendente\",\r\n  \"localizacao\": \"Rua das Flores, 123\",\r\n  \"tipo_servico_id\": 10,\r\n  \"funcionario_id\": 10,\r\n  \"veiculo_cliente_id\": 10,\r\n  \"veiculo_empresa_id\": 10,\r\n  \"clienteId\": 10\r\n}\r\n//Erro para ativar as verificacoes dos campos e verificar se os clientes, funcionarios, tipos de servico, veiculo do cliente e veiculo da empresa existem.\r\n//Caso o veiculo da empresa mencionado esteja em uso tambem, ele reporta um erro\r\n//OBS: Para seguir o fluxo perfeito de teste, faca o primeiro Post Create Servico e depois os Post de Erros. Configurei o banco para seguir esse fluxo e facilitar o teste",
+							"raw": "{\r\n  \"hora_solicitacao\": \"2025-05-09\",\r\n  \"descricao\": \"Reboque de veículo com pane mecanica\",\r\n  \"status\": \"pendente\",\r\n  \"localizacao\": \"Rua das Flores, 123\",\r\n  \"tipo_servico_id\": 10,\r\n  \"funcionario_id\": 10,\r\n  \"veiculo_cliente_id\": 10,\r\n  \"veiculo_empresa_id\": 10,\r\n  \"cliente_id\": 10\r\n}\r\n//Erro para ativar as verificacoes dos campos e verificar se os clientes, funcionarios, tipos de servico, veiculo do cliente e veiculo da empresa existem.\r\n//Caso o veiculo da empresa mencionado esteja em uso tambem, ele reporta um erro\r\n//OBS: Para seguir o fluxo perfeito de teste, faca o primeiro Post Create Servico e depois os Post de Erros. Configurei o banco para seguir esse fluxo e facilitar o teste",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1605,7 +1605,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"hora_solicitacao\": \"2025-05-20\",\r\n  \"descricao\": \"Reboque de veículo com pane mecanica\",\r\n  \"status\": \"pendente\",\r\n  \"localizacao\": \"Rua das Flores, 123\",\r\n  \"tipo_servico_id\": 2,\r\n  \"funcionario_id\": 2,\r\n  \"veiculo_cliente_id\": 3,\r\n  \"veiculo_empresa_id\": 6,\r\n  \"clienteId\": 2\r\n}\r\n//Erro para ativar a regra de negocio 1 - Nao pode haver mais de 10 servicos no dia( Para fins de teste coloquei no codigo \r\n// setado para no maximo 3 OS no dia)\r\n//OBS: Para seguir o fluxo perfeito de teste, faca o primeiro Post Create Servico e depois os Post de Erros. Configurei o banco para seguir esse fluxo e facilitar o teste",
+							"raw": "{\r\n  \"hora_solicitacao\": \"2025-05-20\",\r\n  \"descricao\": \"Reboque de veículo com pane mecanica\",\r\n  \"status\": \"pendente\",\r\n  \"localizacao\": \"Rua das Flores, 123\",\r\n  \"tipo_servico_id\": 2,\r\n  \"funcionario_id\": 2,\r\n  \"veiculo_cliente_id\": 3,\r\n  \"veiculo_empresa_id\": 6,\r\n  \"cliente_id\": 2\r\n}\r\n//Erro para ativar a regra de negocio 1 - Nao pode haver mais de 10 servicos no dia( Para fins de teste coloquei no codigo \r\n// setado para no maximo 3 OS no dia)\r\n//OBS: Para seguir o fluxo perfeito de teste, faca o primeiro Post Create Servico e depois os Post de Erros. Configurei o banco para seguir esse fluxo e facilitar o teste",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1634,7 +1634,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"hora_solicitacao\": \"2025-05-30\",\r\n  \"descricao\": \"Reboque de veículo com pane mecanica\",\r\n  \"status\": \"pendente\",\r\n  \"localizacao\": \"Rua das Flores, 123\",\r\n  \"tipo_servico_id\": 2,\r\n  \"funcionario_id\": 3,\r\n  \"veiculo_cliente_id\": 3,\r\n  \"veiculo_empresa_id\": 6,\r\n  \"clienteId\": 3\r\n}\r\n// Erro Regra de negócio 2 : Verifica se o funcionário já está alocado em outro serviço pendente",
+							"raw": "{\r\n  \"hora_solicitacao\": \"2025-05-30\",\r\n  \"descricao\": \"Reboque de veículo com pane mecanica\",\r\n  \"status\": \"pendente\",\r\n  \"localizacao\": \"Rua das Flores, 123\",\r\n  \"tipo_servico_id\": 2,\r\n  \"funcionario_id\": 3,\r\n  \"veiculo_cliente_id\": 3,\r\n  \"veiculo_empresa_id\": 6,\r\n  \"cliente_id\": 3\r\n}\r\n// Erro Regra de negócio 2 : Verifica se o funcionário já está alocado em outro serviço pendente",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1683,7 +1683,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"descricao\": \"Teste ordem de serviço 7\",\r\n        \"status\": \"pendente\",\r\n        \"localizacao\": \"Rua Gonzaga, 890\",\r\n        \"tipo_servico_id\": 3,\r\n        \"funcionario_id\": 3,\r\n        \"veiculo_cliente_id\": 3,\r\n        \"veiculo_empresa_id\": 3,\r\n        \"clienteId\": 3\r\n}\r\n    ",
+							"raw": "{\r\n        \"descricao\": \"Teste ordem de serviço 7\",\r\n        \"status\": \"pendente\",\r\n        \"localizacao\": \"Rua Gonzaga, 890\",\r\n        \"tipo_servico_id\": 3,\r\n        \"funcionario_id\": 3,\r\n        \"veiculo_cliente_id\": 3,\r\n        \"veiculo_empresa_id\": 3,\r\n        \"cliente_id\": 3\r\n}\r\n    ",
 							"options": {
 								"raw": {
 									"language": "json"

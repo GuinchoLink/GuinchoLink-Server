@@ -101,7 +101,7 @@ Funcionario.associate && Funcionario.associate(sequelize.models);
     telefone: "28 99999-7777",
     endereco: "Praça Gonzaga, 45",
   });
-  // Inserção de 3 Veículos de Cliente (com clienteId obrigatório)
+  // Inserção de 3 Veículos de Cliente (com cliente obrigatório)
   const veiculoCliente1 = await VeiculoCliente.create({
     placa: "ABC1156",
     cor: "Azul",

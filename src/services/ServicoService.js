@@ -9,7 +9,6 @@ import sequelize from "../config/database.js"; // Importação do banco de dados
 
 class ServicoService {
   async create(data) {
-
     const transaction = await sequelize.transaction();
 
     try {
@@ -45,7 +44,6 @@ class ServicoService {
 
       const novoServico = await Servico.create(data, { transaction });
 
-
       await VeiculoEmpresa.update(
         { status_veiculo: "emUso" },
         {
@@ -58,7 +56,7 @@ class ServicoService {
       return novoServico;
     } catch (error) {
       await transaction.rollback();
-      throw error; 
+      throw error;
     }
   }
 
@@ -123,7 +121,22 @@ class ServicoService {
   }
 
   async findAll() {
-    return await Servico.findAll();
+    return await Servico.findAll({
+      include: [
+        {
+          association: "veiculoCliente",
+          include: [{ association: "cliente", attributes: ["nome"] }],
+        },
+        {
+          association: "funcionario",
+          attributes: ["nome"],
+        },
+        {
+          association: "tipo_servico",
+          attributes: ["nome"],
+        },
+      ],
+    });
   }
 
   async findById(id) {
@@ -150,24 +163,24 @@ class ServicoService {
    */
   async findByCliente(req) {
     const { clienteId } = req.params;
-    
+
     const servicos = await sequelize.query(
       "SELECT s.id, s.hora_solicitacao, s.descricao, s.status, s.localizacao, " +
-      "ts.nome as tipos_servico, f.nome as funcionarios, vc.placa as veiculos_clientes, " +
-      "ve.placa as veiculo_empresa " +
-      "FROM servicos s " +
-      "LEFT JOIN tipos_servico ts ON s.tipo_servico_id = ts.id " +
-      "LEFT JOIN funcionarios f ON s.funcionario_id = f.id " +
-      "LEFT JOIN veiculos_clientes vc ON s.veiculo_cliente_id = vc.id " +
-      "LEFT JOIN veiculos_da_empresa ve ON s.veiculo_empresa_id = ve.id " +
-      "WHERE s.cliente_id = :clienteId " +
-      "ORDER BY s.hora_solicitacao DESC",
-      { 
+        "ts.nome as tipos_servico, f.nome as funcionarios, vc.placa as veiculos_clientes, " +
+        "ve.placa as veiculo_empresa " +
+        "FROM servicos s " +
+        "LEFT JOIN tipos_servico ts ON s.tipo_servico_id = ts.id " +
+        "LEFT JOIN funcionarios f ON s.funcionario_id = f.id " +
+        "LEFT JOIN veiculos_clientes vc ON s.veiculo_cliente_id = vc.id " +
+        "LEFT JOIN veiculos_da_empresa ve ON s.veiculo_empresa_id = ve.id " +
+        "WHERE s.cliente_id = :clienteId " +
+        "ORDER BY s.hora_solicitacao DESC",
+      {
         replacements: { clienteId },
-        type: QueryTypes.SELECT 
+        type: QueryTypes.SELECT,
       }
     );
-    
+
     return servicos;
   }
 
@@ -178,31 +191,35 @@ class ServicoService {
    */
   async findByStatus(req) {
     const { status } = req.params;
-    
+
     // Validar se o status é válido
-    const statusValidos = ['andamento', 'pendente', 'finalizado', 'cancelado'];
+    const statusValidos = ["andamento", "pendente", "finalizado", "cancelado"];
     if (!statusValidos.includes(status)) {
-      throw new Error(`Status inválido. Status deve ser um dos seguintes: ${statusValidos.join(', ')}`);
+      throw new Error(
+        `Status inválido. Status deve ser um dos seguintes: ${statusValidos.join(
+          ", "
+        )}`
+      );
     }
-    
+
     const servicos = await sequelize.query(
       "SELECT s.id, s.hora_solicitacao, s.descricao, s.status, s.localizacao, " +
-      "ts.nome as tipos_servico, f.nome as funcionarios, vc.placa as veiculos_clientes, " +
-      "ve.placa as veiculo_empresa, c.nome as cliente " +
-      "FROM servicos s " +
-      "LEFT JOIN tipos_servico ts ON s.tipo_servico_id = ts.id " +
-      "LEFT JOIN funcionarios f ON s.funcionario_id = f.id " +
-      "LEFT JOIN veiculos_clientes vc ON s.veiculo_cliente_id = vc.id " +
-      "LEFT JOIN veiculos_da_empresa ve ON s.veiculo_empresa_id = ve.id " +
-      "LEFT JOIN clientes c ON s.cliente_id = c.id " +
-      "WHERE s.status = :status " +
-      "ORDER BY s.hora_solicitacao DESC",
-      { 
+        "ts.nome as tipos_servico, f.nome as funcionarios, vc.placa as veiculos_clientes, " +
+        "ve.placa as veiculo_empresa, c.nome as cliente " +
+        "FROM servicos s " +
+        "LEFT JOIN tipos_servico ts ON s.tipo_servico_id = ts.id " +
+        "LEFT JOIN funcionarios f ON s.funcionario_id = f.id " +
+        "LEFT JOIN veiculos_clientes vc ON s.veiculo_cliente_id = vc.id " +
+        "LEFT JOIN veiculos_da_empresa ve ON s.veiculo_empresa_id = ve.id " +
+        "LEFT JOIN clientes c ON s.cliente_id = c.id " +
+        "WHERE s.status = :status " +
+        "ORDER BY s.hora_solicitacao DESC",
+      {
         replacements: { status },
-        type: QueryTypes.SELECT 
+        type: QueryTypes.SELECT,
       }
     );
-    
+
     return servicos;
   }
 }

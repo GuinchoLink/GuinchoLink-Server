@@ -6,6 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon src/server.js",
+    "build": "npm install",
+    "start": "node src/server.js",
     "create-admin": "node src/scripts/create-admin.js"
   },
   "author": "Rafael Vargas",

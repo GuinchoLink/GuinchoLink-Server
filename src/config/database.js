@@ -58,7 +58,7 @@ Administrador.associate && Administrador.associate(sequelize.models);
 Funcionario.associate && Funcionario.associate(sequelize.models);
 
 (async () => {
-  await sequelize.sync({});
+  await sequelize.sync();
 
   // // Inserção de 3 Clientes
   // const cliente1 = await Cliente.create({

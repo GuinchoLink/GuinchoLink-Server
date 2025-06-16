@@ -17,12 +17,12 @@ async function createDefaultAdmin() {
       cpf: '000.000.000-00',
       nascimento: '1990-01-01',
       login: 'admin',
-      senha: 'admin123'
+      senha: 'guincholink123'
     });
     
     console.log('Administrador padrão criado com sucesso!');
     console.log('Login: admin');
-    console.log('Senha: admin123');
+    console.log('Senha: guincholink123');
     
   } catch (error) {
     console.error('Erro ao criar administrador padrão:', error.message);

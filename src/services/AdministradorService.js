@@ -40,7 +40,7 @@ class AdministradorService {
     
     // Regra de negócio: não podem existir dois Administradors com o mesmo cpf
     const objByCpf = await Administrador.findAll({ where: { cpf: cpf } });
-    if (objByCpf.length == 1) {
+    if (objByCpf.length == 1 && objByCpf[0].id != id) {
       throw new Error("Já existe um Administrador com este CPF");
     }
 

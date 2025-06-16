@@ -1,5 +1,6 @@
 // Welington Gulinelli
 import { Model, DataTypes } from 'sequelize';
+import bcrypt from 'bcryptjs';
 
 class Administrador extends Model {
 
@@ -39,7 +40,23 @@ class Administrador extends Model {
           is: { args: ["^(?=.*[0-9]).+$"], msg: "Senha do Administrador deve conter pelo menos um número!" }
         }
       }
-    }, { sequelize, modelName: 'administrador', tableName: 'administrador' });
+    }, { 
+      sequelize, 
+      modelName: 'administrador', 
+      tableName: 'administrador',
+      hooks: {
+        beforeCreate: async (administrador) => {
+          if (administrador.senha) {
+            administrador.senha = await bcrypt.hash(administrador.senha, 10);
+          }
+        },
+        beforeUpdate: async (administrador) => {
+          if (administrador.changed('senha')) {
+            administrador.senha = await bcrypt.hash(administrador.senha, 10);
+          }
+        }
+      }
+    });
   }
 
   static associate(models) {

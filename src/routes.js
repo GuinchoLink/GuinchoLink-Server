@@ -9,8 +9,24 @@ import TipoServicoController from './controllers/TipoServicoController.js';
 import ServicoController from './controllers/ServicoController.js'; 
 import FimServicoController from './controllers/FimServicoController.js';
 import { FeedbackController } from './controllers/FeedbackController.js'; 
+import { AuthController } from './controllers/AuthController.js';
+import { authMiddleware } from './_middleware/auth-middleware.js'; 
 
 const routes = express.Router();
+
+// Rotas de autenticação (públicas - não protegidas)
+routes.post('/auth/login', AuthController.login);
+routes.post('/auth/refresh', AuthController.refresh);
+routes.post('/auth/logout', AuthController.logout);
+
+// Rotas públicas (se necessário - comentadas por enquanto)
+// routes.get('/tipos-servico', TipoServicoController.findAll);
+// routes.get('/empresa', EmpresaController.findAll);
+
+// Aplicar middleware de autenticação para todas as rotas protegidas
+routes.use(authMiddleware);
+
+// Rotas protegidas - requerem autenticação
 
 routes.get('/clientes', ClienteController.findAll);
 routes.get('/clientes/:id', ClienteController.findByPk);

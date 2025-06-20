@@ -129,6 +129,12 @@ class FimServicoService {    // M√©todo para criar um novo registro de finaliza√
     return await FimServico.findAll({
       include: [
         { association: 'servico' }
+      ],
+      include: [
+        {
+          association: 'servico',
+          include: [ { association: 'cliente' } ]
+        }
       ]
     });
   }

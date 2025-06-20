@@ -5,7 +5,15 @@ import { Feedback } from "../models/Feedback.js";
 class FeedbackService {
   
   static async findAll(req, res) {
-    const objs = await Feedback.findAll();
+    const objs = await Feedback.findAll({
+      include: [ {
+        association: "fim_servico",
+        include: [ {
+          association: "servico",
+          include: [ { association: "cliente" } ]
+        } ]
+      } ]
+  });
     return objs;
   }
 

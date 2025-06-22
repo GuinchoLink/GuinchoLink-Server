@@ -1,6 +1,7 @@
 //WELINGTON GULINELLI COSTA
 
 import { Administrador } from "../models/Administrador.js";
+import bcrypt from 'bcryptjs';
 
 class AdministradorService {
   static async findAll(req, res) {
@@ -36,18 +37,31 @@ class AdministradorService {
   static async update(req, res) {
     const { id } = req.params;
     const { nome, cpf, nascimento, login, senha } = req.body;
-    var obj = await Administrador.findOne({ where: { id: id } });
-    
-    // Regra de negócio: não podem existir dois Administradors com o mesmo cpf
-    const objByCpf = await Administrador.findAll({ where: { cpf: cpf } });
-    if (objByCpf.length == 1 && objByCpf[0].id != id) {
-      throw new Error("Já existe um Administrador com este CPF");
+
+    // Buscar o admin existente
+    const admin = await Administrador.findByPk(id);
+    if (!admin) {
+      throw new Error('Admin não encontrado');
     }
 
-    Object.assign(obj, { nome, cpf, nascimento, login, senha });
+    // Preparar dados para atualização
+    const updateData = { nome, cpf, nascimento, login };
+
+    // Só incluir senha se ela foi fornecida
+    if (senha && senha.trim() !== '') {
+      updateData.senha = await bcrypt.hash(senha, 10);
+    }
+
+    // Atualizar admin
+    await admin.update(updateData);
+
+    // Retornar admin atualizado sem a senha
+    const { senha: _, ...adminData } = admin.toJSON();
     
-    obj = await obj.save();
-    return obj;
+    return {
+      message: 'Admin atualizado com sucesso',
+      admin: adminData
+    };
   }
 
   static async delete(req, res) {

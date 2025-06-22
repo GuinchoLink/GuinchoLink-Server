@@ -29,17 +29,19 @@ class FuncionarioService {
   }
 
   static async update(req, res) {
-    const { id } = req.params;
-    const { nome, cpf, nascimento, telefone, endereco, cnh, categoria_cnh } = req.body;
-    var obj = await Funcionario.findOne({ where: { id: id } });
-    // Regra de negócio: não podem existir dois Funcionarios com o mesmo cpf
-    const objByCpf = await Funcionario.findAll({where : {cpf: cpf}});
-    if (objByCpf.length == 1){
-      throw new Error ("Já existe um Funcionario com este CPF");
-    }
-    Object.assign(obj, { nome, cpf, nascimento, telefone, endereco, cnh, categoria_cnh });
-    obj = await obj.save();
-    return obj;
+    // const { id } = req.params;
+    // const { nome, cpf, nascimento, telefone, endereco, cnh, categoria_cnh } = req.body;
+    // var obj = await Funcionario.findOne({ where: { id: id } });
+    // // Regra de negócio: não podem existir dois Funcionarios com o mesmo cpf
+    // const objByCpf = await Funcionario.findAll({where : {cpf: cpf}});
+    // if (objByCpf.length == 1){
+    //   throw new Error ("Já existe um Funcionario com este CPF");
+    // }
+    // Object.assign(obj, { nome, cpf, nascimento, telefone, endereco, cnh, categoria_cnh });
+    // obj = await obj.save();
+    // return obj;
+    const funcionario = await Funcionario.findByPk(req.params.id);
+    return funcionario.update(req.body);
   }
 
   static async delete(req, res) {

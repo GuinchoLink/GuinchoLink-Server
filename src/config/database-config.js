@@ -37,7 +37,7 @@ export const databaseConfig = {
     underscored: true
   },
   dialectOptions: {
-    ssl: false
+    ssl: true
   }
 };
 

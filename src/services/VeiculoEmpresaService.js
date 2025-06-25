@@ -2,6 +2,7 @@
 
 import { VeiculoEmpresa } from "../models/VeiculoEmpresa.js";
 import { Servico } from "../models/Servico.js"; // Importa o modelo Servico
+import { Op } from "sequelize"; // Importa os operadores do Sequelize
 
 class VeiculoEmpresaService {
 
@@ -32,9 +33,21 @@ class VeiculoEmpresaService {
     const { id } = req.params;
     const { placa, cor, modelo, tipo_de_veiculo_servico, status_veiculo } = req.body;
     var obj = await VeiculoEmpresa.findOne({ where: { id: id } });
+    
+    if (!obj) {
+      throw new Error("Veículo não encontrado.");
+    }
+
      // Regra de negócio: não podem existir dois veículos com a mesma placa
-     const objByCpf = await VeiculoEmpresa.findAll({where : {placa: placa}});
-     if (objByCpf.length == 1){
+     // Excluir o próprio veículo da verificação
+     const objByCpf = await VeiculoEmpresa.findAll({
+       where: { 
+         placa: placa,
+         id: { [Op.ne]: id } // Excluir o próprio veículo
+       }
+     });
+     
+     if (objByCpf.length > 0){
        throw new Error ("Já existe um VeiculoEmpresa com esta placa!");
      }
 

@@ -10,7 +10,7 @@
     "start": "node src/server.js",
     "create-admin": "node src/scripts/create-admin.js"
   },
-  "author": "Rafael Vargas",
+  "author": "Eduardo Almeida, Welington Gulinelii, Leandro Fraga",
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^6.0.0",

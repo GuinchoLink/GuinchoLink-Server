@@ -43,13 +43,46 @@ Certifique-se de ter instalado em sua máquina:
    npm install
    ```
 
+3. **Configure as variáveis de ambiente**:
+   
+   Copie o arquivo `.env.example` para `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+   
+   Edite o arquivo `.env` com suas configurações:
+   ```env
+   # Configurações do Banco de Dados
+   DB_DIALECT=postgres
+   DB_HOST=localhost
+   DB_USERNAME=your_username
+   DB_PASSWORD=your_password
+   DB_DATABASE=guincho-link
+   DB_SSL=false
 
-3. **Inicie o servidor**:
+   # Configurações JWT
+   JWT_ACCESS_SECRET=your_jwt_access_secret
+   JWT_REFRESH_SECRET=your_jwt_refresh_secret
+
+   # Configurações do Administrador Padrão
+   DEFAULT_ADMIN_NOME=Administrador Padrão
+   DEFAULT_ADMIN_CPF=000.000.000-00
+   DEFAULT_ADMIN_NASCIMENTO=1990-01-01
+   DEFAULT_ADMIN_LOGIN=admin
+   DEFAULT_ADMIN_SENHA=admin123
+   ```
+
+4. **Criar administrador padrão** (opcional):
+   ```bash
+   npm run create-admin
+   ```
+
+5. **Inicie o servidor**:
    ```bash
    npm run dev
    ```
 
-4. O servidor estará rodando em `http://localhost:3333`.
+6. O servidor estará rodando em `http://localhost:3333`.
 
 ---
 

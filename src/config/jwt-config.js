@@ -1,3 +1,8 @@
+import dotenv from 'dotenv';
+
+// Carrega as variáveis de ambiente
+dotenv.config();
+
 export const JWT_CONFIG = {
   access: {
     secret: process.env.JWT_ACCESS_SECRET || 'guincholink-access-secret-key-2024',

@@ -1,59 +1,21 @@
-// // Configuração do banco de dados no ambiente de teste
-//  export const databaseConfig = {
-  //  dialect: 'sqlite',
-  //  storage: 'database.sqlite',
-  //  define: {
-    //  timestamps: true,
-    //  freezeTableName: true,
-    //  underscored: true
-  //  }
-//  };
+import dotenv from 'dotenv';
 
+// Carrega as variáveis de ambiente
+dotenv.config();
 
-// // Configuração do banco de dados no ambiente de desenvolvimento
-// export const databaseConfig = {
-//   dialect: 'postgres',
-//   host: 'localhost',
-//   username: 'postgres',
-//   password: 'bd',
-//   database: 'guincho-link',
-//   define: {
-//     timestamps: true,
-//     freezeTableName: true,
-//     underscored: true
-//   }
-// };
-
-// Configuração do banco de dados no ambiente de produção
+// Configuração do banco de dados usando variáveis de ambiente
 export const databaseConfig = {
-  dialect: 'postgres',
-  host: 'localhost',
-  username: 'postgres',
-  password: 'postgres',
-  database: 'guincho-link',
+  dialect: process.env.DB_DIALECT || 'postgres',
+  host: process.env.DB_HOST || 'localhost',
+  username: process.env.DB_USERNAME || 'postgres',
+  password: process.env.DB_PASSWORD || 'postgres',
+  database: process.env.DB_DATABASE || 'guincho-link',
   define: {
     timestamps: true,
     freezeTableName: true,
     underscored: true
   },
   dialectOptions: {
-    ssl: false
+    ssl: process.env.DB_SSL === 'true'
   }
 };
-
-
-/*
-// Configuração do banco de dados no ambiente de produção
-export const databaseConfig = {
-  dialect: 'postgres',
-  host: 'localhost',
-  username: 'postgres',
-  password: 'postgres',
-  database: 'scv-backend-node-sequelize',
-  define: {
-    timestamps: true,
-    freezeTableName: true,
-    underscored: true
-  }
-};
-*/
